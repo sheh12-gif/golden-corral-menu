@@ -221,11 +221,11 @@
     .main-nav {
       display: flex;
       align-items: center;
-      gap: 0.35rem;
+      gap: 0.5rem;
     }
 
     .nav-link {
-      padding: 0.52rem 0.9rem;
+      padding: 0.52rem 1rem;
       border-radius: var(--radius-sm);
       font-size: 0.9rem;
       font-weight: 700;
@@ -266,7 +266,7 @@
 
     .mobile-nav-grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: 1fr;
       gap: 0.5rem;
     }
 
@@ -278,6 +278,7 @@
       font-weight: 700;
       color: var(--text-primary);
       border: 1px solid var(--border-light);
+      text-align: center;
     }
 
     .mobile-nav-link:hover {
@@ -391,24 +392,6 @@
       background: var(--footer-bg-dark);
     }
 
-    .btn-hero-secondary {
-      background: rgba(255, 255, 255, 0.16);
-      border: 1.5px solid rgba(255, 255, 255, 0.55);
-      color: #FFFFFF;
-      font-weight: 700;
-      font-size: 0.95rem;
-      padding: 0.88rem 1.55rem;
-      border-radius: var(--radius-pill);
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .btn-hero-secondary:hover {
-      background: rgba(255, 255, 255, 0.26);
-      transform: translateY(-2px);
-    }
-
     .hero-stats-bar {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -479,7 +462,7 @@
     }
 
     /* ==========================================================================
-       4. STICKY SEARCH & CATEGORY BAR
+       4. CATEGORY BAR (NO BUFFET PRICES BUTTON)
        ========================================================================== */
     .filter-control-bar {
       position: sticky;
@@ -497,55 +480,6 @@
       display: flex;
       flex-direction: column;
       gap: 0.75rem;
-    }
-
-    .search-wrapper {
-      position: relative;
-      max-width: 680px;
-      width: 100%;
-      margin: 0 auto;
-    }
-
-    .search-icon {
-      position: absolute;
-      left: 1rem;
-      top: 50%;
-      transform: translateY(-50%);
-      color: var(--text-muted);
-      pointer-events: none;
-    }
-
-    .search-input {
-      width: 100%;
-      padding: 0.78rem 5rem 0.78rem 2.75rem;
-      border-radius: var(--radius-pill);
-      border: 1.5px solid var(--border-light);
-      background: var(--bg-page);
-      font-family: var(--font-sans);
-      font-size: 0.94rem;
-      color: var(--text-primary);
-      transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
-    }
-
-    .search-input:focus {
-      outline: none;
-      background: #FFFFFF;
-      border-color: var(--brand-red);
-      box-shadow: 0 0 0 3px rgba(216, 31, 42, 0.14);
-    }
-
-    .search-shortcut {
-      position: absolute;
-      right: 0.9rem;
-      top: 50%;
-      transform: translateY(-50%);
-      background: #FFFFFF;
-      color: var(--text-secondary);
-      border: 1px solid var(--border-light);
-      border-radius: 6px;
-      padding: 0.15rem 0.5rem;
-      font-size: 0.74rem;
-      font-weight: 700;
     }
 
     .category-slider-shell {
@@ -625,7 +559,7 @@
     }
 
     /* ==========================================================================
-       5. MENU SECTIONS & STATIC ITEM CARDS (SEO Optimized Alt Text Cards)
+       5. MENU SECTIONS & STATIC ITEM CARDS
        ========================================================================== */
     .main-content {
       padding: 2.5rem 0 4rem;
@@ -633,6 +567,7 @@
 
     .menu-category-section {
       margin-bottom: 3.5rem;
+      scroll-margin-top: 150px;
     }
 
     .section-header {
@@ -771,18 +706,8 @@
       margin-left: auto;
     }
 
-    .no-results-box {
-      display: none;
-      text-align: center;
-      background: #FFFFFF;
-      border: 1px solid var(--border-light);
-      border-radius: var(--radius-md);
-      padding: 3rem 1.5rem;
-      margin: 2rem 0;
-    }
-
     /* ==========================================================================
-       6. SEO QUICK SUMMARY & HOURS
+       6. INFO SECTIONS & TABLES
        ========================================================================== */
     .info-grid-section {
       display: grid;
@@ -887,7 +812,7 @@
     }
 
     /* ==========================================================================
-       7. SEO FAQ ACCORDION
+       7. FAQ SECTION
        ========================================================================== */
     .faq-section {
       margin: 3.5rem 0 1rem;
@@ -977,19 +902,6 @@
       line-height: 1.65;
     }
 
-    .footer-updated-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.45rem;
-      margin-top: 1rem;
-      padding: 0.4rem 0.95rem;
-      border-radius: var(--radius-pill);
-      background: var(--brand-red);
-      color: #FFFFFF;
-      font-size: 0.78rem;
-      font-weight: 700;
-    }
-
     .footer-col-title {
       font-size: 0.92rem;
       font-weight: 800;
@@ -1032,10 +944,9 @@
 
     .footer-bottom {
       display: flex;
-      flex-wrap: wrap;
       align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
+      justify-content: center;
+      text-align: center;
       padding-top: 1.5rem;
       border-top: 1px solid rgba(255, 255, 255, 0.14);
       font-size: 0.83rem;
@@ -1043,7 +954,43 @@
     }
 
     /* ==========================================================================
-       9. RESPONSIVE BREAKPOINTS
+       9. FLOATING SCROLL-TO-TOP BUTTON
+       ========================================================================== */
+    .scroll-to-top-btn {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      z-index: 1050;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background-color: var(--brand-red);
+      color: #FFFFFF;
+      border: 2px solid #FFFFFF;
+      box-shadow: 0 6px 20px rgba(216, 31, 42, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(15px);
+      transition: opacity 0.25s ease, visibility 0.25s ease, transform 0.25s ease, background-color 0.2s ease;
+    }
+
+    .scroll-to-top-btn.show {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .scroll-to-top-btn:hover {
+      background-color: var(--brand-red-dark);
+      transform: translateY(-2px);
+    }
+
+    /* ==========================================================================
+       10. RESPONSIVE BREAKPOINTS
        ========================================================================== */
     @media (max-width: 1024px) {
       .main-nav {
@@ -1105,6 +1052,12 @@
         grid-template-columns: 1fr;
         gap: 2rem;
       }
+      .scroll-to-top-btn {
+        bottom: 1.25rem;
+        right: 1.25rem;
+        width: 42px;
+        height: 42px;
+      }
     }
 
     @media (max-width: 350px) {
@@ -1117,7 +1070,7 @@
 <body>
 
   <!-- ==========================================================================
-       STICKY HEADER WITH STACKED LOGO
+       STICKY HEADER WITH 3 SPECIFIC LINKS
        ========================================================================== -->
   <header class="site-header">
     <div class="container header-inner">
@@ -1129,15 +1082,10 @@
         </div>
       </a>
 
-      <nav class="main-nav" aria-label="Main Menu Categories">
-        <a href="#buffet-prices" class="nav-link">Buffet Prices</a>
-        <a href="#carving-steakhouse" class="nav-link">Steaks &amp; Grill</a>
-        <a href="#hot-favorites" class="nav-link">Lunch &amp; Dinner</a>
-        <a href="#breakfast-buffet" class="nav-link">Breakfast</a>
-        <a href="#bakery-desserts" class="nav-link">Bakery</a>
-        <a href="#weigh-and-pay" class="nav-link">Weigh &amp; Pay</a>
-        <a href="#hours-summary" class="nav-link">Hours</a>
-        <a href="#faq" class="nav-link">FAQ</a>
+      <nav class="main-nav" aria-label="Main Pages Navigation">
+        <a href="#" class="nav-link">Golden Corral Buffet</a>
+        <a href="#" class="nav-link">Breakfast Menu</a>
+        <a href="#" class="nav-link">Lunch Menu</a>
       </nav>
 
       <button type="button" class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle Navigation Menu" aria-expanded="false">
@@ -1151,14 +1099,9 @@
 
     <div class="mobile-nav-drawer" id="mobileNavDrawer">
       <div class="mobile-nav-grid">
-        <a href="#buffet-prices" class="mobile-nav-link">Buffet Prices</a>
-        <a href="#carving-steakhouse" class="mobile-nav-link">Steaks &amp; Grill</a>
-        <a href="#hot-favorites" class="mobile-nav-link">Comfort Favorites</a>
-        <a href="#breakfast-buffet" class="mobile-nav-link">Breakfast Buffet</a>
-        <a href="#bakery-desserts" class="mobile-nav-link">Bakery &amp; Desserts</a>
-        <a href="#weigh-and-pay" class="mobile-nav-link">Weigh &amp; Pay To-Go</a>
-        <a href="#hours-summary" class="mobile-nav-link">Buffet Hours</a>
-        <a href="#faq" class="mobile-nav-link">Common FAQs</a>
+        <a href="#" class="mobile-nav-link">Golden Corral Buffet</a>
+        <a href="#" class="mobile-nav-link">Breakfast Menu</a>
+        <a href="#" class="mobile-nav-link">Lunch Menu</a>
       </div>
     </div>
   </header>
@@ -1186,9 +1129,6 @@
           <span>Explore Menu Prices</span>
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
         </a>
-        <a href="#hours-summary" class="btn-hero-secondary">
-          <span>2026 Price Cheat Sheet &amp; Hours</span>
-        </a>
       </div>
 
       <div class="hero-stats-bar" aria-label="Golden Corral Menu Highlights">
@@ -1208,32 +1148,16 @@
 
       <div class="hero-trust-strip">
         <span class="trust-item"><span class="trust-dot" aria-hidden="true"></span> Starting from <strong>$10.99 USD</strong></span>
-        <span class="trust-item"><span class="trust-dot" aria-hidden="true"></span> <strong>October 2026</strong> Verified Pricing</span>
         <span class="trust-item"><span class="trust-dot" aria-hidden="true"></span> Kids Under 3 <strong>Eat Free</strong></span>
       </div>
     </div>
   </section>
 
   <!-- ==========================================================================
-       STICKY SEARCH & CATEGORY BAR
+       STICKY CATEGORY BAR (NO BUFFET PRICES BUTTON)
        ========================================================================== -->
   <div class="filter-control-bar">
     <div class="container filter-inner">
-      <div class="search-wrapper">
-        <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="11" cy="11" r="8"></circle>
-          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-        </svg>
-        <input
-          type="search"
-          id="menuSearchInput"
-          class="search-input"
-          placeholder="Search Golden Corral buffet prices, individual meals, pizza, fried chicken, salads, sides..."
-          aria-label="Search Golden Corral Menu Items"
-        >
-        <span class="search-shortcut" aria-hidden="true">Press /</span>
-      </div>
-
       <div class="category-slider-shell">
         <div class="category-slider-row">
           <button type="button" class="slider-arrow-btn" id="slideLeftBtn" aria-label="Slide Categories Left">
@@ -1241,18 +1165,17 @@
           </button>
 
           <div class="category-pills-scroll" id="categoryPillsScroll" role="tablist" aria-label="Filter Menu by Category">
-            <a href="#" class="cat-pill">Buffet Prices</a>
-            <button type="button" class="cat-pill" data-filter="individual-meals">Individual Meals</button>
-            <button type="button" class="cat-pill" data-filter="kids-meals">Kids’ Meals</button>
-            <button type="button" class="cat-pill" data-filter="family-meals">Family Meals</button>
-            <button type="button" class="cat-pill" data-filter="combo-meals">Combo Meals</button>
-            <button type="button" class="cat-pill" data-filter="pizzas">Pizzas</button>
-            <button type="button" class="cat-pill" data-filter="fried-chicken">Fried Chicken</button>
-            <button type="button" class="cat-pill" data-filter="sides">Sides</button>
-            <button type="button" class="cat-pill" data-filter="desserts">Desserts</button>
-            <button type="button" class="cat-pill" data-filter="signature-salads">Signature Salads</button>
-            <button type="button" class="cat-pill" data-filter="beverages">Beverages</button>
-            <button type="button" class="cat-pill" data-filter="condiments">Condiments</button>
+            <button type="button" class="cat-pill" data-target="individual-meals">Individual Meals</button>
+            <button type="button" class="cat-pill" data-target="kids-meals">Kids’ Meals</button>
+            <button type="button" class="cat-pill" data-target="family-meals">Family Meals</button>
+            <button type="button" class="cat-pill" data-target="combo-meals">Combo Meals</button>
+            <button type="button" class="cat-pill" data-target="pizzas">Pizza</button>
+            <button type="button" class="cat-pill" data-target="fried-chicken">Fried Chicken</button>
+            <button type="button" class="cat-pill" data-target="sides">Sides</button>
+            <button type="button" class="cat-pill" data-target="desserts">Desserts</button>
+            <button type="button" class="cat-pill" data-target="signature-salads">Signature Salads</button>
+            <button type="button" class="cat-pill" data-target="beverages">Beverages</button>
+            <button type="button" class="cat-pill" data-target="condiments">Condiments</button>
           </div>
 
           <button type="button" class="slider-arrow-btn" id="slideRightBtn" aria-label="Slide Categories Right">
@@ -1264,18 +1187,13 @@
   </div>
 
   <!-- ==========================================================================
-       MAIN CONTENT WITH OPTIMIZED ALT TEXT
+       MAIN CONTENT
        ========================================================================== -->
   <main class="main-content container">
 
-    <div class="no-results-box" id="noResultsBox">
-      <h3 style="font-size: 1.25rem; margin-bottom: 0.4rem;">No matching menu items found</h3>
-      <p style="color: var(--text-secondary); font-size: 0.92rem;">Try searching for "Sirloin", "Pot Roast", "Pizza", "Fried Chicken", "Spinach Salad", or "Sides".</p>
-    </div>
-
     <!-- CATEGORY 1: INDIVIDUAL MEALS -->
     <section id="individual-meals" class="menu-category-section" data-category="individual-meals">
-      <div class="section-header" id="carving-steakhouse">
+      <div class="section-header">
         <div class="section-title-wrap">
           <h2 class="section-title">Individual Meals Menu at Golden Corral</h2>
         </div>
@@ -1286,7 +1204,6 @@
           <div class="card-image-slot">
             <img src="images/Fried-Chicken.webp" alt="Golden Corral Fried Chicken" loading="lazy" decoding="async" onerror="this.style.display='none'">
             <div class="img-placeholder-label">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
               <span>Fried-Chicken.webp</span>
             </div>
           </div>
@@ -1303,7 +1220,6 @@
           <div class="card-image-slot">
             <img src="images/Pot-Roast.webp" alt="Golden Corral Pot Roast" loading="lazy" decoding="async" onerror="this.style.display='none'">
             <div class="img-placeholder-label">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
               <span>Pot-Roast.webp</span>
             </div>
           </div>
@@ -1320,7 +1236,6 @@
           <div class="card-image-slot">
             <img src="images/Bourbon-Street-Chicken.webp" alt="Golden Corral Bourbon Street Chicken" loading="lazy" decoding="async" onerror="this.style.display='none'">
             <div class="img-placeholder-label">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
               <span>Bourbon-Street-Chicken.webp</span>
             </div>
           </div>
@@ -1337,7 +1252,6 @@
           <div class="card-image-slot">
             <img src="images/Meatloaf.webp" alt="Golden Corral Meatloaf" loading="lazy" decoding="async" onerror="this.style.display='none'">
             <div class="img-placeholder-label">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
               <span>Meatloaf.webp</span>
             </div>
           </div>
@@ -1354,7 +1268,6 @@
           <div class="card-image-slot">
             <img src="images/5-oz.-Sirloin-Steak.webp" alt="Golden Corral 5 oz. Sirloin Steak" loading="lazy" decoding="async" onerror="this.style.display='none'">
             <div class="img-placeholder-label">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
               <span>5-oz.-Sirloin-Steak.webp</span>
             </div>
           </div>
@@ -1371,7 +1284,6 @@
           <div class="card-image-slot">
             <img src="images/8-oz.-Sirloin-Steak.webp" alt="Golden Corral 8 oz. Sirloin Steak" loading="lazy" decoding="async" onerror="this.style.display='none'">
             <div class="img-placeholder-label">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
               <span>8-oz.-Sirloin-Steak.webp</span>
             </div>
           </div>
@@ -1388,7 +1300,6 @@
           <div class="card-image-slot">
             <img src="images/10-oz.-Sirloin-Steak.webp" alt="Golden Corral 10 oz. Sirloin Steak" loading="lazy" decoding="async" onerror="this.style.display='none'">
             <div class="img-placeholder-label">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
               <span>10-oz.-Sirloin-Steak.webp</span>
             </div>
           </div>
@@ -1405,7 +1316,6 @@
           <div class="card-image-slot">
             <img src="images/12-oz.-Sirloin-Steak.webp" alt="Golden Corral 12 oz. Sirloin Steak" loading="lazy" decoding="async" onerror="this.style.display='none'">
             <div class="img-placeholder-label">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
               <span>12-oz.-Sirloin-Steak.webp</span>
             </div>
           </div>
@@ -1422,7 +1332,6 @@
           <div class="card-image-slot">
             <img src="images/Smoked-Pulled-Pork.webp" alt="Golden Corral Smoked Pulled Pork" loading="lazy" decoding="async" onerror="this.style.display='none'">
             <div class="img-placeholder-label">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
               <span>Smoked-Pulled-Pork.webp</span>
             </div>
           </div>
@@ -1439,7 +1348,6 @@
           <div class="card-image-slot">
             <img src="images/fried-fish.webp" alt="Golden Corral Fried Fish" loading="lazy" decoding="async" onerror="this.style.display='none'">
             <div class="img-placeholder-label">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
               <span>fried-fish.webp</span>
             </div>
           </div>
@@ -1456,7 +1364,6 @@
           <div class="card-image-slot">
             <img src="images/Baked-Fish.webp" alt="Golden Corral Baked Fish" loading="lazy" decoding="async" onerror="this.style.display='none'">
             <div class="img-placeholder-label">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
               <span>Baked-Fish.webp</span>
             </div>
           </div>
@@ -1471,103 +1378,7 @@
       </div>
     </section>
 
-    <!-- CATEGORY 3: COMBO MEALS -->
-    <section id="combo-meals" class="menu-category-section" data-category="combo-meals">
-      <div class="section-header">
-        <div class="section-title-wrap">
-          <h2 class="section-title">Combo Meal Options</h2>
-        </div>
-      </div>
-
-      <div class="menu-grid">
-        <article class="menu-card">
-          <div class="card-image-slot">
-            <img src="images/Fried-Chicken-Meal.webp" alt="Golden Corral Fried Chicken Meal" loading="lazy" decoding="async" onerror="this.style.display='none'">
-            <div class="img-placeholder-label">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
-              <span>Fried-Chicken-Meal.webp</span>
-            </div>
-          </div>
-          <div class="card-body">
-            <div class="item-name-text">Fried Chicken Meal</div>
-            <div class="card-bottom-bar">
-              <span class="item-cal-text">943–1623 CAL</span>
-              <span class="item-price-badge">$13.99</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="menu-card">
-          <div class="card-image-slot">
-            <img src="images/Pot-Roast-Meal.webp" alt="Golden Corral Pot Roast Meal" loading="lazy" decoding="async" onerror="this.style.display='none'">
-            <div class="img-placeholder-label">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
-              <span>Pot-Roast-Meal.webp</span>
-            </div>
-          </div>
-          <div class="card-body">
-            <div class="item-name-text">Pot Roast Meal</div>
-            <div class="card-bottom-bar">
-              <span class="item-cal-text">607–1287 CAL</span>
-              <span class="item-price-badge">$14.99</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="menu-card">
-          <div class="card-image-slot">
-            <img src="images/Meatloaf-Meal.webp" alt="Golden Corral Meatloaf Meal" loading="lazy" decoding="async" onerror="this.style.display='none'">
-            <div class="img-placeholder-label">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
-              <span>Meatloaf-Meal.webp</span>
-            </div>
-          </div>
-          <div class="card-body">
-            <div class="item-name-text">Meatloaf Meal</div>
-            <div class="card-bottom-bar">
-              <span class="item-cal-text">370–1060 CAL</span>
-              <span class="item-price-badge">$14.99</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="menu-card">
-          <div class="card-image-slot">
-            <img src="images/Bourbon-Street-Chicken-Meal.webp" alt="Golden Corral Bourbon Street Chicken Meal" loading="lazy" decoding="async" onerror="this.style.display='none'">
-            <div class="img-placeholder-label">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
-              <span>Bourbon-Street-Chicken-Meal.webp</span>
-            </div>
-          </div>
-          <div class="card-body">
-            <div class="item-name-text">Bourbon Street Chicken Meal</div>
-            <div class="card-bottom-bar">
-              <span class="item-cal-text">836–1516 CAL</span>
-              <span class="item-price-badge">$13.99</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="menu-card">
-          <div class="card-image-slot">
-            <img src="images/Smoked-Pulled-Pork-Meal.webp" alt="Golden Corral Smoked Pulled Pork Meal" loading="lazy" decoding="async" onerror="this.style.display='none'">
-            <div class="img-placeholder-label">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
-              <span>Smoked-Pulled-Pork-Meal.webp</span>
-            </div>
-          </div>
-          <div class="card-body">
-            <div class="item-name-text">Smoked Pulled Pork Meal</div>
-            <div class="card-bottom-bar">
-              <span class="item-cal-text">976–1656 CAL</span>
-              <span class="item-price-badge">$17.99</span>
-            </div>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <!-- CATEGORY 4: KIDS MEALS -->
+    <!-- CATEGORY 2: KIDS MEALS -->
     <section id="kids-meals" class="menu-category-section" data-category="kids-meals">
       <div class="section-header">
         <div class="section-title-wrap">
@@ -1580,7 +1391,6 @@
           <div class="card-image-slot">
             <img src="images/Chicken-Tenders.webp" alt="Golden Corral Chicken Tenders" loading="lazy" decoding="async" onerror="this.style.display='none'">
             <div class="img-placeholder-label">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
               <span>Chicken-Tenders.webp</span>
             </div>
           </div>
@@ -1597,7 +1407,6 @@
           <div class="card-image-slot">
             <img src="images/kids-Fried-Chicken-meal.webp" alt="Golden Corral Kids Buffet Special" loading="lazy" decoding="async" onerror="this.style.display='none'">
             <div class="img-placeholder-label">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
               <span>kids-Fried-Chicken-meal.webp</span>
             </div>
           </div>
@@ -1612,7 +1421,7 @@
       </div>
     </section>
 
-    <!-- CATEGORY 5: FAMILY MEALS -->
+    <!-- CATEGORY 3: FAMILY MEALS -->
     <section id="family-meals" class="menu-category-section" data-category="family-meals">
       <div class="section-header">
         <div class="section-title-wrap">
@@ -1625,7 +1434,6 @@
           <div class="card-image-slot">
             <img src="images/Bourbon-Street-Chicken-Family-Meal.webp" alt="Golden Corral Bourbon Street Chicken Family Meal" loading="lazy" decoding="async" onerror="this.style.display='none'">
             <div class="img-placeholder-label">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
               <span>Bourbon-Street-Chicken-Family-Meal.webp</span>
             </div>
           </div>
@@ -1642,7 +1450,6 @@
           <div class="card-image-slot">
             <img src="images/Fried-Chicken-Family-Meal.webp" alt="Golden Corral Fried Chicken Family Meal" loading="lazy" decoding="async" onerror="this.style.display='none'">
             <div class="img-placeholder-label">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
               <span>Fried-Chicken-Family-Meal.webp</span>
             </div>
           </div>
@@ -1659,7 +1466,6 @@
           <div class="card-image-slot">
             <img src="images/Pot-Roast-Family-Meal.webp" alt="Golden Corral Pot Roast Family Meal" loading="lazy" decoding="async" onerror="this.style.display='none'">
             <div class="img-placeholder-label">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
               <span>Pot-Roast-Family-Meal.webp</span>
             </div>
           </div>
@@ -1676,7 +1482,6 @@
           <div class="card-image-slot">
             <img src="images/Meatloaf-Family-Meal.webp" alt="Golden Corral Meatloaf Family Meal" loading="lazy" decoding="async" onerror="this.style.display='none'">
             <div class="img-placeholder-label">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
               <span>Meatloaf-Family-Meal.webp</span>
             </div>
           </div>
@@ -1693,7 +1498,6 @@
           <div class="card-image-slot">
             <img src="images/5-oz.-Sirloin-Steak-Family-Meal.webp" alt="Golden Corral 5 oz. Sirloin Steak Family Meal" loading="lazy" decoding="async" onerror="this.style.display='none'">
             <div class="img-placeholder-label">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
               <span>5-oz.-Sirloin-Steak-Family-Meal.webp</span>
             </div>
           </div>
@@ -1710,7 +1514,6 @@
           <div class="card-image-slot">
             <img src="images/Smoked-Pulled-Pork-Family-Meal.webp" alt="Golden Corral Smoked Pulled Pork Family Meal" loading="lazy" decoding="async" onerror="this.style.display='none'">
             <div class="img-placeholder-label">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
               <span>Smoked-Pulled-Pork-Family-Meal.webp</span>
             </div>
           </div>
@@ -1727,7 +1530,6 @@
           <div class="card-image-slot">
             <img src="images/Baked-Fish-Family-Meal.webp" alt="Golden Corral Baked Fish Family Meal" loading="lazy" decoding="async" onerror="this.style.display='none'">
             <div class="img-placeholder-label">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
               <span>Baked-Fish-Family-Meal.webp</span>
             </div>
           </div>
@@ -1744,7 +1546,6 @@
           <div class="card-image-slot">
             <img src="images/Fried-Fish-Family-Meal.webp" alt="Golden Corral Fried Fish Family Meal" loading="lazy" decoding="async" onerror="this.style.display='none'">
             <div class="img-placeholder-label">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
               <span>Fried-Fish-Family-Meal.webp</span>
             </div>
           </div>
@@ -1759,69 +1560,98 @@
       </div>
     </section>
 
-    <!-- CATEGORY 6: FAMOUS FRIED CHICKEN -->
-    <section id="fried-chicken" class="menu-category-section" data-category="fried-chicken">
-      <div class="section-header" id="hot-favorites">
+    <!-- CATEGORY 4: COMBO MEALS -->
+    <section id="combo-meals" class="menu-category-section" data-category="combo-meals">
+      <div class="section-header">
         <div class="section-title-wrap">
-          <h2 class="section-title">Famous Fried Chicken</h2>
+          <h2 class="section-title">Combo Meal Options</h2>
         </div>
       </div>
 
       <div class="menu-grid">
         <article class="menu-card">
           <div class="card-image-slot">
-            <img src="images/12-Piece-Family-Box.webp" alt="Golden Corral 12 Piece Family Box" loading="lazy" decoding="async" onerror="this.style.display='none'">
+            <img src="images/Fried-Chicken-Meal.webp" alt="Golden Corral Fried Chicken Meal" loading="lazy" decoding="async" onerror="this.style.display='none'">
             <div class="img-placeholder-label">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
-              <span>12-Piece-Family-Box.webp</span>
+              <span>Fried-Chicken-Meal.webp</span>
             </div>
           </div>
           <div class="card-body">
-            <div class="item-name-text">12 Piece Family Box</div>
+            <div class="item-name-text">Fried Chicken Meal</div>
             <div class="card-bottom-bar">
-              <span class="item-cal-text">4980–5220 CAL</span>
-              <span class="item-price-badge">$29.99</span>
+              <span class="item-cal-text">943–1623 CAL</span>
+              <span class="item-price-badge">$13.99</span>
             </div>
           </div>
         </article>
 
         <article class="menu-card">
           <div class="card-image-slot">
-            <img src="images/20-Piece-Crowd-Pleaser.webp" alt="Golden Corral 20 Piece Crowd Pleaser" loading="lazy" decoding="async" onerror="this.style.display='none'">
+            <img src="images/Pot-Roast-Meal.webp" alt="Golden Corral Pot Roast Meal" loading="lazy" decoding="async" onerror="this.style.display='none'">
             <div class="img-placeholder-label">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
-              <span>20-Piece-Crowd-Pleaser.webp</span>
+              <span>Pot-Roast-Meal.webp</span>
             </div>
           </div>
           <div class="card-body">
-            <div class="item-name-text">20 Piece Crowd Pleaser</div>
+            <div class="item-name-text">Pot Roast Meal</div>
             <div class="card-bottom-bar">
-              <span class="item-cal-text">8300–8700 CAL</span>
-              <span class="item-price-badge">$59.99</span>
+              <span class="item-cal-text">607–1287 CAL</span>
+              <span class="item-price-badge">$14.99</span>
             </div>
           </div>
         </article>
 
         <article class="menu-card">
           <div class="card-image-slot">
-            <img src="images/crispy-fried-chicken.webp" alt="Golden Corral Crispy Fried Chicken" loading="lazy" decoding="async" onerror="this.style.display='none'">
+            <img src="images/Meatloaf-Meal.webp" alt="Golden Corral Meatloaf Meal" loading="lazy" decoding="async" onerror="this.style.display='none'">
             <div class="img-placeholder-label">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
-              <span>crispy-fried-chicken.webp</span>
+              <span>Meatloaf-Meal.webp</span>
             </div>
           </div>
           <div class="card-body">
-            <div class="item-name-text">Crispy Fried Chicken</div>
+            <div class="item-name-text">Meatloaf Meal</div>
             <div class="card-bottom-bar">
-              <span class="item-cal-text">200–325 CAL</span>
-              <span class="item-price-badge">$2.99</span>
+              <span class="item-cal-text">370–1060 CAL</span>
+              <span class="item-price-badge">$14.99</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="menu-card">
+          <div class="card-image-slot">
+            <img src="images/Bourbon-Street-Chicken-Meal.webp" alt="Golden Corral Bourbon Street Chicken Meal" loading="lazy" decoding="async" onerror="this.style.display='none'">
+            <div class="img-placeholder-label">
+              <span>Bourbon-Street-Chicken-Meal.webp</span>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="item-name-text">Bourbon Street Chicken Meal</div>
+            <div class="card-bottom-bar">
+              <span class="item-cal-text">836–1516 CAL</span>
+              <span class="item-price-badge">$13.99</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="menu-card">
+          <div class="card-image-slot">
+            <img src="images/Smoked-Pulled-Pork-Meal.webp" alt="Golden Corral Smoked Pulled Pork Meal" loading="lazy" decoding="async" onerror="this.style.display='none'">
+            <div class="img-placeholder-label">
+              <span>Smoked-Pulled-Pork-Meal.webp</span>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="item-name-text">Smoked Pulled Pork Meal</div>
+            <div class="card-bottom-bar">
+              <span class="item-cal-text">976–1656 CAL</span>
+              <span class="item-price-badge">$17.99</span>
             </div>
           </div>
         </article>
       </div>
     </section>
 
-    <!-- CATEGORY 7: PIZZA -->
+    <!-- CATEGORY 5: PIZZA -->
     <section id="pizzas" class="menu-category-section" data-category="pizzas">
       <div class="section-header">
         <div class="section-title-wrap">
@@ -1834,7 +1664,6 @@
           <div class="card-image-slot">
             <img src="images/Cheese-Pizza.webp" alt="Golden Corral Cheese Pizza" loading="lazy" decoding="async" onerror="this.style.display='none'">
             <div class="img-placeholder-label">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
               <span>Cheese-Pizza.webp</span>
             </div>
           </div>
@@ -1851,7 +1680,6 @@
           <div class="card-image-slot">
             <img src="images/Pepperoni-Pizza.webp" alt="Golden Corral Pepperoni Pizza" loading="lazy" decoding="async" onerror="this.style.display='none'">
             <div class="img-placeholder-label">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
               <span>Pepperoni-Pizza.webp</span>
             </div>
           </div>
@@ -1866,120 +1694,66 @@
       </div>
     </section>
 
-    <!-- CATEGORY 8: SIGNATURE SALADS -->
-    <section id="signature-salads" class="menu-category-section" data-category="signature-salads">
+    <!-- CATEGORY 6: FRIED CHICKEN -->
+    <section id="fried-chicken" class="menu-category-section" data-category="fried-chicken">
       <div class="section-header">
         <div class="section-title-wrap">
-          <h2 class="section-title">Signature Salads</h2>
+          <h2 class="section-title">Famous Fried Chicken</h2>
         </div>
       </div>
 
       <div class="menu-grid">
         <article class="menu-card">
           <div class="card-image-slot">
-            <img src="images/Garden-Salad.webp" alt="Golden Corral Garden Salad (Individual)" loading="lazy" decoding="async" onerror="this.style.display='none'">
+            <img src="images/12-Piece-Family-Box.webp" alt="Golden Corral 12 Piece Family Box" loading="lazy" decoding="async" onerror="this.style.display='none'">
             <div class="img-placeholder-label">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
-              <span>Garden-Salad.webp</span>
+              <span>12-Piece-Family-Box.webp</span>
             </div>
           </div>
           <div class="card-body">
-            <div class="item-name-text">Garden Salad (Individual)</div>
+            <div class="item-name-text">12 Piece Family Box</div>
             <div class="card-bottom-bar">
-              <span class="item-cal-text">350–720 CAL</span>
-              <span class="item-price-badge">$13.99</span>
+              <span class="item-cal-text">4980–5220 CAL</span>
+              <span class="item-price-badge">$29.99</span>
             </div>
           </div>
         </article>
 
         <article class="menu-card">
           <div class="card-image-slot">
-            <img src="images/Garden-Salad.webp" alt="Golden Corral Garden Salad (Family)" loading="lazy" decoding="async" onerror="this.style.display='none'">
+            <img src="images/20-Piece-Crowd-Pleaser.webp" alt="Golden Corral 20 Piece Crowd Pleaser" loading="lazy" decoding="async" onerror="this.style.display='none'">
             <div class="img-placeholder-label">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
-              <span>Garden-Salad.webp</span>
+              <span>20-Piece-Crowd-Pleaser.webp</span>
             </div>
           </div>
           <div class="card-body">
-            <div class="item-name-text">Garden Salad (Family)</div>
+            <div class="item-name-text">20 Piece Crowd Pleaser</div>
             <div class="card-bottom-bar">
-              <span class="item-cal-text">770–2000 CAL</span>
-              <span class="item-price-badge">$12.99</span>
+              <span class="item-cal-text">8300–8700 CAL</span>
+              <span class="item-price-badge">$59.99</span>
             </div>
           </div>
         </article>
 
         <article class="menu-card">
           <div class="card-image-slot">
-            <img src="images/Garden-Salad.webp" alt="Golden Corral Garden Salad (Party)" loading="lazy" decoding="async" onerror="this.style.display='none'">
+            <img src="images/crispy-fried-chicken.webp" alt="Golden Corral Crispy Fried Chicken" loading="lazy" decoding="async" onerror="this.style.display='none'">
             <div class="img-placeholder-label">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
-              <span>Garden-Salad.webp</span>
+              <span>crispy-fried-chicken.webp</span>
             </div>
           </div>
           <div class="card-body">
-            <div class="item-name-text">Garden Salad (Party)</div>
+            <div class="item-name-text">Crispy Fried Chicken</div>
             <div class="card-bottom-bar">
-              <span class="item-cal-text">1250–3700 CAL</span>
-              <span class="item-price-badge">$17.99</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="menu-card">
-          <div class="card-image-slot">
-            <img src="images/Spinach-Salad.webp" alt="Golden Corral Spinach Salad (Individual)" loading="lazy" decoding="async" onerror="this.style.display='none'">
-            <div class="img-placeholder-label">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
-              <span>Spinach-Salad.webp</span>
-            </div>
-          </div>
-          <div class="card-body">
-            <div class="item-name-text">Spinach Salad (Individual)</div>
-            <div class="card-bottom-bar">
-              <span class="item-cal-text">380–750 CAL</span>
-              <span class="item-price-badge">$8.99</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="menu-card">
-          <div class="card-image-slot">
-            <img src="images/Spinach-Salad.webp" alt="Golden Corral Spinach Salad (Family)" loading="lazy" decoding="async" onerror="this.style.display='none'">
-            <div class="img-placeholder-label">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
-              <span>Spinach-Salad.webp</span>
-            </div>
-          </div>
-          <div class="card-body">
-            <div class="item-name-text">Spinach Salad (Family)</div>
-            <div class="card-bottom-bar">
-              <span class="item-cal-text">840–2070 CAL</span>
-              <span class="item-price-badge">$12.99</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="menu-card">
-          <div class="card-image-slot">
-            <img src="images/Spinach-Salad.webp" alt="Golden Corral Spinach Salad (Party)" loading="lazy" decoding="async" onerror="this.style.display='none'">
-            <div class="img-placeholder-label">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
-              <span>Spinach-Salad.webp</span>
-            </div>
-          </div>
-          <div class="card-body">
-            <div class="item-name-text">Spinach Salad (Party)</div>
-            <div class="card-bottom-bar">
-              <span class="item-cal-text">1250–3700 CAL</span>
-              <span class="item-price-badge">$17.99</span>
+              <span class="item-cal-text">200–325 CAL</span>
+              <span class="item-price-badge">$2.99</span>
             </div>
           </div>
         </article>
       </div>
     </section>
 
-    <!-- CATEGORY 9: SIDES -->
+    <!-- CATEGORY 7: SIDES -->
     <section id="sides" class="menu-category-section" data-category="sides">
       <div class="section-header">
         <div class="section-title-wrap">
@@ -1992,7 +1766,6 @@
           <div class="card-image-slot">
             <img src="images/Baked-Potato-10-oz.webp" alt="Golden Corral Baked Potato 10 oz." loading="lazy" decoding="async" onerror="this.style.display='none'">
             <div class="img-placeholder-label">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
               <span>Baked-Potato-10-oz.webp</span>
             </div>
           </div>
@@ -2009,7 +1782,6 @@
           <div class="card-image-slot">
             <img src="images/Baked-Beans-10-oz.webp" alt="Golden Corral Baked Beans 10 oz." loading="lazy" decoding="async" onerror="this.style.display='none'">
             <div class="img-placeholder-label">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
               <span>Baked-Beans-10-oz.webp</span>
             </div>
           </div>
@@ -2026,7 +1798,6 @@
           <div class="card-image-slot">
             <img src="images/Buttered-Corn-10-oz.webp" alt="Golden Corral Buttered Corn 10 oz." loading="lazy" decoding="async" onerror="this.style.display='none'">
             <div class="img-placeholder-label">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
               <span>Buttered-Corn-10-oz.webp</span>
             </div>
           </div>
@@ -2043,7 +1814,6 @@
           <div class="card-image-slot">
             <img src="images/Coleslaw-10-oz.webp" alt="Golden Corral Coleslaw 10 oz." loading="lazy" decoding="async" onerror="this.style.display='none'">
             <div class="img-placeholder-label">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
               <span>Coleslaw-10-oz.webp</span>
             </div>
           </div>
@@ -2060,7 +1830,6 @@
           <div class="card-image-slot">
             <img src="images/Green-Beans-10-oz.webp" alt="Golden Corral Green Beans 10 oz." loading="lazy" decoding="async" onerror="this.style.display='none'">
             <div class="img-placeholder-label">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
               <span>Green-Beans-10-oz.webp</span>
             </div>
           </div>
@@ -2077,7 +1846,6 @@
           <div class="card-image-slot">
             <img src="images/Macaroni-Cheese-10-oz.webp" alt="Golden Corral Macaroni &amp; Cheese 10 oz." loading="lazy" decoding="async" onerror="this.style.display='none'">
             <div class="img-placeholder-label">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
               <span>Macaroni-Cheese-10-oz.webp</span>
             </div>
           </div>
@@ -2094,7 +1862,6 @@
           <div class="card-image-slot">
             <img src="images/Mashed-Potatoes-Gravy-10-oz.webp" alt="Golden Corral Mashed Potatoes &amp; Gravy 10 oz." loading="lazy" decoding="async" onerror="this.style.display='none'">
             <div class="img-placeholder-label">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
               <span>Mashed-Potatoes-Gravy-10-oz.webp</span>
             </div>
           </div>
@@ -2111,7 +1878,6 @@
           <div class="card-image-slot">
             <img src="images/Potato-Salad-10-oz.webp" alt="Golden Corral Potato Salad 10 oz." loading="lazy" decoding="async" onerror="this.style.display='none'">
             <div class="img-placeholder-label">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
               <span>Potato-Salad-10-oz.webp</span>
             </div>
           </div>
@@ -2128,7 +1894,6 @@
           <div class="card-image-slot">
             <img src="images/Seafood-Salad-10-oz.webp" alt="Golden Corral Seafood Salad 10 oz." loading="lazy" decoding="async" onerror="this.style.display='none'">
             <div class="img-placeholder-label">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
               <span>Seafood-Salad-10-oz.webp</span>
             </div>
           </div>
@@ -2145,7 +1910,6 @@
           <div class="card-image-slot">
             <img src="images/Steamed-Broccoli-10-oz.webp" alt="Golden Corral Steamed Broccoli 10 oz." loading="lazy" decoding="async" onerror="this.style.display='none'">
             <div class="img-placeholder-label">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
               <span>Steamed-Broccoli-10-oz.webp</span>
             </div>
           </div>
@@ -2162,7 +1926,6 @@
           <div class="card-image-slot">
             <img src="images/Steamed-Carrots-10-oz.webp" alt="Golden Corral Steamed Carrots 10 oz." loading="lazy" decoding="async" onerror="this.style.display='none'">
             <div class="img-placeholder-label">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
               <span>Steamed-Carrots-10-oz.webp</span>
             </div>
           </div>
@@ -2179,7 +1942,6 @@
           <div class="card-image-slot">
             <img src="images/Stuffing-10-oz.webp" alt="Golden Corral Stuffing 10 oz." loading="lazy" decoding="async" onerror="this.style.display='none'">
             <div class="img-placeholder-label">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
               <span>Stuffing-10-oz.webp</span>
             </div>
           </div>
@@ -2196,7 +1958,6 @@
           <div class="card-image-slot">
             <img src="images/Sweet-Potato-Casserole-10-oz.webp" alt="Golden Corral Sweet Potato Casserole 10 oz." loading="lazy" decoding="async" onerror="this.style.display='none'">
             <div class="img-placeholder-label">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
               <span>Sweet-Potato-Casserole-10-oz.webp</span>
             </div>
           </div>
@@ -2213,7 +1974,6 @@
           <div class="card-image-slot">
             <img src="images/White-Rice-10-oz.webp" alt="Golden Corral White Rice 10 oz." loading="lazy" decoding="async" onerror="this.style.display='none'">
             <div class="img-placeholder-label">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
               <span>White-Rice-10-oz.webp</span>
             </div>
           </div>
@@ -2230,7 +1990,6 @@
           <div class="card-image-slot">
             <img src="images/Yeast-Rolls-6-pieces.webp" alt="Golden Corral Yeast Rolls 6 pieces" loading="lazy" decoding="async" onerror="this.style.display='none'">
             <div class="img-placeholder-label">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
               <span>Yeast-Rolls-6-pieces.webp</span>
             </div>
           </div>
@@ -2245,9 +2004,9 @@
       </div>
     </section>
 
-    <!-- CATEGORY 10: DESSERTS -->
+    <!-- CATEGORY 8: DESSERTS -->
     <section id="desserts" class="menu-category-section" data-category="desserts">
-      <div class="section-header" id="bakery-desserts">
+      <div class="section-header">
         <div class="section-title-wrap">
           <h2 class="section-title">Desserts</h2>
         </div>
@@ -2258,7 +2017,6 @@
           <div class="card-image-slot">
             <img src="images/Cookie-Cake.webp" alt="Golden Corral Cookie Cake" loading="lazy" decoding="async" onerror="this.style.display='none'">
             <div class="img-placeholder-label">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
               <span>Cookie-Cake.webp</span>
             </div>
           </div>
@@ -2275,7 +2033,6 @@
           <div class="card-image-slot">
             <img src="images/Pecan-Pie-Whole-Pie.webp" alt="Golden Corral Pecan Pie Whole Pie" loading="lazy" decoding="async" onerror="this.style.display='none'">
             <div class="img-placeholder-label">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
               <span>Pecan-Pie-Whole-Pie.webp</span>
             </div>
           </div>
@@ -2292,7 +2049,6 @@
           <div class="card-image-slot">
             <img src="images/Pumpkin-Pie-Whole-Pie.webp" alt="Golden Corral Pumpkin Pie Whole Pie" loading="lazy" decoding="async" onerror="this.style.display='none'">
             <div class="img-placeholder-label">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
               <span>Pumpkin-Pie-Whole-Pie.webp</span>
             </div>
           </div>
@@ -2309,7 +2065,6 @@
           <div class="card-image-slot">
             <img src="images/Carrot-Cake.webp" alt="Golden Corral Carrot Cake Whole Cake" loading="lazy" decoding="async" onerror="this.style.display='none'">
             <div class="img-placeholder-label">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
               <span>Carrot-Cake.webp</span>
             </div>
           </div>
@@ -2326,7 +2081,6 @@
           <div class="card-image-slot">
             <img src="images/Cheesecake-Slice.webp" alt="Golden Corral Cheesecake Slice" loading="lazy" decoding="async" onerror="this.style.display='none'">
             <div class="img-placeholder-label">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
               <span>Cheesecake-Slice.webp</span>
             </div>
           </div>
@@ -2343,7 +2097,6 @@
           <div class="card-image-slot">
             <img src="images/Chocolate-Cake.webp" alt="Golden Corral Chocolate Cake Whole Cake" loading="lazy" decoding="async" onerror="this.style.display='none'">
             <div class="img-placeholder-label">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
               <span>Chocolate-Cake.webp</span>
             </div>
           </div>
@@ -2360,7 +2113,6 @@
           <div class="card-image-slot">
             <img src="images/Apple-Pie-Whole-Pie.webp" alt="Golden Corral Apple Pie Whole Pie" loading="lazy" decoding="async" onerror="this.style.display='none'">
             <div class="img-placeholder-label">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
               <span>Apple-Pie-Whole-Pie.webp</span>
             </div>
           </div>
@@ -2377,7 +2129,6 @@
           <div class="card-image-slot">
             <img src="images/Blueberry-Pie.webp" alt="Golden Corral Blueberry Pie" loading="lazy" decoding="async" onerror="this.style.display='none'">
             <div class="img-placeholder-label">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
               <span>Blueberry-Pie.webp</span>
             </div>
           </div>
@@ -2394,7 +2145,6 @@
           <div class="card-image-slot">
             <img src="images/Brownie-Bites.webp" alt="Golden Corral Brownie Bites Full Pan" loading="lazy" decoding="async" onerror="this.style.display='none'">
             <div class="img-placeholder-label">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
               <span>Brownie-Bites.webp</span>
             </div>
           </div>
@@ -2411,7 +2161,6 @@
           <div class="card-image-slot">
             <img src="images/Banana-Pudding-Family-Size.webp" alt="Golden Corral Banana Pudding Family Size" loading="lazy" decoding="async" onerror="this.style.display='none'">
             <div class="img-placeholder-label">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
               <span>Banana-Pudding-Family-Size.webp</span>
             </div>
           </div>
@@ -2428,7 +2177,6 @@
           <div class="card-image-slot">
             <img src="images/Bread-Pudding-Family-Size.webp" alt="Golden Corral Bread Pudding Family Size" loading="lazy" decoding="async" onerror="this.style.display='none'">
             <div class="img-placeholder-label">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
               <span>Bread-Pudding-Family-Size.webp</span>
             </div>
           </div>
@@ -2445,7 +2193,6 @@
           <div class="card-image-slot">
             <img src="images/Mini-Cookies.webp" alt="Golden Corral Mini Cookies" loading="lazy" decoding="async" onerror="this.style.display='none'">
             <div class="img-placeholder-label">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
               <span>Mini-Cookies.webp</span>
             </div>
           </div>
@@ -2460,7 +2207,114 @@
       </div>
     </section>
 
-    <!-- CATEGORY 11: BEVERAGES -->
+    <!-- CATEGORY 9: SIGNATURE SALADS -->
+    <section id="signature-salads" class="menu-category-section" data-category="signature-salads">
+      <div class="section-header">
+        <div class="section-title-wrap">
+          <h2 class="section-title">Signature Salads</h2>
+        </div>
+      </div>
+
+      <div class="menu-grid">
+        <article class="menu-card">
+          <div class="card-image-slot">
+            <img src="images/Garden-Salad.webp" alt="Golden Corral Garden Salad (Individual)" loading="lazy" decoding="async" onerror="this.style.display='none'">
+            <div class="img-placeholder-label">
+              <span>Garden-Salad.webp</span>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="item-name-text">Garden Salad (Individual)</div>
+            <div class="card-bottom-bar">
+              <span class="item-cal-text">350–720 CAL</span>
+              <span class="item-price-badge">$13.99</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="menu-card">
+          <div class="card-image-slot">
+            <img src="images/Garden-Salad.webp" alt="Golden Corral Garden Salad (Family)" loading="lazy" decoding="async" onerror="this.style.display='none'">
+            <div class="img-placeholder-label">
+              <span>Garden-Salad.webp</span>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="item-name-text">Garden Salad (Family)</div>
+            <div class="card-bottom-bar">
+              <span class="item-cal-text">770–2000 CAL</span>
+              <span class="item-price-badge">$12.99</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="menu-card">
+          <div class="card-image-slot">
+            <img src="images/Garden-Salad.webp" alt="Golden Corral Garden Salad (Party)" loading="lazy" decoding="async" onerror="this.style.display='none'">
+            <div class="img-placeholder-label">
+              <span>Garden-Salad.webp</span>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="item-name-text">Garden Salad (Party)</div>
+            <div class="card-bottom-bar">
+              <span class="item-cal-text">1250–3700 CAL</span>
+              <span class="item-price-badge">$17.99</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="menu-card">
+          <div class="card-image-slot">
+            <img src="images/Spinach-Salad.webp" alt="Golden Corral Spinach Salad (Individual)" loading="lazy" decoding="async" onerror="this.style.display='none'">
+            <div class="img-placeholder-label">
+              <span>Spinach-Salad.webp</span>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="item-name-text">Spinach Salad (Individual)</div>
+            <div class="card-bottom-bar">
+              <span class="item-cal-text">380–750 CAL</span>
+              <span class="item-price-badge">$8.99</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="menu-card">
+          <div class="card-image-slot">
+            <img src="images/Spinach-Salad.webp" alt="Golden Corral Spinach Salad (Family)" loading="lazy" decoding="async" onerror="this.style.display='none'">
+            <div class="img-placeholder-label">
+              <span>Spinach-Salad.webp</span>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="item-name-text">Spinach Salad (Family)</div>
+            <div class="card-bottom-bar">
+              <span class="item-cal-text">840–2070 CAL</span>
+              <span class="item-price-badge">$12.99</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="menu-card">
+          <div class="card-image-slot">
+            <img src="images/Spinach-Salad.webp" alt="Golden Corral Spinach Salad (Party)" loading="lazy" decoding="async" onerror="this.style.display='none'">
+            <div class="img-placeholder-label">
+              <span>Spinach-Salad.webp</span>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="item-name-text">Spinach Salad (Party)</div>
+            <div class="card-bottom-bar">
+              <span class="item-cal-text">1250–3700 CAL</span>
+              <span class="item-price-badge">$17.99</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- CATEGORY 10: BEVERAGES -->
     <section id="beverages" class="menu-category-section" data-category="beverages">
       <div class="section-header">
         <div class="section-title-wrap">
@@ -2473,7 +2327,6 @@
           <div class="card-image-slot">
             <img src="images/Freshly-Brewed-Sweet-Tea-Half-Gallon.webp" alt="Golden Corral Freshly Brewed Sweet Tea Half Gallon" loading="lazy" decoding="async" onerror="this.style.display='none'">
             <div class="img-placeholder-label">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
               <span>Freshly-Brewed-Sweet-Tea-Half-Gallon.webp</span>
             </div>
           </div>
@@ -2490,7 +2343,6 @@
           <div class="card-image-slot">
             <img src="images/Freshly-Brewed-Sweet-Tea-Gallon.webp" alt="Golden Corral Freshly Brewed Sweet Tea Gallon" loading="lazy" decoding="async" onerror="this.style.display='none'">
             <div class="img-placeholder-label">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
               <span>Freshly-Brewed-Sweet-Tea-Gallon.webp</span>
             </div>
           </div>
@@ -2507,7 +2359,6 @@
           <div class="card-image-slot">
             <img src="images/Minute-Maid-Lemonade-Half-Gallon.webp" alt="Golden Corral Minute Maid Lemonade Half Gallon" loading="lazy" decoding="async" onerror="this.style.display='none'">
             <div class="img-placeholder-label">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
               <span>Minute-Maid-Lemonade-Half-Gallon.webp</span>
             </div>
           </div>
@@ -2524,7 +2375,6 @@
           <div class="card-image-slot">
             <img src="images/Minute-Maid-Lemonade-Gallon.webp" alt="Golden Corral Minute Maid Lemonade Gallon" loading="lazy" decoding="async" onerror="this.style.display='none'">
             <div class="img-placeholder-label">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
               <span>Minute-Maid-Lemonade-Gallon.webp</span>
             </div>
           </div>
@@ -2541,7 +2391,6 @@
           <div class="card-image-slot">
             <img src="images/Freshly-Brewed-Unsweetened-Tea-Half-Gallon.webp" alt="Golden Corral Freshly Brewed Unsweetened Tea Half Gallon" loading="lazy" decoding="async" onerror="this.style.display='none'">
             <div class="img-placeholder-label">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
               <span>Freshly-Brewed-Unsweetened-Tea-Half-Gallon.webp</span>
             </div>
           </div>
@@ -2558,7 +2407,6 @@
           <div class="card-image-slot">
             <img src="images/Freshly-Brewed-Unsweetened-Tea-Gallon.webp" alt="Golden Corral Freshly Brewed Unsweetened Tea Gallon" loading="lazy" decoding="async" onerror="this.style.display='none'">
             <div class="img-placeholder-label">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
               <span>Freshly-Brewed-Unsweetened-Tea-Gallon.webp</span>
             </div>
           </div>
@@ -2570,27 +2418,10 @@
             </div>
           </div>
         </article>
-
-        <article class="menu-card">
-          <div class="card-image-slot">
-            <img src="images/Beverages.webp" alt="Golden Corral Fountain Beverage" loading="lazy" decoding="async" onerror="this.style.display='none'">
-            <div class="img-placeholder-label">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
-              <span>Beverages.webp</span>
-            </div>
-          </div>
-          <div class="card-body">
-            <div class="item-name-text">Fountain Beverage</div>
-            <div class="card-bottom-bar">
-              <span class="item-cal-text">350–3700 CAL</span>
-              <span class="item-price-badge">$3.49</span>
-            </div>
-          </div>
-        </article>
       </div>
     </section>
 
-    <!-- CATEGORY 12: CONDIMENTS -->
+    <!-- CATEGORY 11: CONDIMENTS (TWO-COLUMN TABLE) -->
     <section id="condiments" class="menu-category-section" data-category="condiments">
       <div class="section-header">
         <div class="section-title-wrap">
@@ -2598,294 +2429,92 @@
         </div>
       </div>
 
-      <div class="menu-grid">
-        <article class="menu-card">
-          <div class="card-image-slot">
-            <div class="img-placeholder-label">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
-              <span>Image Area</span>
-            </div>
-          </div>
-          <div class="card-body">
-            <div class="item-name-text">Extra Napkins</div>
-            <div class="card-bottom-bar">
-              <span class="item-cal-text">0 CAL</span>
-              <span class="item-price-badge">Included</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="menu-card">
-          <div class="card-image-slot">
-            <div class="img-placeholder-label">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
-              <span>Image Area</span>
-            </div>
-          </div>
-          <div class="card-body">
-            <div class="item-name-text">Butter</div>
-            <div class="card-bottom-bar">
-              <span class="item-cal-text">35 CAL</span>
-              <span class="item-price-badge">Included</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="menu-card">
-          <div class="card-image-slot">
-            <div class="img-placeholder-label">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
-              <span>Image Area</span>
-            </div>
-          </div>
-          <div class="card-body">
-            <div class="item-name-text">Honey Butter</div>
-            <div class="card-bottom-bar">
-              <span class="item-cal-text">50 CAL</span>
-              <span class="item-price-badge">Included</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="menu-card">
-          <div class="card-image-slot">
-            <div class="img-placeholder-label">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
-              <span>Image Area</span>
-            </div>
-          </div>
-          <div class="card-body">
-            <div class="item-name-text">Honey</div>
-            <div class="card-bottom-bar">
-              <span class="item-cal-text">35 CAL</span>
-              <span class="item-price-badge">Included</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="menu-card">
-          <div class="card-image-slot">
-            <div class="img-placeholder-label">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
-              <span>Image Area</span>
-            </div>
-          </div>
-          <div class="card-body">
-            <div class="item-name-text">Ketchup</div>
-            <div class="card-bottom-bar">
-              <span class="item-cal-text">35 CAL</span>
-              <span class="item-price-badge">Included</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="menu-card">
-          <div class="card-image-slot">
-            <div class="img-placeholder-label">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
-              <span>Image Area</span>
-            </div>
-          </div>
-          <div class="card-body">
-            <div class="item-name-text">Mustard</div>
-            <div class="card-bottom-bar">
-              <span class="item-cal-text">5 CAL</span>
-              <span class="item-price-badge">Included</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="menu-card">
-          <div class="card-image-slot">
-            <div class="img-placeholder-label">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
-              <span>Image Area</span>
-            </div>
-          </div>
-          <div class="card-body">
-            <div class="item-name-text">Sour Cream</div>
-            <div class="card-bottom-bar">
-              <span class="item-cal-text">60 CAL</span>
-              <span class="item-price-badge">Included</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="menu-card">
-          <div class="card-image-slot">
-            <div class="img-placeholder-label">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
-              <span>Image Area</span>
-            </div>
-          </div>
-          <div class="card-body">
-            <div class="item-name-text">Mayonnaise</div>
-            <div class="card-bottom-bar">
-              <span class="item-cal-text">80 CAL</span>
-              <span class="item-price-badge">Included</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="menu-card">
-          <div class="card-image-slot">
-            <div class="img-placeholder-label">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
-              <span>Image Area</span>
-            </div>
-          </div>
-          <div class="card-body">
-            <div class="item-name-text">Ranch Dressing</div>
-            <div class="card-bottom-bar">
-              <span class="item-cal-text">110 CAL</span>
-              <span class="item-price-badge">Included</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="menu-card">
-          <div class="card-image-slot">
-            <div class="img-placeholder-label">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
-              <span>Image Area</span>
-            </div>
-          </div>
-          <div class="card-body">
-            <div class="item-name-text">Honey Mustard</div>
-            <div class="card-bottom-bar">
-              <span class="item-cal-text">130 CAL</span>
-              <span class="item-price-badge">Included</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="menu-card">
-          <div class="card-image-slot">
-            <div class="img-placeholder-label">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
-              <span>Image Area</span>
-            </div>
-          </div>
-          <div class="card-body">
-            <div class="item-name-text">Red Wine Vinegar</div>
-            <div class="card-bottom-bar">
-              <span class="item-cal-text">5 CAL</span>
-              <span class="item-price-badge">Included</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="menu-card">
-          <div class="card-image-slot">
-            <div class="img-placeholder-label">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
-              <span>Image Area</span>
-            </div>
-          </div>
-          <div class="card-body">
-            <div class="item-name-text">Chives</div>
-            <div class="card-bottom-bar">
-              <span class="item-cal-text">5 CAL</span>
-              <span class="item-price-badge">Included</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="menu-card">
-          <div class="card-image-slot">
-            <div class="img-placeholder-label">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
-              <span>Image Area</span>
-            </div>
-          </div>
-          <div class="card-body">
-            <div class="item-name-text">Steak Sauce</div>
-            <div class="card-bottom-bar">
-              <span class="item-cal-text">60 CAL</span>
-              <span class="item-price-badge">Included</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="menu-card">
-          <div class="card-image-slot">
-            <div class="img-placeholder-label">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
-              <span>Image Area</span>
-            </div>
-          </div>
-          <div class="card-body">
-            <div class="item-name-text">BBQ Sauce</div>
-            <div class="card-bottom-bar">
-              <span class="item-cal-text">70 CAL</span>
-              <span class="item-price-badge">Included</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="menu-card">
-          <div class="card-image-slot">
-            <div class="img-placeholder-label">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
-              <span>Image Area</span>
-            </div>
-          </div>
-          <div class="card-body">
-            <div class="item-name-text">Au Jus</div>
-            <div class="card-bottom-bar">
-              <span class="item-cal-text">30 CAL</span>
-              <span class="item-price-badge">Included</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="menu-card">
-          <div class="card-image-slot">
-            <div class="img-placeholder-label">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
-              <span>Image Area</span>
-            </div>
-          </div>
-          <div class="card-body">
-            <div class="item-name-text">Cocktail Sauce</div>
-            <div class="card-bottom-bar">
-              <span class="item-cal-text">35 CAL</span>
-              <span class="item-price-badge">Included</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="menu-card">
-          <div class="card-image-slot">
-            <div class="img-placeholder-label">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
-              <span>Image Area</span>
-            </div>
-          </div>
-          <div class="card-body">
-            <div class="item-name-text">Tartar Sauce</div>
-            <div class="card-bottom-bar">
-              <span class="item-cal-text">150 CAL</span>
-              <span class="item-price-badge">Included</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="menu-card">
-          <div class="card-image-slot">
-            <div class="img-placeholder-label">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
-              <span>Image Area</span>
-            </div>
-          </div>
-          <div class="card-body">
-            <div class="item-name-text">Lemon Wedges</div>
-            <div class="card-bottom-bar">
-              <span class="item-cal-text">5 CAL</span>
-              <span class="item-price-badge">Included</span>
-            </div>
-          </div>
-        </article>
+      <div class="content-box" style="padding: 1.5rem;">
+        <p style="margin-bottom: 1rem; color: var(--text-secondary); font-size: 0.92rem;">Golden Corral offers a wide selection of meal enhancers, including ketchup, mustard, and various specialty sauces. Every item is included to make sure your meal is complete and satisfying.</p>
+        <div class="table-responsive">
+          <table class="seo-price-table">
+            <thead>
+              <tr>
+                <th>Condiment Item</th>
+                <th>Calories</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Extra Napkins</strong></td>
+                <td>0 CAL</td>
+              </tr>
+              <tr>
+                <td><strong>Butter</strong></td>
+                <td>35 CAL</td>
+              </tr>
+              <tr>
+                <td><strong>Honey Butter</strong></td>
+                <td>50 CAL</td>
+              </tr>
+              <tr>
+                <td><strong>Honey</strong></td>
+                <td>35 CAL</td>
+              </tr>
+              <tr>
+                <td><strong>Ketchup</strong></td>
+                <td>35 CAL</td>
+              </tr>
+              <tr>
+                <td><strong>Mustard</strong></td>
+                <td>5 CAL</td>
+              </tr>
+              <tr>
+                <td><strong>Sour Cream</strong></td>
+                <td>60 CAL</td>
+              </tr>
+              <tr>
+                <td><strong>Mayonnaise</strong></td>
+                <td>80 CAL</td>
+              </tr>
+              <tr>
+                <td><strong>Ranch Dressing</strong></td>
+                <td>110 CAL</td>
+              </tr>
+              <tr>
+                <td><strong>Honey Mustard</strong></td>
+                <td>130 CAL</td>
+              </tr>
+              <tr>
+                <td><strong>Red Wine Vinegar</strong></td>
+                <td>5 CAL</td>
+              </tr>
+              <tr>
+                <td><strong>Chives</strong></td>
+                <td>5 CAL</td>
+              </tr>
+              <tr>
+                <td><strong>Steak Sauce</strong></td>
+                <td>60 CAL</td>
+              </tr>
+              <tr>
+                <td><strong>BBQ Sauce</strong></td>
+                <td>70 CAL</td>
+              </tr>
+              <tr>
+                <td><strong>Au Jus</strong></td>
+                <td>30 CAL</td>
+              </tr>
+              <tr>
+                <td><strong>Cocktail Sauce</strong></td>
+                <td>35 CAL</td>
+              </tr>
+              <tr>
+                <td><strong>Tartar Sauce</strong></td>
+                <td>150 CAL</td>
+              </tr>
+              <tr>
+                <td><strong>Lemon Wedges</strong></td>
+                <td>5 CAL</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </section>
 
@@ -3044,6 +2673,11 @@
 
   </main>
 
+  <!-- FLOATING SCROLL-TO-TOP BUTTON -->
+  <button type="button" class="scroll-to-top-btn" id="scrollToTopBtn" aria-label="Scroll back to top of page">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"/></svg>
+  </button>
+
   <!-- FOOTER -->
   <footer class="site-footer">
     <div class="container">
@@ -3059,42 +2693,38 @@
           <p class="footer-brand-desc">
             Your fast, reliable 2026 guide to Golden Corral Endless Buffet prices, calorie counts, senior &amp; military discounts, carving station hours, and Weigh &amp; Pay takeout rates across the United States.
           </p>
-          <div class="footer-updated-badge">
-            <span>Verified October 2026 Pricing</span>
-          </div>
         </div>
 
         <div>
-          <h3 class="footer-col-title">Menu Categories</h3>
+          <h3 class="footer-col-title">Legal Pages</h3>
           <ul class="footer-links">
-            <li><a href="#buffet-prices">Buffet Admission Prices</a></li>
-            <li><a href="#carving-steakhouse">Carving Station &amp; Steaks</a></li>
-            <li><a href="#hot-favorites">Hot Dinner Classics</a></li>
-            <li><a href="#breakfast-buffet">Country Breakfast Buffet</a></li>
-            <li><a href="#bakery-desserts">Brass Bell Bakery &amp; Rolls</a></li>
-            <li><a href="#weigh-and-pay">Weigh &amp; Pay To-Go Rates</a></li>
+            <li><a href="#">Disclaimer</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Contact Us</a></li>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Cookie Policy</a></li>
           </ul>
         </div>
 
         <div>
-          <h3 class="footer-col-title">Diner Resources</h3>
+          <h3 class="footer-col-title">Quick Navigation</h3>
           <ul class="footer-links">
-            <li><a href="#hours-summary">2026 Price Cheat Sheet</a></li>
-            <li><a href="#hours-summary">Lunch &amp; Dinner Switch Hours</a></li>
-            <li><a href="#buffet-prices">Senior Early Bird Special</a></li>
-            <li><a href="#buffet-prices">Military Appreciation Info</a></li>
-            <li><a href="#faq">Nutrition &amp; Calorie Guide</a></li>
+            <li><a href="#individual-meals">Individual Meals</a></li>
+            <li><a href="#combo-meals">Combo Meals</a></li>
+            <li><a href="#kids-meals">Kids’ Meals</a></li>
+            <li><a href="#family-meals">Family Meals</a></li>
+            <li><a href="#pizzas">Pizza</a></li>
           </ul>
         </div>
 
         <div>
-          <h3 class="footer-col-title">Quick Facts (Oct 2026)</h3>
+          <h3 class="footer-col-title">More Categories</h3>
           <ul class="footer-links">
-            <li><a href="#buffet-prices">Adult Lunch: $12.49</a></li>
-            <li><a href="#buffet-prices">Adult Dinner: $17.49–$18.49</a></li>
-            <li><a href="#buffet-prices">Kids Under 3: Eat Free</a></li>
-            <li><a href="#weigh-and-pay">Lunch To-Go: $6.99/lb</a></li>
-            <li><a href="#bakery-desserts">Dozen Yeast Rolls: $6.99</a></li>
+            <li><a href="#fried-chicken">Fried Chicken</a></li>
+            <li><a href="#sides">Sides</a></li>
+            <li><a href="#desserts">Desserts</a></li>
+            <li><a href="#signature-salads">Signature Salads</a></li>
+            <li><a href="#beverages">Beverages</a></li>
           </ul>
         </div>
       </div>
@@ -3104,104 +2734,68 @@
       </div>
 
       <div class="footer-bottom">
-        <span>&copy; 2026 Golden Corral Menu Prices Guide. All rights reserved.</span>
-        <span>Built for Ultra-Fast Mobile &amp; Desktop Performance • Updated October 2026</span>
+        <span>2026 Golden Corral Menu Prices — Unofficial Guide. All Rights Reserved.</span>
       </div>
     </div>
   </footer>
 
   <script>
-    (function () {
-      const mobileBtn = document.getElementById('mobileMenuBtn');
-      const mobileDrawer = document.getElementById('mobileNavDrawer');
-
-      if (mobileBtn && mobileDrawer) {
-        mobileBtn.addEventListener('click', function () {
-          const isOpen = mobileDrawer.classList.toggle('open');
-          mobileBtn.setAttribute('aria-expanded', String(isOpen));
-        });
-
-        mobileDrawer.querySelectorAll('a').forEach(function (link) {
-          link.addEventListener('click', function () {
-            mobileDrawer.classList.remove('open');
-            mobileBtn.setAttribute('aria-expanded', 'false');
-          });
+    document.addEventListener('DOMContentLoaded', () => {
+      // Mobile Navigation Toggle
+      const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+      const mobileNavDrawer = document.getElementById('mobileNavDrawer');
+      if (mobileMenuBtn && mobileNavDrawer) {
+        mobileMenuBtn.addEventListener('click', () => {
+          const isOpen = mobileNavDrawer.classList.toggle('open');
+          mobileMenuBtn.setAttribute('aria-expanded', isOpen);
         });
       }
 
-      const searchInput = document.getElementById('menuSearchInput');
-      const catPills = document.querySelectorAll('.cat-pill[data-filter]');
-      const sections = document.querySelectorAll('.menu-category-section');
-      const noResultsBox = document.getElementById('noResultsBox');
-      let activeCategory = 'all';
-
-      function filterMenu() {
-        const query = (searchInput ? searchInput.value : '').trim().toLowerCase();
-        let totalVisibleCards = 0;
-
-        sections.forEach(function (section) {
-          const sectionCat = section.getAttribute('data-category');
-          const matchesCat = activeCategory === 'all' || sectionCat === activeCategory;
-          const cards = section.querySelectorAll('.menu-card');
-          let visibleInSection = 0;
-
-          cards.forEach(function (card) {
-            const text = card.textContent.toLowerCase();
-            const matchesSearch = !query || text.indexOf(query) !== -1;
-
-            if (matchesCat && matchesSearch) {
-              card.style.display = '';
-              visibleInSection++;
-              totalVisibleCards++;
-            } else {
-              card.style.display = 'none';
-            }
-          });
-
-          section.style.display = visibleInSection > 0 ? '' : 'none';
-        });
-
-        if (noResultsBox) {
-          noResultsBox.style.display = totalVisibleCards === 0 ? 'block' : 'none';
-        }
-      }
-
-      if (searchInput) {
-        searchInput.addEventListener('input', filterMenu);
-      }
-
-      catPills.forEach(function (pill) {
-        pill.addEventListener('click', function () {
-          const clickedFilter = pill.getAttribute('data-filter') || 'all';
-          if (activeCategory === clickedFilter) {
-            activeCategory = 'all';
-            catPills.forEach(function (p) { p.classList.remove('active'); });
-          } else {
-            catPills.forEach(function (p) { p.classList.remove('active'); });
-            pill.classList.add('active');
-            activeCategory = clickedFilter;
-          }
-          filterMenu();
-        });
-      });
-
-      const pillsScroll = document.getElementById('categoryPillsScroll');
+      // Category Horizontal Slider Controls
+      const categoryPillsScroll = document.getElementById('categoryPillsScroll');
       const slideLeftBtn = document.getElementById('slideLeftBtn');
       const slideRightBtn = document.getElementById('slideRightBtn');
 
-      if (pillsScroll) {
-        if (slideLeftBtn) {
-          slideLeftBtn.addEventListener('click', function () {
-            pillsScroll.scrollBy({ left: -220, behavior: 'smooth' });
-          });
-        }
-        if (slideRightBtn) {
-          slideRightBtn.addEventListener('click', function () {
-            pillsScroll.scrollBy({ left: 220, behavior: 'smooth' });
-          });
-        }
+      if (categoryPillsScroll && slideLeftBtn && slideRightBtn) {
+        slideLeftBtn.addEventListener('click', () => {
+          categoryPillsScroll.scrollBy({ left: -220, behavior: 'smooth' });
+        });
+        slideRightBtn.addEventListener('click', () => {
+          categoryPillsScroll.scrollBy({ left: 220, behavior: 'smooth' });
+        });
       }
-    })();
+
+      // Smooth category button jumping
+      const categoryButtons = document.querySelectorAll('.cat-pill[data-target]');
+      categoryButtons.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          e.preventDefault();
+          const targetId = btn.getAttribute('data-target');
+          const targetEl = document.getElementById(targetId);
+          if (targetEl) {
+            targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            categoryButtons.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+          }
+        });
+      });
+
+      // Floating Scroll to Top Button functionality
+      const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+      if (scrollToTopBtn) {
+        window.addEventListener('scroll', () => {
+          if (window.scrollY > 400) {
+            scrollToTopBtn.classList.add('show');
+          } else {
+            scrollToTopBtn.classList.remove('show');
+          }
+        });
+
+        scrollToTopBtn.addEventListener('click', () => {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      }
+    });
   </script>
 </body>
 </html>
