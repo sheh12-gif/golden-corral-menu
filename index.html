@@ -462,7 +462,7 @@
     }
 
     /* ==========================================================================
-       4. CATEGORY BAR (NO BUFFET PRICES BUTTON)
+       4. CATEGORY BAR
        ========================================================================== */
     .filter-control-bar {
       position: sticky;
@@ -1107,7 +1107,7 @@
   </header>
 
   <!-- ==========================================================================
-       HERO SECTION
+       HERO SECTION WITH TWO CTA BUTTONS
        ========================================================================== -->
   <section class="hero-section">
     <div class="container hero-content">
@@ -1127,6 +1127,10 @@
       <div class="hero-cta-group">
         <a href="#individual-meals" class="btn-hero-primary">
           <span>Explore Menu Prices</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
+        <a href="#" class="btn-hero-primary">
+          <span>Buffet Prices</span>
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
         </a>
       </div>
@@ -1154,7 +1158,7 @@
   </section>
 
   <!-- ==========================================================================
-       STICKY CATEGORY BAR (NO BUFFET PRICES BUTTON)
+       STICKY CATEGORY BAR
        ========================================================================== -->
   <div class="filter-control-bar">
     <div class="container filter-inner">
@@ -1195,7 +1199,7 @@
     <section id="individual-meals" class="menu-category-section" data-category="individual-meals">
       <div class="section-header">
         <div class="section-title-wrap">
-          <h2 class="section-title">Individual Meals Menu at Golden Corral</h2>
+          <h2 class="section-title">Individual Meal Menus at Golden Corral</h2>
         </div>
       </div>
 
@@ -2767,18 +2771,20 @@
 
       // Smooth category button jumping
       const categoryButtons = document.querySelectorAll('.cat-pill[data-target]');
-      categoryButtons.forEach(btn => {
-        btn.addEventListener('click', (e) => {
-          e.preventDefault();
-          const targetId = btn.getAttribute('data-target');
-          const targetEl = document.getElementById(targetId);
-          if (targetEl) {
-            targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            categoryButtons.forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-          }
+      if (categoryButtons.length > 0) {
+        categoryButtons.forEach(btn => {
+          btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            const targetId = btn.getAttribute('data-target');
+            const targetEl = document.getElementById(targetId);
+            if (targetEl) {
+              targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              categoryButtons.forEach(b => b.classList.remove('active'));
+              btn.classList.add('active');
+            }
+          });
         });
-      });
+      }
 
       // Floating Scroll to Top Button functionality
       const scrollToTopBtn = document.getElementById('scrollToTopBtn');
