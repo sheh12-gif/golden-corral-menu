@@ -1,0 +1,6 @@
+# robots.txt for https://goldencorralcost.us/
+
+User-agent: *
+Allow: /
+
+Sitemap: https://goldencorralcost.us/sitemap.xml
