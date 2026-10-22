@@ -1354,6 +1354,89 @@
         grid-template-columns: 1fr;
       }
     }
+
+    /* ==========================================================================
+       10. HEADER LEGAL PAGES DROPDOWN
+       ========================================================================== */
+    .nav-dropdown {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .nav-dropdown-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-family: var(--font-sans);
+      line-height: 1.2;
+    }
+
+    .nav-dropdown-toggle svg {
+      transition: transform 0.18s ease;
+      flex-shrink: 0;
+    }
+
+    .nav-dropdown.open .nav-dropdown-toggle svg {
+      transform: rotate(180deg);
+    }
+
+    .nav-dropdown-menu {
+      position: absolute;
+      top: calc(100% + 0.55rem);
+      left: 0;
+      min-width: 236px;
+      background: #FFFFFF;
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-md);
+      padding: 0.5rem;
+      display: none;
+      z-index: 1200;
+    }
+
+    .nav-dropdown.open .nav-dropdown-menu {
+      display: block;
+    }
+
+    .dropdown-link {
+      display: block;
+      padding: 0.6rem 0.85rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--text-secondary);
+      white-space: nowrap;
+      transition: background-color 0.16s ease, color 0.16s ease;
+    }
+
+    .dropdown-link:hover,
+    .dropdown-link:focus-visible {
+      background: var(--brand-red-soft);
+      color: var(--brand-red-dark);
+    }
+
+    @media (hover: hover) and (min-width: 1025px) {
+      .nav-dropdown:hover .nav-dropdown-menu {
+        display: block;
+      }
+      .nav-dropdown:hover .nav-dropdown-toggle svg {
+        transform: rotate(180deg);
+      }
+    }
+
+    .mobile-nav-section-title {
+      margin: 1.15rem 0 0.55rem;
+      font-size: 0.72rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--text-muted);
+      text-align: center;
+    }
   </style>
 </head>
 <body>
@@ -1372,9 +1455,23 @@
       </a>
 
       <nav class="main-nav" aria-label="Main Pages Navigation">
-        <a href="#" class="nav-link">Golden Corral Buffet</a>
+        <a href="https://goldencorralcost.us/golden-corral-buffet-prices/" class="nav-link">Golden Corral Buffet</a>
         <a href="#" class="nav-link">Breakfast Menu</a>
         <a href="#" class="nav-link">Lunch Menu</a>
+        <div class="nav-dropdown" id="legalDropdown">
+          <button type="button" class="nav-link nav-dropdown-toggle" id="legalDropdownBtn" aria-expanded="false" aria-haspopup="true" aria-controls="legalDropdownMenu">
+            <span>Legal Pages</span>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+          <div class="nav-dropdown-menu" id="legalDropdownMenu">
+            <a href="https://goldencorralcost.us/about-us/" class="dropdown-link" rel="nofollow">About Us</a>
+            <a href="https://goldencorralcost.us/contact-us/" class="dropdown-link" rel="nofollow">Contact Us</a>
+            <a href="https://goldencorralcost.us/privacy-policy/" class="dropdown-link" rel="nofollow">Privacy Policy</a>
+            <a href="https://goldencorralcost.us/disclaimer/" class="dropdown-link" rel="nofollow">Disclaimer</a>
+            <a href="https://goldencorralcost.us/cookie-policy/" class="dropdown-link" rel="nofollow">Cookie Policy</a>
+            <a href="https://goldencorralcost.us/terms-and-conditions/" class="dropdown-link" rel="nofollow">Terms and Conditions</a>
+          </div>
+        </div>
       </nav>
 
       <button type="button" class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle Navigation Menu" aria-expanded="false">
@@ -1388,9 +1485,18 @@
 
     <div class="mobile-nav-drawer" id="mobileNavDrawer">
       <div class="mobile-nav-grid">
-        <a href="#" class="mobile-nav-link">Golden Corral Buffet</a>
+        <a href="https://goldencorralcost.us/golden-corral-buffet-prices/" class="mobile-nav-link">Golden Corral Buffet</a>
         <a href="#" class="mobile-nav-link">Breakfast Menu</a>
         <a href="#" class="mobile-nav-link">Lunch Menu</a>
+      </div>
+      <div class="mobile-nav-section-title">Legal Pages</div>
+      <div class="mobile-nav-grid">
+        <a href="https://goldencorralcost.us/about-us/" class="mobile-nav-link" rel="nofollow">About Us</a>
+        <a href="https://goldencorralcost.us/contact-us/" class="mobile-nav-link" rel="nofollow">Contact Us</a>
+        <a href="https://goldencorralcost.us/privacy-policy/" class="mobile-nav-link" rel="nofollow">Privacy Policy</a>
+        <a href="https://goldencorralcost.us/disclaimer/" class="mobile-nav-link" rel="nofollow">Disclaimer</a>
+        <a href="https://goldencorralcost.us/cookie-policy/" class="mobile-nav-link" rel="nofollow">Cookie Policy</a>
+        <a href="https://goldencorralcost.us/terms-and-conditions/" class="mobile-nav-link" rel="nofollow">Terms and Conditions</a>
       </div>
     </div>
   </header>
@@ -1418,7 +1524,7 @@
           <span>Explore Menu Prices</span>
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
         </a>
-        <a href="#buffet-prices" class="btn-hero-primary">
+        <a href="https://goldencorralcost.us/golden-corral-buffet-prices/" class="btn-hero-primary">
           <span>Buffet Prices</span>
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
         </a>
@@ -3516,11 +3622,12 @@
         <div>
           <h3 class="footer-col-title">Legal Pages</h3>
           <ul class="footer-links">
-            <li><a href="#">Disclaimer</a></li>
-            <li><a href="#">Privacy Policy</a></li>
-            <li><a href="#">Contact Us</a></li>
-            <li><a href="#">About Us</a></li>
-            <li><a href="#">Cookie Policy</a></li>
+            <li><a href="https://goldencorralcost.us/about-us/" rel="nofollow">About Us</a></li>
+            <li><a href="https://goldencorralcost.us/contact-us/" rel="nofollow">Contact Us</a></li>
+            <li><a href="https://goldencorralcost.us/privacy-policy/" rel="nofollow">Privacy Policy</a></li>
+            <li><a href="https://goldencorralcost.us/disclaimer/" rel="nofollow">Disclaimer</a></li>
+            <li><a href="https://goldencorralcost.us/cookie-policy/" rel="nofollow">Cookie Policy</a></li>
+            <li><a href="https://goldencorralcost.us/terms-and-conditions/" rel="nofollow">Terms and Conditions</a></li>
           </ul>
         </div>
 
@@ -3566,6 +3673,30 @@
         mobileMenuBtn.addEventListener('click', () => {
           const isOpen = mobileNavDrawer.classList.toggle('open');
           mobileMenuBtn.setAttribute('aria-expanded', isOpen);
+        });
+      }
+
+
+      // Legal Pages Header Dropdown
+      const legalDropdown = document.getElementById('legalDropdown');
+      const legalDropdownBtn = document.getElementById('legalDropdownBtn');
+      if (legalDropdown && legalDropdownBtn) {
+        legalDropdownBtn.addEventListener('click', (event) => {
+          event.stopPropagation();
+          const isOpen = legalDropdown.classList.toggle('open');
+          legalDropdownBtn.setAttribute('aria-expanded', String(isOpen));
+        });
+
+        document.addEventListener('click', () => {
+          legalDropdown.classList.remove('open');
+          legalDropdownBtn.setAttribute('aria-expanded', 'false');
+        });
+
+        document.addEventListener('keydown', (event) => {
+          if (event.key === 'Escape') {
+            legalDropdown.classList.remove('open');
+            legalDropdownBtn.setAttribute('aria-expanded', 'false');
+          }
         });
       }
 
