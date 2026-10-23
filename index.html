@@ -1589,6 +1589,16 @@
       visibility: hidden;
       pointer-events: none;
     }
+
+    /* Keep wide tables inside their grid cell instead of stretching the page */
+    .info-grid-section > *,
+    .content-box {
+      min-width: 0;
+    }
+
+    .table-responsive {
+      max-width: 100%;
+    }
 </style>
 </head>
 <body>
