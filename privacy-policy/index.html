@@ -743,7 +743,7 @@
 
     .footer-grid {
       display: grid;
-      grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      grid-template-columns: 1.6fr 1.1fr 1fr 1fr 0.95fr;
       gap: 2.5rem;
       margin-bottom: 2.75rem;
     }
@@ -967,12 +967,31 @@
       color: var(--text-muted);
       text-align: center;
     }
-  </style>
+  
+
+    /* ==========================================================================
+       11. SITE WIDE PAGE NAVIGATION
+       ========================================================================== */
+    .nav-dropdown-menu-right {
+      left: auto;
+      right: 0;
+    }
+
+    .mobile-nav-grid.cols-2 {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (max-width: 640px) {
+      .mobile-nav-grid.cols-2 {
+        grid-template-columns: 1fr;
+      }
+    }
+</style>
 </head>
 <body>
-<header class="site-header">
+  <header class="site-header">
     <div class="container header-inner">
-      <a href="https://goldencorralcost.us/" class="brand-logo" aria-label="Golden Corral Menu Prices Home" rel="nofollow">
+      <a href="https://goldencorralcost.us/" class="brand-logo" aria-label="Golden Corral Menu Prices Home">
         <div class="brand-emblem" aria-hidden="true">GC</div>
         <div class="brand-text-stack">
           <span class="brand-title-main">Golden Corral</span>
@@ -981,15 +1000,51 @@
       </a>
 
       <nav class="main-nav" aria-label="Main Pages Navigation">
-        <a href="https://goldencorralcost.us/golden-corral-buffet-prices/" class="nav-link" rel="nofollow">Golden Corral Buffet</a>
-        <a href="https://goldencorralcost.us/golden-corral-breakfast-menu/" class="nav-link" rel="nofollow">Breakfast Menu</a>
-        <a href="https://goldencorralcost.us/golden-corral-lunch-menu/" class="nav-link" rel="nofollow">Lunch Menu</a>
-        <div class="nav-dropdown" id="legalDropdown">
-          <button type="button" class="nav-link nav-dropdown-toggle" id="legalDropdownBtn" aria-expanded="false" aria-haspopup="true" aria-controls="legalDropdownMenu">
-            <span>Legal Pages</span>
+        <a href="https://goldencorralcost.us/golden-corral-buffet-prices/" class="nav-link">Buffet Prices</a>
+        <div class="nav-dropdown">
+          <button type="button" class="nav-link nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true">
+            <span>Menus</span>
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
           </button>
-          <div class="nav-dropdown-menu" id="legalDropdownMenu">
+          <div class="nav-dropdown-menu">
+            <a href="https://goldencorralcost.us/golden-corral-breakfast-menu/" class="dropdown-link">Breakfast Menu</a>
+            <a href="https://goldencorralcost.us/golden-corral-breakfast-hours/" class="dropdown-link">Breakfast Hours</a>
+            <a href="https://goldencorralcost.us/golden-corral-lunch-menu/" class="dropdown-link">Lunch Menu</a>
+            <a href="https://goldencorralcost.us/golden-corral-dinner-menu/" class="dropdown-link">Dinner Menu</a>
+            <a href="https://goldencorralcost.us/buffet-plate-builder/" class="dropdown-link">Buffet Plate Builder</a>
+            <a href="https://goldencorralcost.us/golden-corral-weigh-and-pay/" class="dropdown-link">Weigh and Pay</a>
+          </div>
+        </div>
+        <div class="nav-dropdown">
+          <button type="button" class="nav-link nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true">
+            <span>Ways to Save</span>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+          <div class="nav-dropdown-menu">
+            <a href="https://goldencorralcost.us/golden-corral-senior-discount/" class="dropdown-link">Senior Discount</a>
+            <a href="https://goldencorralcost.us/golden-corral-discounts-and-coupons/" class="dropdown-link">Discounts and Coupons</a>
+            <a href="https://goldencorralcost.us/golden-corral-birthday-club/" class="dropdown-link">Birthday Club</a>
+            <a href="https://goldencorralcost.us/golden-corral-gift-cards/" class="dropdown-link">Gift Cards</a>
+          </div>
+        </div>
+        <div class="nav-dropdown">
+          <button type="button" class="nav-link nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true">
+            <span>Occasions</span>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+          <div class="nav-dropdown-menu">
+            <a href="https://goldencorralcost.us/golden-corral-catering-menu/" class="dropdown-link">Catering Menu</a>
+            <a href="https://goldencorralcost.us/golden-corral-thanksgiving-menu/" class="dropdown-link">Thanksgiving Menu</a>
+            <a href="https://goldencorralcost.us/golden-corral-reservations/" class="dropdown-link">Reservations and Party Rooms</a>
+            <a href="https://goldencorralcost.us/golden-corral-colorado-springs/" class="dropdown-link">Colorado Springs</a>
+          </div>
+        </div>
+        <div class="nav-dropdown">
+          <button type="button" class="nav-link nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true">
+            <span>Legal</span>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+          <div class="nav-dropdown-menu nav-dropdown-menu-right">
             <a href="https://goldencorralcost.us/about-us/" class="dropdown-link" rel="nofollow">About Us</a>
             <a href="https://goldencorralcost.us/contact-us/" class="dropdown-link" rel="nofollow">Contact Us</a>
             <a href="https://goldencorralcost.us/privacy-policy/" class="dropdown-link" rel="nofollow">Privacy Policy</a>
@@ -1010,19 +1065,37 @@
     </div>
 
     <div class="mobile-nav-drawer" id="mobileNavDrawer">
-      <div class="mobile-nav-grid">
-        <a href="https://goldencorralcost.us/golden-corral-buffet-prices/" class="mobile-nav-link" rel="nofollow">Golden Corral Buffet</a>
-        <a href="https://goldencorralcost.us/golden-corral-breakfast-menu/" class="mobile-nav-link" rel="nofollow">Breakfast Menu</a>
-        <a href="https://goldencorralcost.us/golden-corral-lunch-menu/" class="mobile-nav-link" rel="nofollow">Lunch Menu</a>
+      <div class="mobile-nav-section-title">Menus and Prices</div>
+      <div class="mobile-nav-grid cols-2">
+        <a href="https://goldencorralcost.us/golden-corral-breakfast-menu/" class="mobile-nav-link">Breakfast Menu</a>
+        <a href="https://goldencorralcost.us/golden-corral-breakfast-hours/" class="mobile-nav-link">Breakfast Hours</a>
+        <a href="https://goldencorralcost.us/golden-corral-lunch-menu/" class="mobile-nav-link">Lunch Menu</a>
+        <a href="https://goldencorralcost.us/golden-corral-dinner-menu/" class="mobile-nav-link">Dinner Menu</a>
+        <a href="https://goldencorralcost.us/buffet-plate-builder/" class="mobile-nav-link">Buffet Plate Builder</a>
+        <a href="https://goldencorralcost.us/golden-corral-weigh-and-pay/" class="mobile-nav-link">Weigh and Pay</a>
+      </div>
+      <div class="mobile-nav-section-title">Ways to Save</div>
+      <div class="mobile-nav-grid cols-2">
+        <a href="https://goldencorralcost.us/golden-corral-senior-discount/" class="mobile-nav-link">Senior Discount</a>
+        <a href="https://goldencorralcost.us/golden-corral-discounts-and-coupons/" class="mobile-nav-link">Discounts and Coupons</a>
+        <a href="https://goldencorralcost.us/golden-corral-birthday-club/" class="mobile-nav-link">Birthday Club</a>
+        <a href="https://goldencorralcost.us/golden-corral-gift-cards/" class="mobile-nav-link">Gift Cards</a>
+      </div>
+      <div class="mobile-nav-section-title">Occasions and Locations</div>
+      <div class="mobile-nav-grid cols-2">
+        <a href="https://goldencorralcost.us/golden-corral-catering-menu/" class="mobile-nav-link">Catering Menu</a>
+        <a href="https://goldencorralcost.us/golden-corral-thanksgiving-menu/" class="mobile-nav-link">Thanksgiving Menu</a>
+        <a href="https://goldencorralcost.us/golden-corral-reservations/" class="mobile-nav-link">Reservations and Party Rooms</a>
+        <a href="https://goldencorralcost.us/golden-corral-colorado-springs/" class="mobile-nav-link">Colorado Springs</a>
       </div>
       <div class="mobile-nav-section-title">Legal Pages</div>
-      <div class="mobile-nav-grid">
-            <a href="https://goldencorralcost.us/about-us/" class="mobile-nav-link" rel="nofollow">About Us</a>
-            <a href="https://goldencorralcost.us/contact-us/" class="mobile-nav-link" rel="nofollow">Contact Us</a>
-            <a href="https://goldencorralcost.us/privacy-policy/" class="mobile-nav-link" rel="nofollow">Privacy Policy</a>
-            <a href="https://goldencorralcost.us/disclaimer/" class="mobile-nav-link" rel="nofollow">Disclaimer</a>
-            <a href="https://goldencorralcost.us/cookie-policy/" class="mobile-nav-link" rel="nofollow">Cookie Policy</a>
-            <a href="https://goldencorralcost.us/terms-and-conditions/" class="mobile-nav-link" rel="nofollow">Terms and Conditions</a>
+      <div class="mobile-nav-grid cols-2">
+        <a href="https://goldencorralcost.us/about-us/" class="mobile-nav-link" rel="nofollow">About Us</a>
+        <a href="https://goldencorralcost.us/contact-us/" class="mobile-nav-link" rel="nofollow">Contact Us</a>
+        <a href="https://goldencorralcost.us/privacy-policy/" class="mobile-nav-link" rel="nofollow">Privacy Policy</a>
+        <a href="https://goldencorralcost.us/disclaimer/" class="mobile-nav-link" rel="nofollow">Disclaimer</a>
+        <a href="https://goldencorralcost.us/cookie-policy/" class="mobile-nav-link" rel="nofollow">Cookie Policy</a>
+        <a href="https://goldencorralcost.us/terms-and-conditions/" class="mobile-nav-link" rel="nofollow">Terms and Conditions</a>
       </div>
     </div>
   </header>
@@ -1157,11 +1230,11 @@
     </article>
   </main>
 
-<footer class="site-footer">
+  <footer class="site-footer">
     <div class="container">
       <div class="footer-grid">
         <div>
-          <a href="https://goldencorralcost.us/" class="brand-logo" aria-label="Golden Corral Menu Prices" rel="nofollow">
+          <a href="https://goldencorralcost.us/" class="brand-logo" aria-label="Golden Corral Menu Prices">
             <div class="brand-emblem" aria-hidden="true">GC</div>
             <div class="brand-text-stack">
               <span class="brand-title-main" style="color: #FFFFFF;">Golden Corral</span>
@@ -1169,10 +1242,39 @@
             </div>
           </a>
           <p class="footer-brand-desc">
-            Your fast, reliable 2026 guide to Golden Corral Endless Buffet prices, calorie counts, senior &amp; military discounts, carving station hours, and Weigh &amp; Pay takeout rates across the United States.
+            Your fast, reliable 2026 guide to Golden Corral Endless Buffet prices, calorie counts, senior and military discounts, carving station hours, and Weigh and Pay takeout rates across the United States.
           </p>
         </div>
-
+        <div>
+          <h3 class="footer-col-title">Menus and Prices</h3>
+          <ul class="footer-links">
+            <li><a href="https://goldencorralcost.us/golden-corral-buffet-prices/">Golden Corral Buffet Prices</a></li>
+            <li><a href="https://goldencorralcost.us/golden-corral-breakfast-menu/">Breakfast Menu</a></li>
+            <li><a href="https://goldencorralcost.us/golden-corral-breakfast-hours/">Breakfast Hours</a></li>
+            <li><a href="https://goldencorralcost.us/golden-corral-lunch-menu/">Lunch Menu</a></li>
+            <li><a href="https://goldencorralcost.us/golden-corral-dinner-menu/">Dinner Menu</a></li>
+            <li><a href="https://goldencorralcost.us/buffet-plate-builder/">Buffet Plate Builder</a></li>
+            <li><a href="https://goldencorralcost.us/golden-corral-weigh-and-pay/">Weigh and Pay</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="footer-col-title">Ways to Save</h3>
+          <ul class="footer-links">
+            <li><a href="https://goldencorralcost.us/golden-corral-senior-discount/">Senior Discount</a></li>
+            <li><a href="https://goldencorralcost.us/golden-corral-discounts-and-coupons/">Discounts and Coupons</a></li>
+            <li><a href="https://goldencorralcost.us/golden-corral-birthday-club/">Birthday Club</a></li>
+            <li><a href="https://goldencorralcost.us/golden-corral-gift-cards/">Gift Cards</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="footer-col-title">Occasions and Locations</h3>
+          <ul class="footer-links">
+            <li><a href="https://goldencorralcost.us/golden-corral-catering-menu/">Catering Menu</a></li>
+            <li><a href="https://goldencorralcost.us/golden-corral-thanksgiving-menu/">Thanksgiving Menu</a></li>
+            <li><a href="https://goldencorralcost.us/golden-corral-reservations/">Reservations and Party Rooms</a></li>
+            <li><a href="https://goldencorralcost.us/golden-corral-colorado-springs/">Colorado Springs</a></li>
+          </ul>
+        </div>
         <div>
           <h3 class="footer-col-title">Legal Pages</h3>
           <ul class="footer-links">
@@ -1184,28 +1286,6 @@
             <li><a href="https://goldencorralcost.us/terms-and-conditions/" rel="nofollow">Terms and Conditions</a></li>
           </ul>
         </div>
-
-        <div>
-          <h3 class="footer-col-title">Quick Navigation</h3>
-          <ul class="footer-links">
-            <li><a href="https://goldencorralcost.us/#individual-meals" rel="nofollow">Individual Meals</a></li>
-            <li><a href="https://goldencorralcost.us/#combo-meals" rel="nofollow">Combo Meals</a></li>
-            <li><a href="https://goldencorralcost.us/#kids-meals" rel="nofollow">Kids’ Meals</a></li>
-            <li><a href="https://goldencorralcost.us/#family-meals" rel="nofollow">Family Meals</a></li>
-            <li><a href="https://goldencorralcost.us/#pizzas" rel="nofollow">Pizza</a></li>
-          </ul>
-        </div>
-
-        <div>
-          <h3 class="footer-col-title">More Categories</h3>
-          <ul class="footer-links">
-            <li><a href="https://goldencorralcost.us/#fried-chicken" rel="nofollow">Fried Chicken</a></li>
-            <li><a href="https://goldencorralcost.us/#sides" rel="nofollow">Sides</a></li>
-            <li><a href="https://goldencorralcost.us/#desserts" rel="nofollow">Desserts</a></li>
-            <li><a href="https://goldencorralcost.us/#signature-salads" rel="nofollow">Signature Salads</a></li>
-            <li><a href="https://goldencorralcost.us/#beverages" rel="nofollow">Beverages</a></li>
-          </ul>
-        </div>
       </div>
 
       <div class="footer-disclaimer-box">
@@ -1213,7 +1293,7 @@
       </div>
 
       <div class="footer-bottom">
-        <span>© 2026 Golden Corral Menu Prices. Unofficial Guide. All rights reserved.</span>
+        <span>&copy; 2026 Golden Corral Menu Prices. Unofficial Guide. All rights reserved.</span>
       </div>
     </div>
   </footer>
@@ -1236,29 +1316,35 @@
       }
 
 
-      // Legal Pages Header Dropdown
-      const legalDropdown = document.getElementById('legalDropdown');
-      const legalDropdownBtn = document.getElementById('legalDropdownBtn');
-      if (legalDropdown && legalDropdownBtn) {
-        legalDropdownBtn.addEventListener('click', (event) => {
+      // Header Dropdown Menus
+      const navDropdowns = document.querySelectorAll('.nav-dropdown');
+
+      const closeAllDropdowns = () => {
+        navDropdowns.forEach((dropdown) => {
+          dropdown.classList.remove('open');
+          const toggle = dropdown.querySelector('.nav-dropdown-toggle');
+          if (toggle) toggle.setAttribute('aria-expanded', 'false');
+        });
+      };
+
+      navDropdowns.forEach((dropdown) => {
+        const toggle = dropdown.querySelector('.nav-dropdown-toggle');
+        if (!toggle) return;
+        toggle.addEventListener('click', (event) => {
           event.stopPropagation();
-          const isOpen = legalDropdown.classList.toggle('open');
-          legalDropdownBtn.setAttribute('aria-expanded', String(isOpen));
-        });
-
-        document.addEventListener('click', () => {
-          legalDropdown.classList.remove('open');
-          legalDropdownBtn.setAttribute('aria-expanded', 'false');
-        });
-
-        document.addEventListener('keydown', (event) => {
-          if (event.key === 'Escape') {
-            legalDropdown.classList.remove('open');
-            legalDropdownBtn.setAttribute('aria-expanded', 'false');
+          const wasOpen = dropdown.classList.contains('open');
+          closeAllDropdowns();
+          if (!wasOpen) {
+            dropdown.classList.add('open');
+            toggle.setAttribute('aria-expanded', 'true');
           }
         });
-      }
+      });
 
+      document.addEventListener('click', closeAllDropdowns);
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') closeAllDropdowns();
+      });
       // Category Horizontal Slider Controls
       const categoryPillsScroll = document.getElementById('categoryPillsScroll');
       const slideLeftBtn = document.getElementById('slideLeftBtn');

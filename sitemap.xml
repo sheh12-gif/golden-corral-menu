@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://goldencorralcost.us/</loc>
     <lastmod>2026-10-22</lastmod>
@@ -19,61 +20,109 @@
     <loc>https://goldencorralcost.us/golden-corral-discounts-and-coupons/</loc>
     <lastmod>2026-10-23</lastmod>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://goldencorralcost.us/images/golden-corral-discounts-and-coupons.webp</image:loc>
+      <image:title>Golden Corral discounts and coupons for buffet meals</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://goldencorralcost.us/golden-corral-birthday-club/</loc>
     <lastmod>2026-10-23</lastmod>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://goldencorralcost.us/images/Golden_Corral_Birthday_Club.webp</image:loc>
+      <image:title>Golden Corral Birthday Club free birthday meal</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://goldencorralcost.us/golden-corral-breakfast-hours/</loc>
     <lastmod>2026-10-23</lastmod>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://goldencorralcost.us/images/Golden_Corral_breakfast_hours.webp</image:loc>
+      <image:title>Golden Corral breakfast hours on weekdays and weekends</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://goldencorralcost.us/golden-corral-breakfast-menu/</loc>
     <lastmod>2026-10-23</lastmod>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://goldencorralcost.us/images/golden-corral-Breakfast_menu.webp</image:loc>
+      <image:title>Golden Corral breakfast menu items and prices</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://goldencorralcost.us/golden-corral-lunch-menu/</loc>
     <lastmod>2026-10-23</lastmod>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://goldencorralcost.us/images/Golden_Corral_lunch_menu.webp</image:loc>
+      <image:title>Golden Corral lunch menu buffet items and prices</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://goldencorralcost.us/golden-corral-catering-menu/</loc>
     <lastmod>2026-10-23</lastmod>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://goldencorralcost.us/images/Golden_Corral_catering_menu.webp</image:loc>
+      <image:title>Golden Corral catering menu party platters and boxed meals</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://goldencorralcost.us/buffet-plate-builder/</loc>
     <lastmod>2026-10-23</lastmod>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://goldencorralcost.us/images/Golden_Corral_Buffet_plate_builder.webp</image:loc>
+      <image:title>Golden Corral buffet plate builder balanced meal</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://goldencorralcost.us/golden-corral-dinner-menu/</loc>
     <lastmod>2026-10-23</lastmod>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://goldencorralcost.us/images/Golden_Corral_dinner_menu.webp</image:loc>
+      <image:title>Golden Corral dinner menu buffet prices and hours</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://goldencorralcost.us/golden-corral-weigh-and-pay/</loc>
     <lastmod>2026-10-23</lastmod>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://goldencorralcost.us/images/golden_corral_pay_by_weight.webp</image:loc>
+      <image:title>Golden Corral Weigh and Pay takeout buffet containers</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://goldencorralcost.us/golden-corral-colorado-springs/</loc>
     <lastmod>2026-10-23</lastmod>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://goldencorralcost.us/images/Golden_Corral_colorado_springs.webp</image:loc>
+      <image:title>Golden Corral Colorado Springs buffet restaurant</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://goldencorralcost.us/golden-corral-gift-cards/</loc>
     <lastmod>2026-10-23</lastmod>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://goldencorralcost.us/images/Golden_Corral_gift_cards.webp</image:loc>
+      <image:title>Golden Corral gift cards for buffet meals</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://goldencorralcost.us/golden-corral-thanksgiving-menu/</loc>
     <lastmod>2026-10-23</lastmod>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://goldencorralcost.us/images/Golden_Corral_Thanksgiving_menu.webp</image:loc>
+      <image:title>Golden Corral Thanksgiving menu and holiday buffet</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://goldencorralcost.us/golden-corral-reservations/</loc>
