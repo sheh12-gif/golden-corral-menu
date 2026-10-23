@@ -341,9 +341,19 @@
 
     .mobile-nav-drawer {
       display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      z-index: 999;
+      max-height: calc(100vh - var(--header-height));
+      max-height: calc(100dvh - var(--header-height));
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      overscroll-behavior: contain;
       background: #FFFFFF;
       border-bottom: 2px solid var(--border-light);
-      padding: 1rem 1.25rem 1.5rem;
+      padding: 0.9rem 1.25rem 1.5rem;
       box-shadow: var(--shadow-md);
     }
 
@@ -372,6 +382,80 @@
       background: var(--brand-red);
       color: #FFFFFF;
       border-color: var(--brand-red);
+    }
+
+    .mobile-nav-single {
+      display: block;
+      text-align: left;
+      margin-bottom: 0.6rem;
+    }
+
+    .mobile-nav-group {
+      margin-bottom: 0.6rem;
+    }
+
+    .mobile-nav-toggle {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      padding: 0.85rem 1rem;
+      background: var(--bg-page);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-sm);
+      font-family: var(--font-sans);
+      font-size: 0.9rem;
+      font-weight: 800;
+      color: var(--text-primary);
+      cursor: pointer;
+      text-align: left;
+    }
+
+    .mobile-nav-toggle svg {
+      transition: transform 0.18s ease;
+      flex-shrink: 0;
+    }
+
+    .mobile-nav-group.open .mobile-nav-toggle {
+      background: var(--brand-red);
+      border-color: var(--brand-red);
+      color: #FFFFFF;
+    }
+
+    .mobile-nav-group.open .mobile-nav-toggle svg {
+      transform: rotate(180deg);
+    }
+
+    .mobile-nav-panel {
+      display: none;
+      padding: 0.35rem 0 0.15rem;
+    }
+
+    .mobile-nav-group.open .mobile-nav-panel {
+      display: block;
+    }
+
+    .mobile-nav-panel .mobile-nav-link {
+      display: block;
+      text-align: left;
+      background: #FFFFFF;
+      border: 1px solid transparent;
+      border-bottom: 1px solid var(--border-light);
+      border-radius: 0;
+      padding: 0.7rem 0.95rem;
+      font-weight: 600;
+    }
+
+    .mobile-nav-panel .mobile-nav-link:last-child {
+      border-bottom: none;
+    }
+
+    .mobile-nav-panel .mobile-nav-link:hover {
+      background: var(--brand-red);
+      color: #FFFFFF;
+      border-color: var(--brand-red);
+      border-radius: var(--radius-sm);
     }
 
     /* ==========================================================================
@@ -1064,6 +1148,62 @@
         grid-template-columns: 1fr;
       }
     }
+    @media (max-width: 1024px) {
+      .faq-section {
+        padding-left: 2.5rem;
+        padding-right: 2.5rem;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .faq-section {
+        padding-left: 1.25rem;
+        padding-right: 1.25rem;
+      }
+    }
+
+    body.nav-open {
+      overflow: hidden;
+    }
+
+    @media (min-width: 1025px) {
+      .mobile-nav-drawer.open {
+        display: none;
+      }
+    }
+
+    /* ==========================================================================
+       12. FLOATING SCROLL-TO-TOP SPACING
+       ========================================================================== */
+    .scroll-to-top-btn {
+      bottom: 2.5rem;
+      right: 2.5rem;
+      box-shadow: 0 0 0 5px rgba(255, 255, 255, 0.95), 0 6px 20px rgba(216, 31, 42, 0.4);
+    }
+
+    @media (max-width: 1024px) {
+      .scroll-to-top-btn {
+        bottom: 1.75rem;
+        right: 1.75rem;
+        width: 46px;
+        height: 46px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .scroll-to-top-btn {
+        bottom: 1.75rem;
+        right: 1.75rem;
+        width: 46px;
+        height: 46px;
+      }
+    }
+
+    body.nav-open .scroll-to-top-btn {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
 </style>
 </head>
 <body>
@@ -1146,38 +1286,63 @@
       </button>
     </div>
 
-    <div class="mobile-nav-drawer" id="mobileNavDrawer">
-      <div class="mobile-nav-section-title">Menus and Prices</div>
-      <div class="mobile-nav-grid cols-2">
-        <a href="https://goldencorralcost.us/golden-corral-breakfast-menu/" class="mobile-nav-link">Breakfast Menu</a>
-        <a href="https://goldencorralcost.us/golden-corral-breakfast-hours/" class="mobile-nav-link">Breakfast Hours</a>
-        <a href="https://goldencorralcost.us/golden-corral-lunch-menu/" class="mobile-nav-link">Lunch Menu</a>
-        <a href="https://goldencorralcost.us/golden-corral-dinner-menu/" class="mobile-nav-link">Dinner Menu</a>
-        <a href="https://goldencorralcost.us/buffet-plate-builder/" class="mobile-nav-link">Buffet Plate Builder</a>
-        <a href="https://goldencorralcost.us/golden-corral-weigh-and-pay/" class="mobile-nav-link">Weigh and Pay</a>
+    <div class="mobile-nav-drawer" id="mobileNavDrawer" role="navigation" aria-label="Mobile navigation">
+      <a href="https://goldencorralcost.us/golden-corral-buffet-prices/" class="mobile-nav-link mobile-nav-single">Buffet Prices</a>
+
+      <div class="mobile-nav-group">
+        <button type="button" class="mobile-nav-toggle" aria-expanded="false" aria-controls="mobileNavMenus">
+          <span>Menus</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="mobile-nav-panel" id="mobileNavMenus">
+          <a href="https://goldencorralcost.us/golden-corral-breakfast-menu/" class="mobile-nav-link">Breakfast Menu</a>
+          <a href="https://goldencorralcost.us/golden-corral-breakfast-hours/" class="mobile-nav-link">Breakfast Hours</a>
+          <a href="https://goldencorralcost.us/golden-corral-lunch-menu/" class="mobile-nav-link">Lunch Menu</a>
+          <a href="https://goldencorralcost.us/golden-corral-dinner-menu/" class="mobile-nav-link">Dinner Menu</a>
+          <a href="https://goldencorralcost.us/buffet-plate-builder/" class="mobile-nav-link">Buffet Plate Builder</a>
+          <a href="https://goldencorralcost.us/golden-corral-weigh-and-pay/" class="mobile-nav-link">Weigh and Pay</a>
+        </div>
       </div>
-      <div class="mobile-nav-section-title">Ways to Save</div>
-      <div class="mobile-nav-grid cols-2">
-        <a href="https://goldencorralcost.us/golden-corral-senior-discount/" class="mobile-nav-link">Senior Discount</a>
-        <a href="https://goldencorralcost.us/golden-corral-discounts-and-coupons/" class="mobile-nav-link">Discounts and Coupons</a>
-        <a href="https://goldencorralcost.us/golden-corral-birthday-club/" class="mobile-nav-link">Birthday Club</a>
-        <a href="https://goldencorralcost.us/golden-corral-gift-cards/" class="mobile-nav-link">Gift Cards</a>
+
+      <div class="mobile-nav-group">
+        <button type="button" class="mobile-nav-toggle" aria-expanded="false" aria-controls="mobileNavWays">
+          <span>Ways to Save</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="mobile-nav-panel" id="mobileNavWays">
+          <a href="https://goldencorralcost.us/golden-corral-senior-discount/" class="mobile-nav-link">Senior Discount</a>
+          <a href="https://goldencorralcost.us/golden-corral-discounts-and-coupons/" class="mobile-nav-link">Discounts and Coupons</a>
+          <a href="https://goldencorralcost.us/golden-corral-birthday-club/" class="mobile-nav-link">Birthday Club</a>
+          <a href="https://goldencorralcost.us/golden-corral-gift-cards/" class="mobile-nav-link">Gift Cards</a>
+        </div>
       </div>
-      <div class="mobile-nav-section-title">Occasions and Locations</div>
-      <div class="mobile-nav-grid cols-2">
-        <a href="https://goldencorralcost.us/golden-corral-catering-menu/" class="mobile-nav-link">Catering Menu</a>
-        <a href="https://goldencorralcost.us/golden-corral-thanksgiving-menu/" class="mobile-nav-link">Thanksgiving Menu</a>
-        <a href="https://goldencorralcost.us/golden-corral-reservations/" class="mobile-nav-link">Reservations and Party Rooms</a>
-        <a href="https://goldencorralcost.us/golden-corral-colorado-springs/" class="mobile-nav-link">Colorado Springs</a>
+
+      <div class="mobile-nav-group">
+        <button type="button" class="mobile-nav-toggle" aria-expanded="false" aria-controls="mobileNavOccasions">
+          <span>Occasions</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="mobile-nav-panel" id="mobileNavOccasions">
+          <a href="https://goldencorralcost.us/golden-corral-catering-menu/" class="mobile-nav-link">Catering Menu</a>
+          <a href="https://goldencorralcost.us/golden-corral-thanksgiving-menu/" class="mobile-nav-link">Thanksgiving Menu</a>
+          <a href="https://goldencorralcost.us/golden-corral-reservations/" class="mobile-nav-link">Reservations and Party Rooms</a>
+          <a href="https://goldencorralcost.us/golden-corral-colorado-springs/" class="mobile-nav-link">Colorado Springs</a>
+        </div>
       </div>
-      <div class="mobile-nav-section-title">Legal Pages</div>
-      <div class="mobile-nav-grid cols-2">
-        <a href="https://goldencorralcost.us/about-us/" class="mobile-nav-link" rel="nofollow">About Us</a>
-        <a href="https://goldencorralcost.us/contact-us/" class="mobile-nav-link" rel="nofollow">Contact Us</a>
-        <a href="https://goldencorralcost.us/privacy-policy/" class="mobile-nav-link" rel="nofollow">Privacy Policy</a>
-        <a href="https://goldencorralcost.us/disclaimer/" class="mobile-nav-link" rel="nofollow">Disclaimer</a>
-        <a href="https://goldencorralcost.us/cookie-policy/" class="mobile-nav-link" rel="nofollow">Cookie Policy</a>
-        <a href="https://goldencorralcost.us/terms-and-conditions/" class="mobile-nav-link" rel="nofollow">Terms and Conditions</a>
+
+      <div class="mobile-nav-group">
+        <button type="button" class="mobile-nav-toggle" aria-expanded="false" aria-controls="mobileNavLegal">
+          <span>Legal</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="mobile-nav-panel" id="mobileNavLegal">
+          <a href="https://goldencorralcost.us/about-us/" class="mobile-nav-link" rel="nofollow">About Us</a>
+          <a href="https://goldencorralcost.us/contact-us/" class="mobile-nav-link" rel="nofollow">Contact Us</a>
+          <a href="https://goldencorralcost.us/privacy-policy/" class="mobile-nav-link" rel="nofollow">Privacy Policy</a>
+          <a href="https://goldencorralcost.us/disclaimer/" class="mobile-nav-link" rel="nofollow">Disclaimer</a>
+          <a href="https://goldencorralcost.us/cookie-policy/" class="mobile-nav-link" rel="nofollow">Cookie Policy</a>
+          <a href="https://goldencorralcost.us/terms-and-conditions/" class="mobile-nav-link" rel="nofollow">Terms and Conditions</a>
+        </div>
       </div>
     </div>
   </header>
@@ -1533,8 +1698,40 @@
         mobileMenuBtn.addEventListener('click', () => {
           const isOpen = mobileNavDrawer.classList.toggle('open');
           mobileMenuBtn.setAttribute('aria-expanded', isOpen);
+          document.body.classList.toggle('nav-open', isOpen);
         });
       }
+
+      // Mobile accordion groups mirror the desktop dropdowns
+      const mobileNavGroups = document.querySelectorAll('.mobile-nav-group');
+
+      const closeMobileNav = () => {
+        if (!mobileNavDrawer) return;
+        mobileNavDrawer.classList.remove('open');
+        if (mobileMenuBtn) mobileMenuBtn.setAttribute('aria-expanded', 'false');
+        document.body.classList.remove('nav-open');
+      };
+
+      mobileNavGroups.forEach((group) => {
+        const toggle = group.querySelector('.mobile-nav-toggle');
+        if (!toggle) return;
+        toggle.addEventListener('click', () => {
+          const willOpen = !group.classList.contains('open');
+          mobileNavGroups.forEach((other) => {
+            other.classList.remove('open');
+            const otherToggle = other.querySelector('.mobile-nav-toggle');
+            if (otherToggle) otherToggle.setAttribute('aria-expanded', 'false');
+          });
+          if (willOpen) {
+            group.classList.add('open');
+            toggle.setAttribute('aria-expanded', 'true');
+          }
+        });
+      });
+
+      window.addEventListener('resize', () => {
+        if (window.innerWidth > 1024) closeMobileNav();
+      });
 
 
       // Header Dropdown Menus
@@ -1564,7 +1761,7 @@
 
       document.addEventListener('click', closeAllDropdowns);
       document.addEventListener('keydown', (event) => {
-        if (event.key === 'Escape') closeAllDropdowns();
+        if (event.key === 'Escape') { closeAllDropdowns(); closeMobileNav(); }
       });
       // Category Horizontal Slider Controls
       const categoryPillsScroll = document.getElementById('categoryPillsScroll');
