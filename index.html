@@ -33,10 +33,9 @@
   <meta name="twitter:description" content="Golden Corral menu with 2026 buffet prices for breakfast, lunch, and dinner, plus senior discounts, kids prices, hours, and deals.">
   <meta name="twitter:image" content="https://goldencorralcost.us/images/crispy-fried-chicken.webp">
 
-  <!-- Google Fonts: Plus Jakarta Sans for clean UI -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Self-hosted variable font: same origin, discovered from the inline CSS.
+       Deliberately NOT preloaded - a font preload competes with the HTML for
+       bandwidth on slow connections and delayed first paint by ~300ms in testing. -->
 
   <!-- Schema.org Comprehensive Structured Data for SEO & Rich Results -->
   <script type="application/ld+json">
@@ -321,1285 +320,7 @@
   }
   </script>
 
-  <style>
-    /* ==========================================================================
-       1. CSS DESIGN TOKENS & RESET (Official #D81F2A Red & #203140 Footer)
-       ========================================================================== */
-    :root {
-      --bg-page: #F8FAFC;
-      --bg-card: #FFFFFF;
-      --bg-subtle: #F1F5F9;
-
-      --brand-red: #D81F2A;
-      --brand-red-dark: #B51620;
-      --brand-red-deeper: #8F1018;
-      --brand-red-soft: #FEE2E2;
-      --brand-red-tint: #FFF5F5;
-
-      --footer-bg: #203140;
-      --footer-bg-dark: #182531;
-
-      --brand-emerald: #15803D;
-      --brand-emerald-bg: #DCFCE7;
-
-      --text-primary: #0F172A;
-      --text-secondary: #475569;
-      --text-muted: #64748B;
-      --text-on-dark: #FFFFFF;
-
-      --border-light: #E2E8F0;
-      --border-hover: #D81F2A;
-
-      --shadow-sm: 0 2px 6px rgba(15, 23, 42, 0.04);
-      --shadow-md: 0 10px 26px -4px rgba(15, 23, 42, 0.08);
-
-      --radius-sm: 8px;
-      --radius-md: 14px;
-      --radius-pill: 9999px;
-
-      --container-max: 1240px;
-      --header-height: 76px;
-      --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    }
-
-    *, *::before, *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-      scroll-padding-top: 155px;
-      -webkit-text-size-adjust: 100%;
-    }
-
-    body {
-      font-family: var(--font-sans);
-      background-color: var(--bg-page);
-      color: var(--text-primary);
-      line-height: 1.6;
-      overflow-x: hidden;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-      transition: color 0.2s ease, background-color 0.2s ease, transform 0.2s ease;
-    }
-
-    /* Inline content links */
-    .content-box a {
-      color: var(--brand-red);
-      font-weight: 700;
-      text-decoration: underline;
-      text-underline-offset: 3px;
-    }
-
-    .content-box a:hover {
-      color: var(--brand-red-dark);
-    }
-
-    ul {
-      list-style: none;
-    }
-
-    .container {
-      width: 100%;
-      max-width: var(--container-max);
-      margin: 0 auto;
-      padding: 0 1.25rem;
-    }
-
-    /* ==========================================================================
-       2. STICKY HEADER & STACKED BRAND LOGO
-       ========================================================================== */
-    .site-header {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      height: var(--header-height);
-      background: rgba(255, 255, 255, 0.97);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border-light);
-      box-shadow: 0 2px 12px rgba(15, 23, 42, 0.04);
-    }
-
-    .header-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 100%;
-      gap: 1rem;
-    }
-
-    .brand-logo {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.75rem;
-      text-decoration: none;
-      flex-shrink: 0;
-    }
-
-    .brand-emblem {
-      width: 44px;
-      height: 44px;
-      border-radius: 11px;
-      background: var(--brand-red);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #FFFFFF;
-      font-weight: 800;
-      font-size: 1.12rem;
-      letter-spacing: -0.5px;
-      box-shadow: 0 4px 12px rgba(216, 31, 42, 0.28);
-    }
-
-    .brand-text-stack {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      line-height: 1;
-    }
-
-    .brand-title-main {
-      font-size: 1.45rem;
-      font-weight: 800;
-      color: var(--brand-red);
-      letter-spacing: -0.03em;
-    }
-
-    .brand-title-sub {
-      margin-top: 4px;
-      font-size: 0.68rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.22em;
-      color: var(--footer-bg);
-    }
-
-    .main-nav {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .nav-link {
-      padding: 0.52rem 1rem;
-      border-radius: var(--radius-sm);
-      font-size: 0.9rem;
-      font-weight: 700;
-      color: var(--text-secondary);
-      white-space: nowrap;
-    }
-
-    .nav-link:hover,
-    .nav-link:focus-visible {
-      color: #FFFFFF;
-      background-color: var(--brand-red);
-    }
-
-    .mobile-menu-btn {
-      display: none;
-      background: var(--brand-red);
-      border: 1px solid var(--brand-red);
-      border-radius: var(--radius-sm);
-      width: 42px;
-      height: 42px;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      color: #FFFFFF;
-    }
-
-    .mobile-nav-drawer {
-      display: none;
-      position: absolute;
-      top: 100%;
-      left: 0;
-      right: 0;
-      z-index: 999;
-      max-height: calc(100vh - var(--header-height));
-      max-height: calc(100dvh - var(--header-height));
-      overflow-y: auto;
-      -webkit-overflow-scrolling: touch;
-      overscroll-behavior: contain;
-      background: #FFFFFF;
-      border-bottom: 2px solid var(--border-light);
-      padding: 0.9rem 1.25rem 1.5rem;
-      box-shadow: var(--shadow-md);
-    }
-
-    .mobile-nav-drawer.open {
-      display: block;
-    }
-
-    .mobile-nav-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 0.5rem;
-    }
-
-    .mobile-nav-link {
-      padding: 0.72rem 0.95rem;
-      background: var(--bg-page);
-      border-radius: var(--radius-sm);
-      font-size: 0.88rem;
-      font-weight: 700;
-      color: var(--text-primary);
-      border: 1px solid var(--border-light);
-      text-align: center;
-    }
-
-    .mobile-nav-link:hover {
-      background: var(--brand-red);
-      color: #FFFFFF;
-      border-color: var(--brand-red);
-    }
-
-    .mobile-nav-single {
-      display: block;
-      text-align: left;
-      margin-bottom: 0.6rem;
-    }
-
-    .mobile-nav-group {
-      margin-bottom: 0.6rem;
-    }
-
-    .mobile-nav-toggle {
-      width: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 0.75rem;
-      padding: 0.85rem 1rem;
-      background: var(--bg-page);
-      border: 1px solid var(--border-light);
-      border-radius: var(--radius-sm);
-      font-family: var(--font-sans);
-      font-size: 0.9rem;
-      font-weight: 800;
-      color: var(--text-primary);
-      cursor: pointer;
-      text-align: left;
-    }
-
-    .mobile-nav-toggle svg {
-      transition: transform 0.18s ease;
-      flex-shrink: 0;
-    }
-
-    .mobile-nav-group.open .mobile-nav-toggle {
-      background: var(--brand-red);
-      border-color: var(--brand-red);
-      color: #FFFFFF;
-    }
-
-    .mobile-nav-group.open .mobile-nav-toggle svg {
-      transform: rotate(180deg);
-    }
-
-    .mobile-nav-panel {
-      display: none;
-      padding: 0.35rem 0 0.15rem;
-    }
-
-    .mobile-nav-group.open .mobile-nav-panel {
-      display: block;
-    }
-
-    .mobile-nav-panel .mobile-nav-link {
-      display: block;
-      text-align: left;
-      background: #FFFFFF;
-      border: 1px solid transparent;
-      border-bottom: 1px solid var(--border-light);
-      border-radius: 0;
-      padding: 0.7rem 0.95rem;
-      font-weight: 600;
-    }
-
-    .mobile-nav-panel .mobile-nav-link:last-child {
-      border-bottom: none;
-    }
-
-    .mobile-nav-panel .mobile-nav-link:hover {
-      background: var(--brand-red);
-      color: #FFFFFF;
-      border-color: var(--brand-red);
-      border-radius: var(--radius-sm);
-    }
-
-    /* ==========================================================================
-       3. ABOVE-THE-FOLD HERO SECTION
-       ========================================================================== */
-    .hero-section {
-      position: relative;
-      background: linear-gradient(135deg, #E32430 0%, var(--brand-red) 52%, var(--brand-red-dark) 100%);
-      color: #FFFFFF;
-      padding: 3.6rem 0 3.1rem;
-      text-align: center;
-      overflow: hidden;
-      border-bottom: 4px solid var(--footer-bg);
-    }
-
-    .hero-section::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background-image: radial-gradient(rgba(255, 255, 255, 0.12) 1px, transparent 1px);
-      background-size: 24px 24px;
-      pointer-events: none;
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      max-width: 860px;
-      margin: 0 auto;
-    }
-
-    .update-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.55rem;
-      background: rgba(255, 255, 255, 0.16);
-      border: 1px solid rgba(255, 255, 255, 0.42);
-      color: #FFFFFF;
-      padding: 0.42rem 1.05rem;
-      border-radius: var(--radius-pill);
-      font-size: 0.8rem;
-      font-weight: 800;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      margin-bottom: 1.25rem;
-    }
-
-    .pulse-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background-color: #FFFFFF;
-      box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.28);
-      animation: pulseGlow 2s infinite;
-    }
-
-    @keyframes pulseGlow {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.65; transform: scale(1.18); }
-    }
-
-    .hero-title {
-      font-size: clamp(2rem, 4.6vw, 3.35rem);
-      font-weight: 800;
-      line-height: 1.14;
-      letter-spacing: -0.025em;
-      color: #FFFFFF;
-      margin-bottom: 1rem;
-    }
-
-    .hero-subtitle {
-      font-size: clamp(1rem, 1.8vw, 1.14rem);
-      color: rgba(255, 255, 255, 0.94);
-      max-width: 700px;
-      margin: 0 auto 1.8rem;
-      font-weight: 500;
-      line-height: 1.62;
-    }
-
-    .hero-cta-group {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: center;
-      gap: 0.85rem;
-      margin-bottom: 2.25rem;
-    }
-
-    .btn-hero-primary {
-      background: var(--footer-bg);
-      color: #FFFFFF;
-      font-weight: 800;
-      font-size: 0.95rem;
-      padding: 0.88rem 1.7rem;
-      border-radius: var(--radius-pill);
-      border: 2px solid #FFFFFF;
-      box-shadow: 0 8px 20px rgba(15, 23, 42, 0.25);
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .btn-hero-primary:hover {
-      transform: translateY(-2px);
-      background: var(--footer-bg-dark);
-    }
-
-    .hero-stats-bar {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      max-width: 580px;
-      margin: 0 auto 1.6rem;
-      background: rgba(15, 23, 42, 0.24);
-      border: 1px solid rgba(255, 255, 255, 0.28);
-      border-radius: var(--radius-md);
-      padding: 1rem 0.75rem;
-      backdrop-filter: blur(8px);
-    }
-
-    .stat-box {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      border-right: 1px solid rgba(255, 255, 255, 0.22);
-    }
-
-    .stat-box:last-child {
-      border-right: none;
-    }
-
-    .stat-number {
-      font-size: 1.52rem;
-      font-weight: 800;
-      color: #FFFFFF;
-      line-height: 1.15;
-    }
-
-    .stat-label {
-      font-size: 0.75rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      color: rgba(255, 255, 255, 0.9);
-      margin-top: 3px;
-    }
-
-    .hero-trust-strip {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 0.65rem 1.6rem;
-      font-size: 0.86rem;
-      font-weight: 600;
-      color: #FFFFFF;
-    }
-
-    .trust-item {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.45rem;
-    }
-
-    .trust-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: #FFFFFF;
-      display: inline-block;
-    }
-
-    .trust-item strong {
-      color: #FFFFFF;
-      text-decoration: underline;
-      text-underline-offset: 3px;
-    }
-
-    /* ==========================================================================
-       4. CATEGORY BAR
-       ========================================================================== */
-    .filter-control-bar {
-      position: sticky;
-      top: var(--header-height);
-      z-index: 900;
-      background: rgba(255, 255, 255, 0.97);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      border-bottom: 1px solid var(--border-light);
-      padding: 0.95rem 0 0.8rem;
-      box-shadow: 0 4px 16px rgba(15, 23, 42, 0.05);
-    }
-
-    .filter-inner {
-      display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
-    }
-
-    .category-slider-shell {
-      display: flex;
-      flex-direction: column;
-      gap: 0.45rem;
-    }
-
-    .category-slider-row {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .slider-arrow-btn {
-      width: 34px;
-      height: 34px;
-      border-radius: 50%;
-      background: var(--brand-red);
-      color: #FFFFFF;
-      border: none;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      flex-shrink: 0;
-      box-shadow: 0 2px 8px rgba(216, 31, 42, 0.25);
-      transition: background-color 0.18s ease, transform 0.18s ease;
-    }
-
-    .slider-arrow-btn:hover {
-      background: var(--brand-red-dark);
-      transform: scale(1.05);
-    }
-
-    .category-pills-scroll {
-      display: flex;
-      align-items: center;
-      gap: 0.55rem;
-      overflow-x: auto;
-      scroll-behavior: smooth;
-      scroll-snap-type: x mandatory;
-      -webkit-overflow-scrolling: touch;
-      padding: 2px 2px 4px;
-      scrollbar-width: none;
-      flex: 1;
-    }
-
-    .category-pills-scroll::-webkit-scrollbar {
-      display: none;
-    }
-
-    .cat-pill {
-      scroll-snap-align: start;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0.52rem 1.08rem;
-      border-radius: var(--radius-pill);
-      background: var(--bg-subtle);
-      border: 1px solid var(--border-light);
-      font-family: var(--font-sans);
-      font-size: 0.84rem;
-      font-weight: 700;
-      color: var(--text-primary);
-      white-space: nowrap;
-      cursor: pointer;
-      transition: all 0.18s ease;
-    }
-
-    .cat-pill:hover,
-    .cat-pill.active {
-      background: var(--brand-red);
-      color: #FFFFFF;
-      border-color: var(--brand-red);
-      box-shadow: 0 4px 12px rgba(216, 31, 42, 0.28);
-    }
-
-    /* ==========================================================================
-       5. MENU SECTIONS & STATIC ITEM CARDS
-       ========================================================================== */
-    .main-content {
-      padding: 2.5rem 1.25rem 4rem;
-    }
-
-    .menu-category-section {
-      margin-bottom: 3.5rem;
-      scroll-margin-top: 150px;
-    }
-
-    .section-header {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: flex-end;
-      justify-content: space-between;
-      gap: 1rem;
-      margin-bottom: 1.5rem;
-      padding-bottom: 1rem;
-      border-bottom: 2px solid var(--border-light);
-    }
-
-    .section-title-wrap {
-      max-width: 820px;
-    }
-
-    .section-title {
-      font-size: clamp(1.4rem, 2.5vw, 1.85rem);
-      font-weight: 800;
-      color: var(--text-primary);
-      letter-spacing: -0.02em;
-      position: relative;
-      display: inline-block;
-      padding-bottom: 0.55rem;
-    }
-
-    .section-title::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: 0;
-      width: 48px;
-      height: 3.5px;
-      background: linear-gradient(90deg, var(--brand-red) 0%, #FF6565 100%);
-      border-radius: var(--radius-pill);
-    }
-
-    .section-desc {
-      margin-top: 0.75rem;
-      font-size: 0.95rem;
-      color: var(--text-secondary);
-      line-height: 1.58;
-    }
-
-    .menu-grid {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 1.25rem;
-    }
-
-    .menu-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border-light);
-      border-radius: var(--radius-md);
-      overflow: hidden;
-      box-shadow: var(--shadow-sm);
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
-    }
-
-    .menu-card:hover {
-      transform: translateY(-3px);
-      box-shadow: var(--shadow-md);
-      border-color: var(--brand-red);
-    }
-
-    .card-image-slot {
-      width: 100%;
-      aspect-ratio: 4 / 3;
-      background: linear-gradient(145deg, #F1F5F9 0%, #E2E8F0 100%);
-      border-bottom: 1px solid var(--border-light);
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-    }
-
-    .card-image-slot img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      position: relative;
-      z-index: 2;
-      background-color: #FFFFFF;
-    }
-
-    .img-placeholder-label {
-      position: absolute;
-      inset: 0;
-      z-index: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 0.35rem;
-      color: var(--text-muted);
-      font-size: 0.72rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      text-align: center;
-      padding: 0.5rem;
-      user-select: none;
-    }
-
-    .card-body {
-      padding: 0.95rem 1rem 1rem;
-      display: flex;
-      flex-direction: column;
-      flex: 1;
-      justify-content: space-between;
-      gap: 0.9rem;
-    }
-
-    .item-name-text {
-      font-size: 1.06rem;
-      font-weight: 700;
-      color: var(--text-primary);
-      line-height: 1.35;
-      margin: 0;
-    }
-
-    .card-bottom-bar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 0.5rem;
-      padding-top: 0.65rem;
-      border-top: 1px dashed var(--border-light);
-      margin-top: auto;
-    }
-
-    .item-cal-text {
-      font-size: 0.74rem;
-      font-weight: 700;
-      color: var(--text-muted);
-      text-transform: uppercase;
-      letter-spacing: 0.03em;
-      line-height: 1.2;
-    }
-
-    .item-price-badge {
-      background-color: var(--brand-red);
-      color: #FFFFFF;
-      font-size: 0.98rem;
-      font-weight: 800;
-      padding: 0.36rem 0.78rem;
-      border-radius: var(--radius-sm);
-      line-height: 1.1;
-      white-space: nowrap;
-      box-shadow: 0 3px 8px rgba(216, 31, 42, 0.24);
-      margin-left: auto;
-    }
-
-    /* ==========================================================================
-       6. INFO SECTIONS & TABLES
-       ========================================================================== */
-    .info-grid-section {
-      display: grid;
-      grid-template-columns: 1.6fr 1fr;
-      gap: 1.75rem;
-      margin: 3.5rem 0;
-    }
-
-    .content-box {
-      background: #FFFFFF;
-      border: 1px solid var(--border-light);
-      border-radius: var(--radius-md);
-      padding: 1.75rem;
-      box-shadow: var(--shadow-sm);
-    }
-
-    .content-box h2 {
-      font-size: 1.35rem;
-      font-weight: 800;
-      margin-bottom: 0.4rem;
-      color: var(--text-primary);
-    }
-
-    .content-box p {
-      font-size: 0.9rem;
-      color: var(--text-secondary);
-      margin-bottom: 1.25rem;
-    }
-
-    .table-responsive {
-      overflow-x: auto;
-    }
-
-    .seo-price-table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 0.88rem;
-      text-align: left;
-    }
-
-    .seo-price-table th {
-      background: var(--footer-bg);
-      color: #FFFFFF;
-      font-weight: 800;
-      padding: 0.75rem 0.9rem;
-      border-bottom: 2px solid var(--footer-bg);
-      white-space: nowrap;
-    }
-
-    .seo-price-table td {
-      padding: 0.75rem 0.9rem;
-      border-bottom: 1px solid var(--border-light);
-      color: var(--text-secondary);
-      font-weight: 500;
-    }
-
-    .seo-price-table td strong {
-      color: var(--text-primary);
-      font-weight: 700;
-    }
-
-    .seo-price-table .price-highlight {
-      color: var(--brand-red);
-      font-weight: 800;
-    }
-
-    .hours-list {
-      display: flex;
-      flex-direction: column;
-      gap: 0.65rem;
-    }
-
-    .hours-item {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 0.68rem 0.9rem;
-      background: var(--bg-page);
-      border-radius: var(--radius-sm);
-      border: 1px solid var(--border-light);
-      font-size: 0.88rem;
-    }
-
-    .hours-day {
-      font-weight: 700;
-      color: var(--text-primary);
-    }
-
-    .hours-time {
-      font-weight: 800;
-      color: var(--brand-red);
-    }
-
-    .hours-item.highlight-switch {
-      background: var(--brand-red);
-      border-color: var(--brand-red);
-    }
-
-    .hours-item.highlight-switch .hours-day,
-    .hours-item.highlight-switch .hours-time {
-      color: #FFFFFF;
-    }
-
-    /* ==========================================================================
-       7. FAQ SECTION
-       ========================================================================== */
-    .faq-section {
-      margin: 3.5rem 0 1rem;
-    }
-
-    .faq-list {
-      display: flex;
-      flex-direction: column;
-      gap: 0.85rem;
-      max-width: 920px;
-    }
-
-    .faq-item {
-      background: #FFFFFF;
-      border: 1px solid var(--border-light);
-      border-radius: var(--radius-md);
-      overflow: hidden;
-      box-shadow: var(--shadow-sm);
-    }
-
-    .faq-item summary {
-      padding: 1.15rem 1.35rem;
-      font-weight: 700;
-      font-size: 1rem;
-      color: var(--text-primary);
-      cursor: pointer;
-      list-style: none;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-    }
-
-    .faq-item summary::-webkit-details-marker {
-      display: none;
-    }
-
-    .faq-toggle-icon {
-      width: 26px;
-      height: 26px;
-      border-radius: 50%;
-      background: var(--bg-subtle);
-      color: var(--brand-red);
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 800;
-      flex-shrink: 0;
-      transition: transform 0.2s ease, background-color 0.2s ease;
-    }
-
-    .faq-item[open] .faq-toggle-icon {
-      transform: rotate(45deg);
-      background: var(--brand-red);
-      color: #FFFFFF;
-    }
-
-    .faq-answer {
-      padding: 0.95rem 1.35rem 1.25rem;
-      font-size: 0.93rem;
-      color: var(--text-secondary);
-      line-height: 1.65;
-      border-top: 1px solid var(--border-light);
-    }
-
-    /* ==========================================================================
-       8. FOOTER
-       ========================================================================== */
-    .site-footer {
-      background: var(--footer-bg);
-      color: #FFFFFF;
-      padding: 4rem 0 2.5rem;
-      border-top: 4px solid var(--brand-red);
-    }
-
-    .footer-grid {
-      display: grid;
-      grid-template-columns: 1.6fr 1.1fr 1fr 1fr 0.95fr;
-      gap: 2.5rem;
-      margin-bottom: 2.75rem;
-    }
-
-    .footer-brand-desc {
-      margin-top: 1rem;
-      font-size: 0.9rem;
-      color: rgba(255, 255, 255, 0.82);
-      line-height: 1.65;
-    }
-
-    .footer-col-title {
-      font-size: 0.92rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: #FFFFFF;
-      margin-bottom: 1.1rem;
-    }
-
-    .footer-links {
-      display: flex;
-      flex-direction: column;
-      gap: 0.6rem;
-    }
-
-    .footer-links a {
-      font-size: 0.88rem;
-      color: rgba(255, 255, 255, 0.8);
-    }
-
-    .footer-links a:hover {
-      color: #FFFFFF;
-      padding-left: 4px;
-    }
-
-    .footer-disclaimer-box {
-      background: rgba(255, 255, 255, 0.06);
-      border: 1px solid rgba(255, 255, 255, 0.14);
-      border-radius: var(--radius-md);
-      padding: 1.25rem 1.5rem;
-      margin-bottom: 2rem;
-      font-size: 0.82rem;
-      color: rgba(255, 255, 255, 0.85);
-      line-height: 1.6;
-    }
-
-    .footer-disclaimer-box strong {
-      color: #FFFFFF;
-    }
-
-    .footer-disclaimer-box a {
-      color: #FFFFFF;
-      font-weight: 700;
-      text-decoration: underline;
-      text-underline-offset: 3px;
-      transition: color 0.2s ease;
-    }
-
-    .footer-disclaimer-box a:hover {
-      color: #FF858D;
-    }
-
-    .footer-bottom {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding-top: 1.5rem;
-      border-top: 1px solid rgba(255, 255, 255, 0.14);
-      font-size: 0.83rem;
-      color: rgba(255, 255, 255, 0.75);
-    }
-
-    /* ==========================================================================
-       9. FLOATING SCROLL-TO-TOP BUTTON
-       ========================================================================== */
-    .scroll-to-top-btn {
-      position: fixed;
-      bottom: 2rem;
-      right: 2rem;
-      z-index: 1050;
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
-      background-color: var(--brand-red);
-      color: #FFFFFF;
-      border: 2px solid #FFFFFF;
-      box-shadow: 0 6px 20px rgba(216, 31, 42, 0.4);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      opacity: 0;
-      visibility: hidden;
-      transform: translateY(15px);
-      transition: opacity 0.25s ease, visibility 0.25s ease, transform 0.25s ease, background-color 0.2s ease;
-    }
-
-    .scroll-to-top-btn.show {
-      opacity: 1;
-      visibility: visible;
-      transform: translateY(0);
-    }
-
-    .scroll-to-top-btn:hover {
-      background-color: var(--brand-red-dark);
-      transform: translateY(-2px);
-    }
-
-    /* ==========================================================================
-       10. RESPONSIVE BREAKPOINTS
-       ========================================================================== */
-    @media (max-width: 1024px) {
-      .main-nav {
-        display: none;
-      }
-      .mobile-menu-btn {
-        display: inline-flex;
-      }
-      .menu-grid {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 1.1rem;
-      }
-      .info-grid-section {
-        grid-template-columns: 1fr;
-      }
-      .footer-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-
-    @media (max-width: 640px) {
-      :root {
-        --header-height: 68px;
-      }
-      .brand-title-main {
-        font-size: 1.22rem;
-      }
-      .brand-title-sub {
-        font-size: 0.62rem;
-      }
-      .hero-section {
-        padding: 2.5rem 0 2.25rem;
-      }
-      .hero-stats-bar {
-        padding: 0.85rem 0.4rem;
-      }
-      .stat-number {
-        font-size: 1.25rem;
-      }
-      .menu-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 0.75rem;
-      }
-      .card-body {
-        padding: 0.75rem 0.75rem 0.8rem;
-        gap: 0.65rem;
-      }
-      .item-name-text {
-        font-size: 0.92rem;
-      }
-      .item-cal-text {
-        font-size: 0.66rem;
-      }
-      .item-price-badge {
-        font-size: 0.84rem;
-        padding: 0.3rem 0.58rem;
-      }
-      .footer-grid {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-      }
-      .scroll-to-top-btn {
-        bottom: 1.25rem;
-        right: 1.25rem;
-        width: 42px;
-        height: 42px;
-      }
-    }
-
-    @media (max-width: 350px) {
-      .menu-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    /* ==========================================================================
-       10. HEADER LEGAL PAGES DROPDOWN
-       ========================================================================== */
-    .nav-dropdown {
-      position: relative;
-      display: inline-flex;
-      align-items: center;
-    }
-
-    .nav-dropdown-toggle {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.35rem;
-      background: none;
-      border: none;
-      cursor: pointer;
-      font-family: var(--font-sans);
-      line-height: 1.2;
-    }
-
-    .nav-dropdown-toggle svg {
-      transition: transform 0.18s ease;
-      flex-shrink: 0;
-    }
-
-    .nav-dropdown.open .nav-dropdown-toggle svg {
-      transform: rotate(180deg);
-    }
-
-    .nav-dropdown-menu {
-      position: absolute;
-      top: calc(100% + 0.55rem);
-      left: 0;
-      min-width: 236px;
-      background: #FFFFFF;
-      border: 1px solid var(--border-light);
-      border-radius: var(--radius-md);
-      box-shadow: var(--shadow-md);
-      padding: 0.5rem;
-      display: none;
-      z-index: 1200;
-    }
-
-    .nav-dropdown.open .nav-dropdown-menu {
-      display: block;
-    }
-
-    .dropdown-link {
-      display: block;
-      padding: 0.6rem 0.85rem;
-      border-radius: var(--radius-sm);
-      font-size: 0.88rem;
-      font-weight: 700;
-      color: var(--text-secondary);
-      white-space: nowrap;
-      transition: background-color 0.16s ease, color 0.16s ease;
-    }
-
-    .dropdown-link:hover,
-    .dropdown-link:focus-visible {
-      background: var(--brand-red-soft);
-      color: var(--brand-red-dark);
-    }
-
-    @media (hover: hover) and (min-width: 1025px) {
-      .nav-dropdown:hover .nav-dropdown-menu {
-        display: block;
-      }
-      .nav-dropdown:hover .nav-dropdown-toggle svg {
-        transform: rotate(180deg);
-      }
-    }
-
-    .mobile-nav-section-title {
-      margin: 1.15rem 0 0.55rem;
-      font-size: 0.72rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      color: var(--text-muted);
-      text-align: center;
-    }
-  
-
-    /* ==========================================================================
-       11. SITE WIDE PAGE NAVIGATION
-       ========================================================================== */
-    .nav-dropdown-menu-right {
-      left: auto;
-      right: 0;
-    }
-
-    .mobile-nav-grid.cols-2 {
-      grid-template-columns: repeat(2, 1fr);
-    }
-
-    @media (max-width: 640px) {
-      .mobile-nav-grid.cols-2 {
-        grid-template-columns: 1fr;
-      }
-    }
-    body.nav-open {
-      overflow: hidden;
-    }
-
-    @media (min-width: 1025px) {
-      .mobile-nav-drawer.open {
-        display: none;
-      }
-    }
-
-    /* ==========================================================================
-       12. FLOATING SCROLL-TO-TOP SPACING
-       ========================================================================== */
-    .scroll-to-top-btn {
-      bottom: 2.5rem;
-      right: 2.5rem;
-      box-shadow: 0 0 0 5px rgba(255, 255, 255, 0.95), 0 6px 20px rgba(216, 31, 42, 0.4);
-    }
-
-    @media (max-width: 1024px) {
-      .scroll-to-top-btn {
-        bottom: 1.75rem;
-        right: 1.75rem;
-        width: 46px;
-        height: 46px;
-      }
-    }
-
-    @media (max-width: 640px) {
-      .scroll-to-top-btn {
-        bottom: 1.75rem;
-        right: 1.75rem;
-        width: 46px;
-        height: 46px;
-      }
-    }
-
-    body.nav-open .scroll-to-top-btn {
-      opacity: 0;
-      visibility: hidden;
-      pointer-events: none;
-    }
-
-    /* Keep wide tables inside their grid cell instead of stretching the page */
-    .info-grid-section > *,
-    .content-box {
-      min-width: 0;
-    }
-
-    .table-responsive {
-      max-width: 100%;
-    }
-</style>
+  <style>@font-face{font-family:'Plus Jakarta Sans';font-style:normal;font-weight:200 800;font-display:swap;src:url('/fonts/plus-jakarta-sans-latin-wght-normal.woff2') format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}@font-face{font-family:'Plus Jakarta Sans';font-style:normal;font-weight:200 800;font-display:swap;src:url('/fonts/plus-jakarta-sans-latin-ext-wght-normal.woff2') format('woff2');unicode-range:U+0100-02AF,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1E00-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}:root{--bg-page:#F8FAFC;--bg-card:#FFFFFF;--bg-subtle:#F1F5F9;--brand-red:#D81F2A;--brand-red-dark:#B51620;--brand-red-deeper:#8F1018;--brand-red-soft:#FEE2E2;--brand-red-tint:#FFF5F5;--footer-bg:#203140;--footer-bg-dark:#182531;--brand-emerald:#15803D;--brand-emerald-bg:#DCFCE7;--text-primary:#0F172A;--text-secondary:#475569;--text-muted:#64748B;--text-on-dark:#FFFFFF;--border-light:#E2E8F0;--border-hover:#D81F2A;--shadow-sm:0 2px 6px rgba(15, 23, 42, 0.04);--shadow-md:0 10px 26px -4px rgba(15, 23, 42, 0.08);--radius-sm:8px;--radius-md:14px;--radius-pill:9999px;--container-max:1240px;--header-height:76px;--font-sans:'Plus Jakarta Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif}*,::after,::before{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth;scroll-padding-top:155px;-webkit-text-size-adjust:100%}body{font-family:var(--font-sans);background-color:var(--bg-page);color:var(--text-primary);line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}a{color:inherit;text-decoration:none;transition:color .2s ease,background-color .2s ease,transform .2s ease}.content-box a{color:var(--brand-red);font-weight:700;text-decoration:underline;text-underline-offset:3px}.content-box a:hover{color:var(--brand-red-dark)}ul{list-style:none}.container{width:100%;max-width:var(--container-max);margin:0 auto;padding:0 1.25rem}.site-header{position:sticky;top:0;z-index:1000;height:var(--header-height);background:rgba(255,255,255,.97);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border-light);box-shadow:0 2px 12px rgba(15,23,42,.04)}.header-inner{display:flex;align-items:center;justify-content:space-between;height:100%;gap:1rem}.brand-logo{display:inline-flex;align-items:center;gap:.75rem;text-decoration:none;flex-shrink:0}.brand-emblem{width:44px;height:44px;border-radius:11px;background:var(--brand-red);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:1.12rem;letter-spacing:-.5px;box-shadow:0 4px 12px rgba(216,31,42,.28)}.brand-text-stack{display:flex;flex-direction:column;justify-content:center;line-height:1}.brand-title-main{font-size:1.45rem;font-weight:800;color:var(--brand-red);letter-spacing:-.03em}.brand-title-sub{margin-top:4px;font-size:.68rem;font-weight:800;text-transform:uppercase;letter-spacing:.22em;color:var(--footer-bg)}.main-nav{display:flex;align-items:center;gap:.5rem}.nav-link{padding:.52rem 1rem;border-radius:var(--radius-sm);font-size:.9rem;font-weight:700;color:var(--text-secondary);white-space:nowrap}.nav-link:focus-visible,.nav-link:hover{color:#fff;background-color:var(--brand-red)}.mobile-menu-btn{display:none;background:var(--brand-red);border:1px solid var(--brand-red);border-radius:var(--radius-sm);width:42px;height:42px;align-items:center;justify-content:center;cursor:pointer;color:#fff}.mobile-nav-drawer{display:none;position:absolute;top:100%;left:0;right:0;z-index:999;max-height:calc(100vh - var(--header-height));max-height:calc(100dvh - var(--header-height));overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;background:#fff;border-bottom:2px solid var(--border-light);padding:.9rem 1.25rem 1.5rem;box-shadow:var(--shadow-md)}.mobile-nav-drawer.open{display:block}.mobile-nav-grid{display:grid;grid-template-columns:1fr;gap:.5rem}.mobile-nav-link{padding:.72rem .95rem;background:var(--bg-page);border-radius:var(--radius-sm);font-size:.88rem;font-weight:700;color:var(--text-primary);border:1px solid var(--border-light);text-align:center}.mobile-nav-link:hover{background:var(--brand-red);color:#fff;border-color:var(--brand-red)}.mobile-nav-single{display:block;text-align:left;margin-bottom:.6rem}.mobile-nav-group{margin-bottom:.6rem}.mobile-nav-toggle{width:100%;display:flex;align-items:center;justify-content:space-between;gap:.75rem;padding:.85rem 1rem;background:var(--bg-page);border:1px solid var(--border-light);border-radius:var(--radius-sm);font-family:var(--font-sans);font-size:.9rem;font-weight:800;color:var(--text-primary);cursor:pointer;text-align:left}.mobile-nav-toggle svg{transition:transform .18s ease;flex-shrink:0}.mobile-nav-group.open .mobile-nav-toggle{background:var(--brand-red);border-color:var(--brand-red);color:#fff}.mobile-nav-group.open .mobile-nav-toggle svg{transform:rotate(180deg)}.mobile-nav-panel{display:none;padding:.35rem 0 .15rem}.mobile-nav-group.open .mobile-nav-panel{display:block}.mobile-nav-panel .mobile-nav-link{display:block;text-align:left;background:#fff;border:1px solid transparent;border-bottom:1px solid var(--border-light);border-radius:0;padding:.7rem .95rem;font-weight:600}.mobile-nav-panel .mobile-nav-link:last-child{border-bottom:none}.mobile-nav-panel .mobile-nav-link:hover{background:var(--brand-red);color:#fff;border-color:var(--brand-red);border-radius:var(--radius-sm)}.hero-section{position:relative;background:linear-gradient(135deg,#e32430 0,var(--brand-red) 52%,var(--brand-red-dark) 100%);color:#fff;padding:3.6rem 0 3.1rem;text-align:center;overflow:hidden;border-bottom:4px solid var(--footer-bg)}.hero-section::before{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.12) 1px,transparent 1px);background-size:24px 24px;pointer-events:none}.hero-content{position:relative;z-index:2;max-width:860px;margin:0 auto}.update-pill{display:inline-flex;align-items:center;gap:.55rem;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.42);color:#fff;padding:.42rem 1.05rem;border-radius:var(--radius-pill);font-size:.8rem;font-weight:800;letter-spacing:.05em;text-transform:uppercase;margin-bottom:1.25rem}.pulse-dot{width:8px;height:8px;border-radius:50%;background-color:#fff;box-shadow:0 0 0 4px rgba(255,255,255,.28);animation:pulseGlow 2s infinite}@keyframes pulseGlow{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.65;transform:scale(1.18)}}.hero-title{font-size:clamp(2rem, 4.6vw, 3.35rem);font-weight:800;line-height:1.14;letter-spacing:-.025em;color:#fff;margin-bottom:1rem}.hero-subtitle{font-size:clamp(1rem, 1.8vw, 1.14rem);color:rgba(255,255,255,.94);max-width:700px;margin:0 auto 1.8rem;font-weight:500;line-height:1.62}.hero-cta-group{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:.85rem;margin-bottom:2.25rem}.btn-hero-primary{background:var(--footer-bg);color:#fff;font-weight:800;font-size:.95rem;padding:.88rem 1.7rem;border-radius:var(--radius-pill);border:2px solid #fff;box-shadow:0 8px 20px rgba(15,23,42,.25);display:inline-flex;align-items:center;gap:.5rem}.btn-hero-primary:hover{transform:translateY(-2px);background:var(--footer-bg-dark)}.hero-stats-bar{display:grid;grid-template-columns:repeat(3,1fr);max-width:580px;margin:0 auto 1.6rem;background:rgba(15,23,42,.24);border:1px solid rgba(255,255,255,.28);border-radius:var(--radius-md);padding:1rem .75rem;backdrop-filter:blur(8px)}.stat-box{display:flex;flex-direction:column;align-items:center;border-right:1px solid rgba(255,255,255,.22)}.stat-box:last-child{border-right:none}.stat-number{font-size:1.52rem;font-weight:800;color:#fff;line-height:1.15}.stat-label{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:rgba(255,255,255,.9);margin-top:3px}.hero-trust-strip{display:flex;flex-wrap:wrap;justify-content:center;gap:.65rem 1.6rem;font-size:.86rem;font-weight:600;color:#fff}.trust-item{display:inline-flex;align-items:center;gap:.45rem}.trust-dot{width:6px;height:6px;border-radius:50%;background:#fff;display:inline-block}.trust-item strong{color:#fff;text-decoration:underline;text-underline-offset:3px}.filter-control-bar{position:sticky;top:var(--header-height);z-index:900;background:rgba(255,255,255,.97);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--border-light);padding:.95rem 0 .8rem;box-shadow:0 4px 16px rgba(15,23,42,.05)}.filter-inner{display:flex;flex-direction:column;gap:.75rem}.category-slider-shell{display:flex;flex-direction:column;gap:.45rem}.category-slider-row{display:flex;align-items:center;gap:.5rem}.slider-arrow-btn{width:34px;height:34px;border-radius:50%;background:var(--brand-red);color:#fff;border:none;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;box-shadow:0 2px 8px rgba(216,31,42,.25);transition:background-color .18s ease,transform .18s ease}.slider-arrow-btn:hover{background:var(--brand-red-dark);transform:scale(1.05)}.category-pills-scroll{display:flex;align-items:center;gap:.55rem;overflow-x:auto;scroll-behavior:smooth;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;padding:2px 2px 4px;scrollbar-width:none;flex:1}.category-pills-scroll::-webkit-scrollbar{display:none}.cat-pill{scroll-snap-align:start;display:inline-flex;align-items:center;justify-content:center;padding:.52rem 1.08rem;border-radius:var(--radius-pill);background:var(--bg-subtle);border:1px solid var(--border-light);font-family:var(--font-sans);font-size:.84rem;font-weight:700;color:var(--text-primary);white-space:nowrap;cursor:pointer;transition:all .18s ease}.cat-pill.active,.cat-pill:hover{background:var(--brand-red);color:#fff;border-color:var(--brand-red);box-shadow:0 4px 12px rgba(216,31,42,.28)}.main-content{padding:2.5rem 1.25rem 4rem}.menu-category-section{margin-bottom:3.5rem;scroll-margin-top:150px}.section-header{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:1rem;margin-bottom:1.5rem;padding-bottom:1rem;border-bottom:2px solid var(--border-light)}.section-title-wrap{max-width:820px}.section-title{font-size:clamp(1.4rem, 2.5vw, 1.85rem);font-weight:800;color:var(--text-primary);letter-spacing:-.02em;position:relative;display:inline-block;padding-bottom:.55rem}.section-title::after{content:"";position:absolute;left:0;bottom:0;width:48px;height:3.5px;background:linear-gradient(90deg,var(--brand-red) 0,#ff6565 100%);border-radius:var(--radius-pill)}.section-desc{margin-top:.75rem;font-size:.95rem;color:var(--text-secondary);line-height:1.58}.menu-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1.25rem}.menu-card{background:var(--bg-card);border:1px solid var(--border-light);border-radius:var(--radius-md);overflow:hidden;box-shadow:var(--shadow-sm);display:flex;flex-direction:column;justify-content:space-between;transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease}.menu-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-md);border-color:var(--brand-red)}.card-image-slot{width:100%;aspect-ratio:4/3;background:linear-gradient(145deg,#f1f5f9 0,#e2e8f0 100%);border-bottom:1px solid var(--border-light);position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden}.card-image-slot img{width:100%;height:100%;object-fit:cover;display:block;position:relative;z-index:2;background-color:#fff}.img-placeholder-label{position:absolute;inset:0;z-index:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.35rem;color:var(--text-muted);font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;text-align:center;padding:.5rem;user-select:none}.card-body{padding:.95rem 1rem 1rem;display:flex;flex-direction:column;flex:1;justify-content:space-between;gap:.9rem}.item-name-text{font-size:1.06rem;font-weight:700;color:var(--text-primary);line-height:1.35;margin:0}.card-bottom-bar{display:flex;align-items:center;justify-content:space-between;gap:.5rem;padding-top:.65rem;border-top:1px dashed var(--border-light);margin-top:auto}.item-cal-text{font-size:.74rem;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:.03em;line-height:1.2}.item-price-badge{background-color:var(--brand-red);color:#fff;font-size:.98rem;font-weight:800;padding:.36rem .78rem;border-radius:var(--radius-sm);line-height:1.1;white-space:nowrap;box-shadow:0 3px 8px rgba(216,31,42,.24);margin-left:auto}.info-grid-section{display:grid;grid-template-columns:1.6fr 1fr;gap:1.75rem;margin:3.5rem 0}.content-box{background:#fff;border:1px solid var(--border-light);border-radius:var(--radius-md);padding:1.75rem;box-shadow:var(--shadow-sm)}.content-box h2{font-size:1.35rem;font-weight:800;margin-bottom:.4rem;color:var(--text-primary)}.content-box p{font-size:.9rem;color:var(--text-secondary);margin-bottom:1.25rem}.table-responsive{overflow-x:auto}.seo-price-table{width:100%;border-collapse:collapse;font-size:.88rem;text-align:left}.seo-price-table th{background:var(--footer-bg);color:#fff;font-weight:800;padding:.75rem .9rem;border-bottom:2px solid var(--footer-bg);white-space:nowrap}.seo-price-table td{padding:.75rem .9rem;border-bottom:1px solid var(--border-light);color:var(--text-secondary);font-weight:500}.seo-price-table td strong{color:var(--text-primary);font-weight:700}.seo-price-table .price-highlight{color:var(--brand-red);font-weight:800}.hours-list{display:flex;flex-direction:column;gap:.65rem}.hours-item{display:flex;justify-content:space-between;align-items:center;padding:.68rem .9rem;background:var(--bg-page);border-radius:var(--radius-sm);border:1px solid var(--border-light);font-size:.88rem}.hours-day{font-weight:700;color:var(--text-primary)}.hours-time{font-weight:800;color:var(--brand-red)}.hours-item.highlight-switch{background:var(--brand-red);border-color:var(--brand-red)}.hours-item.highlight-switch .hours-day,.hours-item.highlight-switch .hours-time{color:#fff}.faq-section{margin:3.5rem 0 1rem}.faq-list{display:flex;flex-direction:column;gap:.85rem;max-width:920px}.faq-item{background:#fff;border:1px solid var(--border-light);border-radius:var(--radius-md);overflow:hidden;box-shadow:var(--shadow-sm)}.faq-item summary{padding:1.15rem 1.35rem;font-weight:700;font-size:1rem;color:var(--text-primary);cursor:pointer;list-style:none;display:flex;align-items:center;justify-content:space-between;gap:1rem}.faq-item summary::-webkit-details-marker{display:none}.faq-toggle-icon{width:26px;height:26px;border-radius:50%;background:var(--bg-subtle);color:var(--brand-red);display:inline-flex;align-items:center;justify-content:center;font-weight:800;flex-shrink:0;transition:transform .2s ease,background-color .2s ease}.faq-item[open] .faq-toggle-icon{transform:rotate(45deg);background:var(--brand-red);color:#fff}.faq-answer{padding:.95rem 1.35rem 1.25rem;font-size:.93rem;color:var(--text-secondary);line-height:1.65;border-top:1px solid var(--border-light)}.site-footer{background:var(--footer-bg);color:#fff;padding:4rem 0 2.5rem;border-top:4px solid var(--brand-red)}.footer-grid{display:grid;grid-template-columns:1.6fr 1.1fr 1fr 1fr 0.95fr;gap:2.5rem;margin-bottom:2.75rem}.footer-brand-desc{margin-top:1rem;font-size:.9rem;color:rgba(255,255,255,.82);line-height:1.65}.footer-col-title{font-size:.92rem;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:#fff;margin-bottom:1.1rem}.footer-links{display:flex;flex-direction:column;gap:.6rem}.footer-links a{font-size:.88rem;color:rgba(255,255,255,.8)}.footer-links a:hover{color:#fff;padding-left:4px}.footer-disclaimer-box{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:var(--radius-md);padding:1.25rem 1.5rem;margin-bottom:2rem;font-size:.82rem;color:rgba(255,255,255,.85);line-height:1.6}.footer-disclaimer-box strong{color:#fff}.footer-disclaimer-box a{color:#fff;font-weight:700;text-decoration:underline;text-underline-offset:3px;transition:color .2s ease}.footer-disclaimer-box a:hover{color:#ff858d}.footer-bottom{display:flex;align-items:center;justify-content:center;text-align:center;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,.14);font-size:.83rem;color:rgba(255,255,255,.75)}.scroll-to-top-btn{position:fixed;bottom:2rem;right:2rem;z-index:1050;width:48px;height:48px;border-radius:50%;background-color:var(--brand-red);color:#fff;border:2px solid #fff;box-shadow:0 6px 20px rgba(216,31,42,.4);display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:0;visibility:hidden;transform:translateY(15px);transition:opacity .25s ease,visibility .25s ease,transform .25s ease,background-color .2s ease}.scroll-to-top-btn.show{opacity:1;visibility:visible;transform:translateY(0)}.scroll-to-top-btn:hover{background-color:var(--brand-red-dark);transform:translateY(-2px)}@media (max-width:1024px){.main-nav{display:none}.mobile-menu-btn{display:inline-flex}.menu-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:1.1rem}.info-grid-section{grid-template-columns:1fr}.footer-grid{grid-template-columns:repeat(2,1fr)}}@media (max-width:640px){:root{--header-height:68px}.brand-title-main{font-size:1.22rem}.brand-title-sub{font-size:.62rem}.hero-section{padding:2.5rem 0 2.25rem}.hero-stats-bar{padding:.85rem .4rem}.stat-number{font-size:1.25rem}.menu-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:.75rem}.card-body{padding:.75rem .75rem .8rem;gap:.65rem}.item-name-text{font-size:.92rem}.item-cal-text{font-size:.66rem}.item-price-badge{font-size:.84rem;padding:.3rem .58rem}.footer-grid{grid-template-columns:1fr;gap:2rem}.scroll-to-top-btn{bottom:1.25rem;right:1.25rem;width:42px;height:42px}}@media (max-width:350px){.menu-grid{grid-template-columns:1fr}}.nav-dropdown{position:relative;display:inline-flex;align-items:center}.nav-dropdown-toggle{display:inline-flex;align-items:center;gap:.35rem;background:0 0;border:none;cursor:pointer;font-family:var(--font-sans);line-height:1.2}.nav-dropdown-toggle svg{transition:transform .18s ease;flex-shrink:0}.nav-dropdown.open .nav-dropdown-toggle svg{transform:rotate(180deg)}.nav-dropdown-menu{position:absolute;top:calc(100% + .55rem);left:0;min-width:236px;background:#fff;border:1px solid var(--border-light);border-radius:var(--radius-md);box-shadow:var(--shadow-md);padding:.5rem;display:none;z-index:1200}.nav-dropdown.open .nav-dropdown-menu{display:block}.dropdown-link{display:block;padding:.6rem .85rem;border-radius:var(--radius-sm);font-size:.88rem;font-weight:700;color:var(--text-secondary);white-space:nowrap;transition:background-color .16s ease,color .16s ease}.dropdown-link:focus-visible,.dropdown-link:hover{background:var(--brand-red-soft);color:var(--brand-red-dark)}@media (hover:hover) and (min-width:1025px){.nav-dropdown:hover .nav-dropdown-menu{display:block}.nav-dropdown:hover .nav-dropdown-toggle svg{transform:rotate(180deg)}}.mobile-nav-section-title{margin:1.15rem 0 .55rem;font-size:.72rem;font-weight:800;text-transform:uppercase;letter-spacing:.16em;color:var(--text-muted);text-align:center}.nav-dropdown-menu-right{left:auto;right:0}.mobile-nav-grid.cols-2{grid-template-columns:repeat(2,1fr)}@media (max-width:640px){.mobile-nav-grid.cols-2{grid-template-columns:1fr}}body.nav-open{overflow:hidden}@media (min-width:1025px){.mobile-nav-drawer.open{display:none}}.scroll-to-top-btn{bottom:2.5rem;right:2.5rem;box-shadow:0 0 0 5px rgba(255,255,255,.95),0 6px 20px rgba(216,31,42,.4)}@media (max-width:1024px){.scroll-to-top-btn{bottom:1.75rem;right:1.75rem;width:46px;height:46px}}@media (max-width:640px){.scroll-to-top-btn{bottom:1.75rem;right:1.75rem;width:46px;height:46px}}body.nav-open .scroll-to-top-btn{opacity:0;visibility:hidden;pointer-events:none}.content-box,.info-grid-section>*{min-width:0}.table-responsive{max-width:100%}</style>
 </head>
 <body>
 
@@ -1843,7 +564,7 @@
       <div class="menu-grid">
         <article class="menu-card">
           <div class="card-image-slot">
-            <img src="images/Fried-Chicken.webp" alt="Golden Corral Fried Chicken" loading="lazy" decoding="async" onerror="this.style.display='none'">
+            <img width="528" height="352" src="images/Fried-Chicken.webp" srcset="images/Fried-Chicken-264.webp 264w, images/Fried-Chicken-400.webp 400w, images/Fried-Chicken.webp 528w" sizes="(max-width: 640px) 45vw, (max-width: 1024px) 31vw, 285px" alt="Golden Corral Fried Chicken" loading="lazy" decoding="async" onerror="this.style.display='none'">
             <div class="img-placeholder-label">
               <span>Fried-Chicken.webp</span>
             </div>
@@ -1859,7 +580,7 @@
 
         <article class="menu-card">
           <div class="card-image-slot">
-            <img src="images/Pot-Roast.webp" alt="Golden Corral Pot Roast" loading="lazy" decoding="async" onerror="this.style.display='none'">
+            <img width="528" height="352" src="images/Pot-Roast.webp" srcset="images/Pot-Roast-264.webp 264w, images/Pot-Roast-400.webp 400w, images/Pot-Roast.webp 528w" sizes="(max-width: 640px) 45vw, (max-width: 1024px) 31vw, 285px" alt="Golden Corral Pot Roast" loading="lazy" decoding="async" onerror="this.style.display='none'">
             <div class="img-placeholder-label">
               <span>Pot-Roast.webp</span>
             </div>
@@ -1875,7 +596,7 @@
 
         <article class="menu-card">
           <div class="card-image-slot">
-            <img src="images/Bourbon-Street-Chicken.webp" alt="Golden Corral Bourbon Street Chicken" loading="lazy" decoding="async" onerror="this.style.display='none'">
+            <img width="528" height="352" src="images/Bourbon-Street-Chicken.webp" srcset="images/Bourbon-Street-Chicken-264.webp 264w, images/Bourbon-Street-Chicken-400.webp 400w, images/Bourbon-Street-Chicken.webp 528w" sizes="(max-width: 640px) 45vw, (max-width: 1024px) 31vw, 285px" alt="Golden Corral Bourbon Street Chicken" loading="lazy" decoding="async" onerror="this.style.display='none'">
             <div class="img-placeholder-label">
               <span>Bourbon-Street-Chicken.webp</span>
             </div>
@@ -1891,7 +612,7 @@
 
         <article class="menu-card">
           <div class="card-image-slot">
-            <img src="images/Meatloaf.webp" alt="Golden Corral Meatloaf" loading="lazy" decoding="async" onerror="this.style.display='none'">
+            <img width="528" height="352" src="images/Meatloaf.webp" srcset="images/Meatloaf-264.webp 264w, images/Meatloaf-400.webp 400w, images/Meatloaf.webp 528w" sizes="(max-width: 640px) 45vw, (max-width: 1024px) 31vw, 285px" alt="Golden Corral Meatloaf" loading="lazy" decoding="async" onerror="this.style.display='none'">
             <div class="img-placeholder-label">
               <span>Meatloaf.webp</span>
             </div>
@@ -1907,7 +628,7 @@
 
         <article class="menu-card">
           <div class="card-image-slot">
-            <img src="images/5-oz.-Sirloin-Steak.webp" alt="Golden Corral 5 oz. Sirloin Steak" loading="lazy" decoding="async" onerror="this.style.display='none'">
+            <img width="528" height="352" src="images/5-oz.-Sirloin-Steak.webp" srcset="images/5-oz.-Sirloin-Steak-264.webp 264w, images/5-oz.-Sirloin-Steak-400.webp 400w, images/5-oz.-Sirloin-Steak.webp 528w" sizes="(max-width: 640px) 45vw, (max-width: 1024px) 31vw, 285px" alt="Golden Corral 5 oz. Sirloin Steak" loading="lazy" decoding="async" onerror="this.style.display='none'">
             <div class="img-placeholder-label">
               <span>5-oz.-Sirloin-Steak.webp</span>
             </div>
@@ -1923,7 +644,7 @@
 
         <article class="menu-card">
           <div class="card-image-slot">
-            <img src="images/8-oz.-Sirloin-Steak.webp" alt="Golden Corral 8 oz. Sirloin Steak" loading="lazy" decoding="async" onerror="this.style.display='none'">
+            <img width="528" height="352" src="images/8-oz.-Sirloin-Steak.webp" srcset="images/8-oz.-Sirloin-Steak-264.webp 264w, images/8-oz.-Sirloin-Steak-400.webp 400w, images/8-oz.-Sirloin-Steak.webp 528w" sizes="(max-width: 640px) 45vw, (max-width: 1024px) 31vw, 285px" alt="Golden Corral 8 oz. Sirloin Steak" loading="lazy" decoding="async" onerror="this.style.display='none'">
             <div class="img-placeholder-label">
               <span>8-oz.-Sirloin-Steak.webp</span>
             </div>
@@ -1939,7 +660,7 @@
 
         <article class="menu-card">
           <div class="card-image-slot">
-            <img src="images/10-oz.-Sirloin-Steak.webp" alt="Golden Corral 10 oz. Sirloin Steak" loading="lazy" decoding="async" onerror="this.style.display='none'">
+            <img width="528" height="352" src="images/10-oz.-Sirloin-Steak.webp" srcset="images/10-oz.-Sirloin-Steak-264.webp 264w, images/10-oz.-Sirloin-Steak-400.webp 400w, images/10-oz.-Sirloin-Steak.webp 528w" sizes="(max-width: 640px) 45vw, (max-width: 1024px) 31vw, 285px" alt="Golden Corral 10 oz. Sirloin Steak" loading="lazy" decoding="async" onerror="this.style.display='none'">
             <div class="img-placeholder-label">
               <span>10-oz.-Sirloin-Steak.webp</span>
             </div>
@@ -1955,7 +676,7 @@
 
         <article class="menu-card">
           <div class="card-image-slot">
-            <img src="images/12-oz.-Sirloin-Steak.webp" alt="Golden Corral 12 oz. Sirloin Steak" loading="lazy" decoding="async" onerror="this.style.display='none'">
+            <img width="528" height="352" src="images/12-oz.-Sirloin-Steak.webp" srcset="images/12-oz.-Sirloin-Steak-264.webp 264w, images/12-oz.-Sirloin-Steak-400.webp 400w, images/12-oz.-Sirloin-Steak.webp 528w" sizes="(max-width: 640px) 45vw, (max-width: 1024px) 31vw, 285px" alt="Golden Corral 12 oz. Sirloin Steak" loading="lazy" decoding="async" onerror="this.style.display='none'">
             <div class="img-placeholder-label">
               <span>12-oz.-Sirloin-Steak.webp</span>
             </div>
@@ -1971,7 +692,7 @@
 
         <article class="menu-card">
           <div class="card-image-slot">
-            <img src="images/Smoked-Pulled-Pork.webp" alt="Golden Corral Smoked Pulled Pork" loading="lazy" decoding="async" onerror="this.style.display='none'">
+            <img width="528" height="352" src="images/Smoked-Pulled-Pork.webp" srcset="images/Smoked-Pulled-Pork-264.webp 264w, images/Smoked-Pulled-Pork-400.webp 400w, images/Smoked-Pulled-Pork.webp 528w" sizes="(max-width: 640px) 45vw, (max-width: 1024px) 31vw, 285px" alt="Golden Corral Smoked Pulled Pork" loading="lazy" decoding="async" onerror="this.style.display='none'">
             <div class="img-placeholder-label">
               <span>Smoked-Pulled-Pork.webp</span>
             </div>
@@ -1987,7 +708,7 @@
 
         <article class="menu-card">
           <div class="card-image-slot">
-            <img src="images/fried-fish.webp" alt="Golden Corral Fried Fish" loading="lazy" decoding="async" onerror="this.style.display='none'">
+            <img width="528" height="352" src="images/fried-fish.webp" srcset="images/fried-fish-264.webp 264w, images/fried-fish-400.webp 400w, images/fried-fish.webp 528w" sizes="(max-width: 640px) 45vw, (max-width: 1024px) 31vw, 285px" alt="Golden Corral Fried Fish" loading="lazy" decoding="async" onerror="this.style.display='none'">
             <div class="img-placeholder-label">
               <span>fried-fish.webp</span>
             </div>
@@ -2003,7 +724,7 @@
 
         <article class="menu-card">
           <div class="card-image-slot">
-            <img src="images/Baked-Fish.webp" alt="Golden Corral Baked Fish" loading="lazy" decoding="async" onerror="this.style.display='none'">
+            <img width="528" height="352" src="images/Baked-Fish.webp" srcset="images/Baked-Fish-264.webp 264w, images/Baked-Fish-400.webp 400w, images/Baked-Fish.webp 528w" sizes="(max-width: 640px) 45vw, (max-width: 1024px) 31vw, 285px" alt="Golden Corral Baked Fish" loading="lazy" decoding="async" onerror="this.style.display='none'">
             <div class="img-placeholder-label">
               <span>Baked-Fish.webp</span>
             </div>
@@ -2031,7 +752,7 @@
       <div class="menu-grid">
         <article class="menu-card">
           <div class="card-image-slot">
-            <img src="images/Chicken-Tenders.webp" alt="Golden Corral Chicken Tenders" loading="lazy" decoding="async" onerror="this.style.display='none'">
+            <img width="528" height="352" src="images/Chicken-Tenders.webp" srcset="images/Chicken-Tenders-264.webp 264w, images/Chicken-Tenders-400.webp 400w, images/Chicken-Tenders.webp 528w" sizes="(max-width: 640px) 45vw, (max-width: 1024px) 31vw, 285px" alt="Golden Corral Chicken Tenders" loading="lazy" decoding="async" onerror="this.style.display='none'">
             <div class="img-placeholder-label">
               <span>Chicken-Tenders.webp</span>
             </div>
@@ -2047,7 +768,7 @@
 
         <article class="menu-card">
           <div class="card-image-slot">
-            <img src="images/kids-Fried-Chicken-meal.webp" alt="Golden Corral Kids Buffet Special" loading="lazy" decoding="async" onerror="this.style.display='none'">
+            <img width="275" height="183" src="images/kids-Fried-Chicken-meal.webp" alt="Golden Corral Kids Buffet Special" loading="lazy" decoding="async" onerror="this.style.display='none'">
             <div class="img-placeholder-label">
               <span>kids-Fried-Chicken-meal.webp</span>
             </div>
@@ -2075,7 +796,7 @@
       <div class="menu-grid">
         <article class="menu-card">
           <div class="card-image-slot">
-            <img src="images/Bourbon-Street-Chicken-Family-Meal.webp" alt="Golden Corral Bourbon Street Chicken Family Meal" loading="lazy" decoding="async" onerror="this.style.display='none'">
+            <img width="528" height="352" src="images/Bourbon-Street-Chicken-Family-Meal.webp" srcset="images/Bourbon-Street-Chicken-Family-Meal-264.webp 264w, images/Bourbon-Street-Chicken-Family-Meal-400.webp 400w, images/Bourbon-Street-Chicken-Family-Meal.webp 528w" sizes="(max-width: 640px) 45vw, (max-width: 1024px) 31vw, 285px" alt="Golden Corral Bourbon Street Chicken Family Meal" loading="lazy" decoding="async" onerror="this.style.display='none'">
             <div class="img-placeholder-label">
               <span>Bourbon-Street-Chicken-Family-Meal.webp</span>
             </div>
@@ -2091,7 +812,7 @@
 
         <article class="menu-card">
           <div class="card-image-slot">
-            <img src="images/Fried-Chicken-Family-Meal.webp" alt="Golden Corral Fried Chicken Family Meal" loading="lazy" decoding="async" onerror="this.style.display='none'">
+            <img width="528" height="352" src="images/Fried-Chicken-Family-Meal.webp" srcset="images/Fried-Chicken-Family-Meal-264.webp 264w, images/Fried-Chicken-Family-Meal-400.webp 400w, images/Fried-Chicken-Family-Meal.webp 528w" sizes="(max-width: 640px) 45vw, (max-width: 1024px) 31vw, 285px" alt="Golden Corral Fried Chicken Family Meal" loading="lazy" decoding="async" onerror="this.style.display='none'">
             <div class="img-placeholder-label">
               <span>Fried-Chicken-Family-Meal.webp</span>
             </div>
@@ -2107,7 +828,7 @@
 
         <article class="menu-card">
           <div class="card-image-slot">
-            <img src="images/Pot-Roast-Family-Meal.webp" alt="Golden Corral Pot Roast Family Meal" loading="lazy" decoding="async" onerror="this.style.display='none'">
+            <img width="528" height="352" src="images/Pot-Roast-Family-Meal.webp" srcset="images/Pot-Roast-Family-Meal-264.webp 264w, images/Pot-Roast-Family-Meal-400.webp 400w, images/Pot-Roast-Family-Meal.webp 528w" sizes="(max-width: 640px) 45vw, (max-width: 1024px) 31vw, 285px" alt="Golden Corral Pot Roast Family Meal" loading="lazy" decoding="async" onerror="this.style.display='none'">
             <div class="img-placeholder-label">
               <span>Pot-Roast-Family-Meal.webp</span>
             </div>
@@ -2123,7 +844,7 @@
 
         <article class="menu-card">
           <div class="card-image-slot">
-            <img src="images/Meatloaf-Family-Meal.webp" alt="Golden Corral Meatloaf Family Meal" loading="lazy" decoding="async" onerror="this.style.display='none'">
+            <img width="528" height="352" src="images/Meatloaf-Family-Meal.webp" srcset="images/Meatloaf-Family-Meal-264.webp 264w, images/Meatloaf-Family-Meal-400.webp 400w, images/Meatloaf-Family-Meal.webp 528w" sizes="(max-width: 640px) 45vw, (max-width: 1024px) 31vw, 285px" alt="Golden Corral Meatloaf Family Meal" loading="lazy" decoding="async" onerror="this.style.display='none'">
             <div class="img-placeholder-label">
               <span>Meatloaf-Family-Meal.webp</span>
             </div>
@@ -2139,7 +860,7 @@
 
         <article class="menu-card">
           <div class="card-image-slot">
-            <img src="images/5-oz.-Sirloin-Steak-Family-Meal.webp" alt="Golden Corral 5 oz. Sirloin Steak Family Meal" loading="lazy" decoding="async" onerror="this.style.display='none'">
+            <img width="528" height="352" src="images/5-oz.-Sirloin-Steak-Family-Meal.webp" srcset="images/5-oz.-Sirloin-Steak-Family-Meal-264.webp 264w, images/5-oz.-Sirloin-Steak-Family-Meal-400.webp 400w, images/5-oz.-Sirloin-Steak-Family-Meal.webp 528w" sizes="(max-width: 640px) 45vw, (max-width: 1024px) 31vw, 285px" alt="Golden Corral 5 oz. Sirloin Steak Family Meal" loading="lazy" decoding="async" onerror="this.style.display='none'">
             <div class="img-placeholder-label">
               <span>5-oz.-Sirloin-Steak-Family-Meal.webp</span>
             </div>
@@ -2155,7 +876,7 @@
 
         <article class="menu-card">
           <div class="card-image-slot">
-            <img src="images/Smoked-Pulled-Pork-Family-Meal.webp" alt="Golden Corral Smoked Pulled Pork Family Meal" loading="lazy" decoding="async" onerror="this.style.display='none'">
+            <img width="528" height="352" src="images/Smoked-Pulled-Pork-Family-Meal.webp" srcset="images/Smoked-Pulled-Pork-Family-Meal-264.webp 264w, images/Smoked-Pulled-Pork-Family-Meal-400.webp 400w, images/Smoked-Pulled-Pork-Family-Meal.webp 528w" sizes="(max-width: 640px) 45vw, (max-width: 1024px) 31vw, 285px" alt="Golden Corral Smoked Pulled Pork Family Meal" loading="lazy" decoding="async" onerror="this.style.display='none'">
             <div class="img-placeholder-label">
               <span>Smoked-Pulled-Pork-Family-Meal.webp</span>
             </div>
@@ -2171,7 +892,7 @@
 
         <article class="menu-card">
           <div class="card-image-slot">
-            <img src="images/Baked-Fish-Family-Meal.webp" alt="Golden Corral Baked Fish Family Meal" loading="lazy" decoding="async" onerror="this.style.display='none'">
+            <img width="528" height="352" src="images/Baked-Fish-Family-Meal.webp" srcset="images/Baked-Fish-Family-Meal-264.webp 264w, images/Baked-Fish-Family-Meal-400.webp 400w, images/Baked-Fish-Family-Meal.webp 528w" sizes="(max-width: 640px) 45vw, (max-width: 1024px) 31vw, 285px" alt="Golden Corral Baked Fish Family Meal" loading="lazy" decoding="async" onerror="this.style.display='none'">
             <div class="img-placeholder-label">
               <span>Baked-Fish-Family-Meal.webp</span>
             </div>
@@ -2187,7 +908,7 @@
 
         <article class="menu-card">
           <div class="card-image-slot">
-            <img src="images/Fried-Fish-Family-Meal.webp" alt="Golden Corral Fried Fish Family Meal" loading="lazy" decoding="async" onerror="this.style.display='none'">
+            <img width="528" height="352" src="images/Fried-Fish-Family-Meal.webp" srcset="images/Fried-Fish-Family-Meal-264.webp 264w, images/Fried-Fish-Family-Meal-400.webp 400w, images/Fried-Fish-Family-Meal.webp 528w" sizes="(max-width: 640px) 45vw, (max-width: 1024px) 31vw, 285px" alt="Golden Corral Fried Fish Family Meal" loading="lazy" decoding="async" onerror="this.style.display='none'">
             <div class="img-placeholder-label">
               <span>Fried-Fish-Family-Meal.webp</span>
             </div>
@@ -2215,7 +936,7 @@
       <div class="menu-grid">
         <article class="menu-card">
           <div class="card-image-slot">
-            <img src="images/Fried-Chicken-Meal.webp" alt="Golden Corral Fried Chicken Meal" loading="lazy" decoding="async" onerror="this.style.display='none'">
+            <img width="528" height="352" src="images/Fried-Chicken-Meal.webp" srcset="images/Fried-Chicken-Meal-264.webp 264w, images/Fried-Chicken-Meal-400.webp 400w, images/Fried-Chicken-Meal.webp 528w" sizes="(max-width: 640px) 45vw, (max-width: 1024px) 31vw, 285px" alt="Golden Corral Fried Chicken Meal" loading="lazy" decoding="async" onerror="this.style.display='none'">
             <div class="img-placeholder-label">
               <span>Fried-Chicken-Meal.webp</span>
             </div>
@@ -2231,7 +952,7 @@
 
         <article class="menu-card">
           <div class="card-image-slot">
-            <img src="images/Pot-Roast-Meal.webp" alt="Golden Corral Pot Roast Meal" loading="lazy" decoding="async" onerror="this.style.display='none'">
+            <img width="528" height="352" src="images/Pot-Roast-Meal.webp" srcset="images/Pot-Roast-Meal-264.webp 264w, images/Pot-Roast-Meal-400.webp 400w, images/Pot-Roast-Meal.webp 528w" sizes="(max-width: 640px) 45vw, (max-width: 1024px) 31vw, 285px" alt="Golden Corral Pot Roast Meal" loading="lazy" decoding="async" onerror="this.style.display='none'">
             <div class="img-placeholder-label">
               <span>Pot-Roast-Meal.webp</span>
             </div>
@@ -2247,7 +968,7 @@
 
         <article class="menu-card">
           <div class="card-image-slot">
-            <img src="images/Meatloaf-Meal.webp" alt="Golden Corral Meatloaf Meal" loading="lazy" decoding="async" onerror="this.style.display='none'">
+            <img width="528" height="352" src="images/Meatloaf-Meal.webp" srcset="images/Meatloaf-Meal-264.webp 264w, images/Meatloaf-Meal-400.webp 400w, images/Meatloaf-Meal.webp 528w" sizes="(max-width: 640px) 45vw, (max-width: 1024px) 31vw, 285px" alt="Golden Corral Meatloaf Meal" loading="lazy" decoding="async" onerror="this.style.display='none'">
             <div class="img-placeholder-label">
               <span>Meatloaf-Meal.webp</span>
             </div>
@@ -2263,7 +984,7 @@
 
         <article class="menu-card">
           <div class="card-image-slot">
-            <img src="images/Bourbon-Street-Chicken-Meal.webp" alt="Golden Corral Bourbon Street Chicken Meal" loading="lazy" decoding="async" onerror="this.style.display='none'">
+            <img width="528" height="352" src="images/Bourbon-Street-Chicken-Meal.webp" srcset="images/Bourbon-Street-Chicken-Meal-264.webp 264w, images/Bourbon-Street-Chicken-Meal-400.webp 400w, images/Bourbon-Street-Chicken-Meal.webp 528w" sizes="(max-width: 640px) 45vw, (max-width: 1024px) 31vw, 285px" alt="Golden Corral Bourbon Street Chicken Meal" loading="lazy" decoding="async" onerror="this.style.display='none'">
             <div class="img-placeholder-label">
               <span>Bourbon-Street-Chicken-Meal.webp</span>
             </div>
@@ -2279,7 +1000,7 @@
 
         <article class="menu-card">
           <div class="card-image-slot">
-            <img src="images/Smoked-Pulled-Pork-Meal.webp" alt="Golden Corral Smoked Pulled Pork Meal" loading="lazy" decoding="async" onerror="this.style.display='none'">
+            <img width="528" height="352" src="images/Smoked-Pulled-Pork-Meal.webp" srcset="images/Smoked-Pulled-Pork-Meal-264.webp 264w, images/Smoked-Pulled-Pork-Meal-400.webp 400w, images/Smoked-Pulled-Pork-Meal.webp 528w" sizes="(max-width: 640px) 45vw, (max-width: 1024px) 31vw, 285px" alt="Golden Corral Smoked Pulled Pork Meal" loading="lazy" decoding="async" onerror="this.style.display='none'">
             <div class="img-placeholder-label">
               <span>Smoked-Pulled-Pork-Meal.webp</span>
             </div>
@@ -2307,7 +1028,7 @@
       <div class="menu-grid">
         <article class="menu-card">
           <div class="card-image-slot">
-            <img src="images/Cheese-Pizza.webp" alt="Golden Corral Cheese Pizza" loading="lazy" decoding="async" onerror="this.style.display='none'">
+            <img width="528" height="352" src="images/Cheese-Pizza.webp" srcset="images/Cheese-Pizza-264.webp 264w, images/Cheese-Pizza-400.webp 400w, images/Cheese-Pizza.webp 528w" sizes="(max-width: 640px) 45vw, (max-width: 1024px) 31vw, 285px" alt="Golden Corral Cheese Pizza" loading="lazy" decoding="async" onerror="this.style.display='none'">
             <div class="img-placeholder-label">
               <span>Cheese-Pizza.webp</span>
             </div>
@@ -2323,7 +1044,7 @@
 
         <article class="menu-card">
           <div class="card-image-slot">
-            <img src="images/Pepperoni-Pizza.webp" alt="Golden Corral Pepperoni Pizza" loading="lazy" decoding="async" onerror="this.style.display='none'">
+            <img width="528" height="352" src="images/Pepperoni-Pizza.webp" srcset="images/Pepperoni-Pizza-264.webp 264w, images/Pepperoni-Pizza-400.webp 400w, images/Pepperoni-Pizza.webp 528w" sizes="(max-width: 640px) 45vw, (max-width: 1024px) 31vw, 285px" alt="Golden Corral Pepperoni Pizza" loading="lazy" decoding="async" onerror="this.style.display='none'">
             <div class="img-placeholder-label">
               <span>Pepperoni-Pizza.webp</span>
             </div>
@@ -2351,7 +1072,7 @@
       <div class="menu-grid">
         <article class="menu-card">
           <div class="card-image-slot">
-            <img src="images/12-Piece-Family-Box.webp" alt="Golden Corral 12 Piece Family Box" loading="lazy" decoding="async" onerror="this.style.display='none'">
+            <img width="528" height="352" src="images/12-Piece-Family-Box.webp" srcset="images/12-Piece-Family-Box-264.webp 264w, images/12-Piece-Family-Box-400.webp 400w, images/12-Piece-Family-Box.webp 528w" sizes="(max-width: 640px) 45vw, (max-width: 1024px) 31vw, 285px" alt="Golden Corral 12 Piece Family Box" loading="lazy" decoding="async" onerror="this.style.display='none'">
             <div class="img-placeholder-label">
               <span>12-Piece-Family-Box.webp</span>
             </div>
@@ -2367,7 +1088,7 @@
 
         <article class="menu-card">
           <div class="card-image-slot">
-            <img src="images/20-Piece-Crowd-Pleaser.webp" alt="Golden Corral 20 Piece Crowd Pleaser" loading="lazy" decoding="async" onerror="this.style.display='none'">
+            <img width="528" height="352" src="images/20-Piece-Crowd-Pleaser.webp" srcset="images/20-Piece-Crowd-Pleaser-264.webp 264w, images/20-Piece-Crowd-Pleaser-400.webp 400w, images/20-Piece-Crowd-Pleaser.webp 528w" sizes="(max-width: 640px) 45vw, (max-width: 1024px) 31vw, 285px" alt="Golden Corral 20 Piece Crowd Pleaser" loading="lazy" decoding="async" onerror="this.style.display='none'">
             <div class="img-placeholder-label">
               <span>20-Piece-Crowd-Pleaser.webp</span>
             </div>
@@ -2383,7 +1104,7 @@
 
         <article class="menu-card">
           <div class="card-image-slot">
-            <img src="images/crispy-fried-chicken.webp" alt="Golden Corral Crispy Fried Chicken" loading="lazy" decoding="async" onerror="this.style.display='none'">
+            <img width="528" height="352" src="images/crispy-fried-chicken.webp" srcset="images/crispy-fried-chicken-264.webp 264w, images/crispy-fried-chicken-400.webp 400w, images/crispy-fried-chicken.webp 528w" sizes="(max-width: 640px) 45vw, (max-width: 1024px) 31vw, 285px" alt="Golden Corral Crispy Fried Chicken" loading="lazy" decoding="async" onerror="this.style.display='none'">
             <div class="img-placeholder-label">
               <span>crispy-fried-chicken.webp</span>
             </div>
@@ -2411,7 +1132,7 @@
       <div class="menu-grid">
         <article class="menu-card">
           <div class="card-image-slot">
-            <img src="images/Baked-Potato-10-oz.webp" alt="Golden Corral Baked Potato 10 oz." loading="lazy" decoding="async" onerror="this.style.display='none'">
+            <img width="528" height="352" src="images/Baked-Potato-10-oz.webp" srcset="images/Baked-Potato-10-oz-264.webp 264w, images/Baked-Potato-10-oz-400.webp 400w, images/Baked-Potato-10-oz.webp 528w" sizes="(max-width: 640px) 45vw, (max-width: 1024px) 31vw, 285px" alt="Golden Corral Baked Potato 10 oz." loading="lazy" decoding="async" onerror="this.style.display='none'">
             <div class="img-placeholder-label">
               <span>Baked-Potato-10-oz.webp</span>
             </div>
@@ -2427,7 +1148,7 @@
 
         <article class="menu-card">
           <div class="card-image-slot">
-            <img src="images/Baked-Beans-10-oz.webp" alt="Golden Corral Baked Beans 10 oz." loading="lazy" decoding="async" onerror="this.style.display='none'">
+            <img width="528" height="352" src="images/Baked-Beans-10-oz.webp" srcset="images/Baked-Beans-10-oz-264.webp 264w, images/Baked-Beans-10-oz-400.webp 400w, images/Baked-Beans-10-oz.webp 528w" sizes="(max-width: 640px) 45vw, (max-width: 1024px) 31vw, 285px" alt="Golden Corral Baked Beans 10 oz." loading="lazy" decoding="async" onerror="this.style.display='none'">
             <div class="img-placeholder-label">
               <span>Baked-Beans-10-oz.webp</span>
             </div>
@@ -2443,7 +1164,7 @@
 
         <article class="menu-card">
           <div class="card-image-slot">
-            <img src="images/Buttered-Corn-10-oz.webp" alt="Golden Corral Buttered Corn 10 oz." loading="lazy" decoding="async" onerror="this.style.display='none'">
+            <img width="528" height="352" src="images/Buttered-Corn-10-oz.webp" srcset="images/Buttered-Corn-10-oz-264.webp 264w, images/Buttered-Corn-10-oz-400.webp 400w, images/Buttered-Corn-10-oz.webp 528w" sizes="(max-width: 640px) 45vw, (max-width: 1024px) 31vw, 285px" alt="Golden Corral Buttered Corn 10 oz." loading="lazy" decoding="async" onerror="this.style.display='none'">
             <div class="img-placeholder-label">
               <span>Buttered-Corn-10-oz.webp</span>
             </div>
@@ -2459,7 +1180,7 @@
 
         <article class="menu-card">
           <div class="card-image-slot">
-            <img src="images/Coleslaw-10-oz.webp" alt="Golden Corral Coleslaw 10 oz." loading="lazy" decoding="async" onerror="this.style.display='none'">
+            <img width="528" height="352" src="images/Coleslaw-10-oz.webp" srcset="images/Coleslaw-10-oz-264.webp 264w, images/Coleslaw-10-oz-400.webp 400w, images/Coleslaw-10-oz.webp 528w" sizes="(max-width: 640px) 45vw, (max-width: 1024px) 31vw, 285px" alt="Golden Corral Coleslaw 10 oz." loading="lazy" decoding="async" onerror="this.style.display='none'">
             <div class="img-placeholder-label">
               <span>Coleslaw-10-oz.webp</span>
             </div>
@@ -2475,7 +1196,7 @@
 
         <article class="menu-card">
           <div class="card-image-slot">
-            <img src="images/Green-Beans-10-oz.webp" alt="Golden Corral Green Beans 10 oz." loading="lazy" decoding="async" onerror="this.style.display='none'">
+            <img width="528" height="352" src="images/Green-Beans-10-oz.webp" srcset="images/Green-Beans-10-oz-264.webp 264w, images/Green-Beans-10-oz-400.webp 400w, images/Green-Beans-10-oz.webp 528w" sizes="(max-width: 640px) 45vw, (max-width: 1024px) 31vw, 285px" alt="Golden Corral Green Beans 10 oz." loading="lazy" decoding="async" onerror="this.style.display='none'">
             <div class="img-placeholder-label">
               <span>Green-Beans-10-oz.webp</span>
             </div>
@@ -2491,7 +1212,7 @@
 
         <article class="menu-card">
           <div class="card-image-slot">
-            <img src="images/Macaroni-Cheese-10-oz.webp" alt="Golden Corral Macaroni &amp; Cheese 10 oz." loading="lazy" decoding="async" onerror="this.style.display='none'">
+            <img width="528" height="352" src="images/Macaroni-Cheese-10-oz.webp" srcset="images/Macaroni-Cheese-10-oz-264.webp 264w, images/Macaroni-Cheese-10-oz-400.webp 400w, images/Macaroni-Cheese-10-oz.webp 528w" sizes="(max-width: 640px) 45vw, (max-width: 1024px) 31vw, 285px" alt="Golden Corral Macaroni &amp; Cheese 10 oz." loading="lazy" decoding="async" onerror="this.style.display='none'">
             <div class="img-placeholder-label">
               <span>Macaroni-Cheese-10-oz.webp</span>
             </div>
@@ -2507,7 +1228,7 @@
 
         <article class="menu-card">
           <div class="card-image-slot">
-            <img src="images/Mashed-Potatoes-Gravy-10-oz.webp" alt="Golden Corral Mashed Potatoes &amp; Gravy 10 oz." loading="lazy" decoding="async" onerror="this.style.display='none'">
+            <img width="528" height="352" src="images/Mashed-Potatoes-Gravy-10-oz.webp" srcset="images/Mashed-Potatoes-Gravy-10-oz-264.webp 264w, images/Mashed-Potatoes-Gravy-10-oz-400.webp 400w, images/Mashed-Potatoes-Gravy-10-oz.webp 528w" sizes="(max-width: 640px) 45vw, (max-width: 1024px) 31vw, 285px" alt="Golden Corral Mashed Potatoes &amp; Gravy 10 oz." loading="lazy" decoding="async" onerror="this.style.display='none'">
             <div class="img-placeholder-label">
               <span>Mashed-Potatoes-Gravy-10-oz.webp</span>
             </div>
@@ -2523,7 +1244,7 @@
 
         <article class="menu-card">
           <div class="card-image-slot">
-            <img src="images/Potato-Salad-10-oz.webp" alt="Golden Corral Potato Salad 10 oz." loading="lazy" decoding="async" onerror="this.style.display='none'">
+            <img width="528" height="352" src="images/Potato-Salad-10-oz.webp" srcset="images/Potato-Salad-10-oz-264.webp 264w, images/Potato-Salad-10-oz-400.webp 400w, images/Potato-Salad-10-oz.webp 528w" sizes="(max-width: 640px) 45vw, (max-width: 1024px) 31vw, 285px" alt="Golden Corral Potato Salad 10 oz." loading="lazy" decoding="async" onerror="this.style.display='none'">
             <div class="img-placeholder-label">
               <span>Potato-Salad-10-oz.webp</span>
             </div>
@@ -2539,7 +1260,7 @@
 
         <article class="menu-card">
           <div class="card-image-slot">
-            <img src="images/Seafood-Salad-10-oz.webp" alt="Golden Corral Seafood Salad 10 oz." loading="lazy" decoding="async" onerror="this.style.display='none'">
+            <img width="528" height="352" src="images/Seafood-Salad-10-oz.webp" srcset="images/Seafood-Salad-10-oz-264.webp 264w, images/Seafood-Salad-10-oz-400.webp 400w, images/Seafood-Salad-10-oz.webp 528w" sizes="(max-width: 640px) 45vw, (max-width: 1024px) 31vw, 285px" alt="Golden Corral Seafood Salad 10 oz." loading="lazy" decoding="async" onerror="this.style.display='none'">
             <div class="img-placeholder-label">
               <span>Seafood-Salad-10-oz.webp</span>
             </div>
@@ -2555,7 +1276,7 @@
 
         <article class="menu-card">
           <div class="card-image-slot">
-            <img src="images/Steamed-Broccoli-10-oz.webp" alt="Golden Corral Steamed Broccoli 10 oz." loading="lazy" decoding="async" onerror="this.style.display='none'">
+            <img width="528" height="352" src="images/Steamed-Broccoli-10-oz.webp" srcset="images/Steamed-Broccoli-10-oz-264.webp 264w, images/Steamed-Broccoli-10-oz-400.webp 400w, images/Steamed-Broccoli-10-oz.webp 528w" sizes="(max-width: 640px) 45vw, (max-width: 1024px) 31vw, 285px" alt="Golden Corral Steamed Broccoli 10 oz." loading="lazy" decoding="async" onerror="this.style.display='none'">
             <div class="img-placeholder-label">
               <span>Steamed-Broccoli-10-oz.webp</span>
             </div>
@@ -2571,7 +1292,7 @@
 
         <article class="menu-card">
           <div class="card-image-slot">
-            <img src="images/Steamed-Carrots-10-oz.webp" alt="Golden Corral Steamed Carrots 10 oz." loading="lazy" decoding="async" onerror="this.style.display='none'">
+            <img width="528" height="352" src="images/Steamed-Carrots-10-oz.webp" srcset="images/Steamed-Carrots-10-oz-264.webp 264w, images/Steamed-Carrots-10-oz-400.webp 400w, images/Steamed-Carrots-10-oz.webp 528w" sizes="(max-width: 640px) 45vw, (max-width: 1024px) 31vw, 285px" alt="Golden Corral Steamed Carrots 10 oz." loading="lazy" decoding="async" onerror="this.style.display='none'">
             <div class="img-placeholder-label">
               <span>Steamed-Carrots-10-oz.webp</span>
             </div>
@@ -2587,7 +1308,7 @@
 
         <article class="menu-card">
           <div class="card-image-slot">
-            <img src="images/Stuffing-10-oz.webp" alt="Golden Corral Stuffing 10 oz." loading="lazy" decoding="async" onerror="this.style.display='none'">
+            <img width="275" height="183" src="images/Stuffing-10-oz.webp" alt="Golden Corral Stuffing 10 oz." loading="lazy" decoding="async" onerror="this.style.display='none'">
             <div class="img-placeholder-label">
               <span>Stuffing-10-oz.webp</span>
             </div>
@@ -2603,7 +1324,7 @@
 
         <article class="menu-card">
           <div class="card-image-slot">
-            <img src="images/Sweet-Potato-Casserole-10-oz.webp" alt="Golden Corral Sweet Potato Casserole 10 oz." loading="lazy" decoding="async" onerror="this.style.display='none'">
+            <img width="528" height="352" src="images/Sweet-Potato-Casserole-10-oz.webp" srcset="images/Sweet-Potato-Casserole-10-oz-264.webp 264w, images/Sweet-Potato-Casserole-10-oz-400.webp 400w, images/Sweet-Potato-Casserole-10-oz.webp 528w" sizes="(max-width: 640px) 45vw, (max-width: 1024px) 31vw, 285px" alt="Golden Corral Sweet Potato Casserole 10 oz." loading="lazy" decoding="async" onerror="this.style.display='none'">
             <div class="img-placeholder-label">
               <span>Sweet-Potato-Casserole-10-oz.webp</span>
             </div>
@@ -2619,7 +1340,7 @@
 
         <article class="menu-card">
           <div class="card-image-slot">
-            <img src="images/White-Rice-10-oz.webp" alt="Golden Corral White Rice 10 oz." loading="lazy" decoding="async" onerror="this.style.display='none'">
+            <img width="528" height="352" src="images/White-Rice-10-oz.webp" srcset="images/White-Rice-10-oz-264.webp 264w, images/White-Rice-10-oz-400.webp 400w, images/White-Rice-10-oz.webp 528w" sizes="(max-width: 640px) 45vw, (max-width: 1024px) 31vw, 285px" alt="Golden Corral White Rice 10 oz." loading="lazy" decoding="async" onerror="this.style.display='none'">
             <div class="img-placeholder-label">
               <span>White-Rice-10-oz.webp</span>
             </div>
@@ -2635,7 +1356,7 @@
 
         <article class="menu-card">
           <div class="card-image-slot">
-            <img src="images/Yeast-Rolls-6-pieces.webp" alt="Golden Corral Yeast Rolls 6 pieces" loading="lazy" decoding="async" onerror="this.style.display='none'">
+            <img width="528" height="352" src="images/Yeast-Rolls-6-pieces.webp" srcset="images/Yeast-Rolls-6-pieces-264.webp 264w, images/Yeast-Rolls-6-pieces-400.webp 400w, images/Yeast-Rolls-6-pieces.webp 528w" sizes="(max-width: 640px) 45vw, (max-width: 1024px) 31vw, 285px" alt="Golden Corral Yeast Rolls 6 pieces" loading="lazy" decoding="async" onerror="this.style.display='none'">
             <div class="img-placeholder-label">
               <span>Yeast-Rolls-6-pieces.webp</span>
             </div>
@@ -2663,7 +1384,7 @@
       <div class="menu-grid">
         <article class="menu-card">
           <div class="card-image-slot">
-            <img src="images/Cookie-Cake.webp" alt="Golden Corral Cookie Cake" loading="lazy" decoding="async" onerror="this.style.display='none'">
+            <img width="528" height="352" src="images/Cookie-Cake.webp" srcset="images/Cookie-Cake-264.webp 264w, images/Cookie-Cake-400.webp 400w, images/Cookie-Cake.webp 528w" sizes="(max-width: 640px) 45vw, (max-width: 1024px) 31vw, 285px" alt="Golden Corral Cookie Cake" loading="lazy" decoding="async" onerror="this.style.display='none'">
             <div class="img-placeholder-label">
               <span>Cookie-Cake.webp</span>
             </div>
@@ -2679,7 +1400,7 @@
 
         <article class="menu-card">
           <div class="card-image-slot">
-            <img src="images/Pecan-Pie-Whole-Pie.webp" alt="Golden Corral Pecan Pie Whole Pie" loading="lazy" decoding="async" onerror="this.style.display='none'">
+            <img width="528" height="352" src="images/Pecan-Pie-Whole-Pie.webp" srcset="images/Pecan-Pie-Whole-Pie-264.webp 264w, images/Pecan-Pie-Whole-Pie-400.webp 400w, images/Pecan-Pie-Whole-Pie.webp 528w" sizes="(max-width: 640px) 45vw, (max-width: 1024px) 31vw, 285px" alt="Golden Corral Pecan Pie Whole Pie" loading="lazy" decoding="async" onerror="this.style.display='none'">
             <div class="img-placeholder-label">
               <span>Pecan-Pie-Whole-Pie.webp</span>
             </div>
@@ -2695,7 +1416,7 @@
 
         <article class="menu-card">
           <div class="card-image-slot">
-            <img src="images/Pumpkin-Pie-Whole-Pie.webp" alt="Golden Corral Pumpkin Pie Whole Pie" loading="lazy" decoding="async" onerror="this.style.display='none'">
+            <img width="528" height="352" src="images/Pumpkin-Pie-Whole-Pie.webp" srcset="images/Pumpkin-Pie-Whole-Pie-264.webp 264w, images/Pumpkin-Pie-Whole-Pie-400.webp 400w, images/Pumpkin-Pie-Whole-Pie.webp 528w" sizes="(max-width: 640px) 45vw, (max-width: 1024px) 31vw, 285px" alt="Golden Corral Pumpkin Pie Whole Pie" loading="lazy" decoding="async" onerror="this.style.display='none'">
             <div class="img-placeholder-label">
               <span>Pumpkin-Pie-Whole-Pie.webp</span>
             </div>
@@ -2711,7 +1432,7 @@
 
         <article class="menu-card">
           <div class="card-image-slot">
-            <img src="images/Carrot-Cake.webp" alt="Golden Corral Carrot Cake Whole Cake" loading="lazy" decoding="async" onerror="this.style.display='none'">
+            <img width="528" height="352" src="images/Carrot-Cake.webp" srcset="images/Carrot-Cake-264.webp 264w, images/Carrot-Cake-400.webp 400w, images/Carrot-Cake.webp 528w" sizes="(max-width: 640px) 45vw, (max-width: 1024px) 31vw, 285px" alt="Golden Corral Carrot Cake Whole Cake" loading="lazy" decoding="async" onerror="this.style.display='none'">
             <div class="img-placeholder-label">
               <span>Carrot-Cake.webp</span>
             </div>
@@ -2727,7 +1448,7 @@
 
         <article class="menu-card">
           <div class="card-image-slot">
-            <img src="images/Cheesecake-Slice.webp" alt="Golden Corral Cheesecake Slice" loading="lazy" decoding="async" onerror="this.style.display='none'">
+            <img width="528" height="352" src="images/Cheesecake-Slice.webp" srcset="images/Cheesecake-Slice-264.webp 264w, images/Cheesecake-Slice-400.webp 400w, images/Cheesecake-Slice.webp 528w" sizes="(max-width: 640px) 45vw, (max-width: 1024px) 31vw, 285px" alt="Golden Corral Cheesecake Slice" loading="lazy" decoding="async" onerror="this.style.display='none'">
             <div class="img-placeholder-label">
               <span>Cheesecake-Slice.webp</span>
             </div>
@@ -2743,7 +1464,7 @@
 
         <article class="menu-card">
           <div class="card-image-slot">
-            <img src="images/Chocolate-Cake.webp" alt="Golden Corral Chocolate Cake Whole Cake" loading="lazy" decoding="async" onerror="this.style.display='none'">
+            <img width="528" height="352" src="images/Chocolate-Cake.webp" srcset="images/Chocolate-Cake-264.webp 264w, images/Chocolate-Cake-400.webp 400w, images/Chocolate-Cake.webp 528w" sizes="(max-width: 640px) 45vw, (max-width: 1024px) 31vw, 285px" alt="Golden Corral Chocolate Cake Whole Cake" loading="lazy" decoding="async" onerror="this.style.display='none'">
             <div class="img-placeholder-label">
               <span>Chocolate-Cake.webp</span>
             </div>
@@ -2759,7 +1480,7 @@
 
         <article class="menu-card">
           <div class="card-image-slot">
-            <img src="images/Apple-Pie-Whole-Pie.webp" alt="Golden Corral Apple Pie Whole Pie" loading="lazy" decoding="async" onerror="this.style.display='none'">
+            <img width="528" height="352" src="images/Apple-Pie-Whole-Pie.webp" srcset="images/Apple-Pie-Whole-Pie-264.webp 264w, images/Apple-Pie-Whole-Pie-400.webp 400w, images/Apple-Pie-Whole-Pie.webp 528w" sizes="(max-width: 640px) 45vw, (max-width: 1024px) 31vw, 285px" alt="Golden Corral Apple Pie Whole Pie" loading="lazy" decoding="async" onerror="this.style.display='none'">
             <div class="img-placeholder-label">
               <span>Apple-Pie-Whole-Pie.webp</span>
             </div>
@@ -2775,7 +1496,7 @@
 
         <article class="menu-card">
           <div class="card-image-slot">
-            <img src="images/Blueberry-Pie.webp" alt="Golden Corral Blueberry Pie" loading="lazy" decoding="async" onerror="this.style.display='none'">
+            <img width="528" height="352" src="images/Blueberry-Pie.webp" srcset="images/Blueberry-Pie-264.webp 264w, images/Blueberry-Pie-400.webp 400w, images/Blueberry-Pie.webp 528w" sizes="(max-width: 640px) 45vw, (max-width: 1024px) 31vw, 285px" alt="Golden Corral Blueberry Pie" loading="lazy" decoding="async" onerror="this.style.display='none'">
             <div class="img-placeholder-label">
               <span>Blueberry-Pie.webp</span>
             </div>
@@ -2791,7 +1512,7 @@
 
         <article class="menu-card">
           <div class="card-image-slot">
-            <img src="images/Brownie-Bites.webp" alt="Golden Corral Brownie Bites Full Pan" loading="lazy" decoding="async" onerror="this.style.display='none'">
+            <img width="528" height="352" src="images/Brownie-Bites.webp" srcset="images/Brownie-Bites-264.webp 264w, images/Brownie-Bites-400.webp 400w, images/Brownie-Bites.webp 528w" sizes="(max-width: 640px) 45vw, (max-width: 1024px) 31vw, 285px" alt="Golden Corral Brownie Bites Full Pan" loading="lazy" decoding="async" onerror="this.style.display='none'">
             <div class="img-placeholder-label">
               <span>Brownie-Bites.webp</span>
             </div>
@@ -2807,7 +1528,7 @@
 
         <article class="menu-card">
           <div class="card-image-slot">
-            <img src="images/Banana-Pudding-Family-Size.webp" alt="Golden Corral Banana Pudding Family Size" loading="lazy" decoding="async" onerror="this.style.display='none'">
+            <img width="528" height="352" src="images/Banana-Pudding-Family-Size.webp" srcset="images/Banana-Pudding-Family-Size-264.webp 264w, images/Banana-Pudding-Family-Size-400.webp 400w, images/Banana-Pudding-Family-Size.webp 528w" sizes="(max-width: 640px) 45vw, (max-width: 1024px) 31vw, 285px" alt="Golden Corral Banana Pudding Family Size" loading="lazy" decoding="async" onerror="this.style.display='none'">
             <div class="img-placeholder-label">
               <span>Banana-Pudding-Family-Size.webp</span>
             </div>
@@ -2823,7 +1544,7 @@
 
         <article class="menu-card">
           <div class="card-image-slot">
-            <img src="images/Bread-Pudding-Family-Size.webp" alt="Golden Corral Bread Pudding Family Size" loading="lazy" decoding="async" onerror="this.style.display='none'">
+            <img width="528" height="352" src="images/Bread-Pudding-Family-Size.webp" srcset="images/Bread-Pudding-Family-Size-264.webp 264w, images/Bread-Pudding-Family-Size-400.webp 400w, images/Bread-Pudding-Family-Size.webp 528w" sizes="(max-width: 640px) 45vw, (max-width: 1024px) 31vw, 285px" alt="Golden Corral Bread Pudding Family Size" loading="lazy" decoding="async" onerror="this.style.display='none'">
             <div class="img-placeholder-label">
               <span>Bread-Pudding-Family-Size.webp</span>
             </div>
@@ -2839,7 +1560,7 @@
 
         <article class="menu-card">
           <div class="card-image-slot">
-            <img src="images/Mini-Cookies.webp" alt="Golden Corral Mini Cookies" loading="lazy" decoding="async" onerror="this.style.display='none'">
+            <img width="528" height="352" src="images/Mini-Cookies.webp" srcset="images/Mini-Cookies-264.webp 264w, images/Mini-Cookies-400.webp 400w, images/Mini-Cookies.webp 528w" sizes="(max-width: 640px) 45vw, (max-width: 1024px) 31vw, 285px" alt="Golden Corral Mini Cookies" loading="lazy" decoding="async" onerror="this.style.display='none'">
             <div class="img-placeholder-label">
               <span>Mini-Cookies.webp</span>
             </div>
@@ -2867,7 +1588,7 @@
       <div class="menu-grid">
         <article class="menu-card">
           <div class="card-image-slot">
-            <img src="images/Garden-Salad.webp" alt="Golden Corral Garden Salad (Individual)" loading="lazy" decoding="async" onerror="this.style.display='none'">
+            <img width="528" height="352" src="images/Garden-Salad.webp" srcset="images/Garden-Salad-264.webp 264w, images/Garden-Salad-400.webp 400w, images/Garden-Salad.webp 528w" sizes="(max-width: 640px) 45vw, (max-width: 1024px) 31vw, 285px" alt="Golden Corral Garden Salad (Individual)" loading="lazy" decoding="async" onerror="this.style.display='none'">
             <div class="img-placeholder-label">
               <span>Garden-Salad.webp</span>
             </div>
@@ -2883,7 +1604,7 @@
 
         <article class="menu-card">
           <div class="card-image-slot">
-            <img src="images/Garden-Salad.webp" alt="Golden Corral Garden Salad (Family)" loading="lazy" decoding="async" onerror="this.style.display='none'">
+            <img width="528" height="352" src="images/Garden-Salad.webp" srcset="images/Garden-Salad-264.webp 264w, images/Garden-Salad-400.webp 400w, images/Garden-Salad.webp 528w" sizes="(max-width: 640px) 45vw, (max-width: 1024px) 31vw, 285px" alt="Golden Corral Garden Salad (Family)" loading="lazy" decoding="async" onerror="this.style.display='none'">
             <div class="img-placeholder-label">
               <span>Garden-Salad.webp</span>
             </div>
@@ -2899,7 +1620,7 @@
 
         <article class="menu-card">
           <div class="card-image-slot">
-            <img src="images/Garden-Salad.webp" alt="Golden Corral Garden Salad (Party)" loading="lazy" decoding="async" onerror="this.style.display='none'">
+            <img width="528" height="352" src="images/Garden-Salad.webp" srcset="images/Garden-Salad-264.webp 264w, images/Garden-Salad-400.webp 400w, images/Garden-Salad.webp 528w" sizes="(max-width: 640px) 45vw, (max-width: 1024px) 31vw, 285px" alt="Golden Corral Garden Salad (Party)" loading="lazy" decoding="async" onerror="this.style.display='none'">
             <div class="img-placeholder-label">
               <span>Garden-Salad.webp</span>
             </div>
@@ -2915,7 +1636,7 @@
 
         <article class="menu-card">
           <div class="card-image-slot">
-            <img src="images/Spinach-Salad.webp" alt="Golden Corral Spinach Salad (Individual)" loading="lazy" decoding="async" onerror="this.style.display='none'">
+            <img width="528" height="352" src="images/Spinach-Salad.webp" srcset="images/Spinach-Salad-264.webp 264w, images/Spinach-Salad-400.webp 400w, images/Spinach-Salad.webp 528w" sizes="(max-width: 640px) 45vw, (max-width: 1024px) 31vw, 285px" alt="Golden Corral Spinach Salad (Individual)" loading="lazy" decoding="async" onerror="this.style.display='none'">
             <div class="img-placeholder-label">
               <span>Spinach-Salad.webp</span>
             </div>
@@ -2931,7 +1652,7 @@
 
         <article class="menu-card">
           <div class="card-image-slot">
-            <img src="images/Spinach-Salad.webp" alt="Golden Corral Spinach Salad (Family)" loading="lazy" decoding="async" onerror="this.style.display='none'">
+            <img width="528" height="352" src="images/Spinach-Salad.webp" srcset="images/Spinach-Salad-264.webp 264w, images/Spinach-Salad-400.webp 400w, images/Spinach-Salad.webp 528w" sizes="(max-width: 640px) 45vw, (max-width: 1024px) 31vw, 285px" alt="Golden Corral Spinach Salad (Family)" loading="lazy" decoding="async" onerror="this.style.display='none'">
             <div class="img-placeholder-label">
               <span>Spinach-Salad.webp</span>
             </div>
@@ -2947,7 +1668,7 @@
 
         <article class="menu-card">
           <div class="card-image-slot">
-            <img src="images/Spinach-Salad.webp" alt="Golden Corral Spinach Salad (Party)" loading="lazy" decoding="async" onerror="this.style.display='none'">
+            <img width="528" height="352" src="images/Spinach-Salad.webp" srcset="images/Spinach-Salad-264.webp 264w, images/Spinach-Salad-400.webp 400w, images/Spinach-Salad.webp 528w" sizes="(max-width: 640px) 45vw, (max-width: 1024px) 31vw, 285px" alt="Golden Corral Spinach Salad (Party)" loading="lazy" decoding="async" onerror="this.style.display='none'">
             <div class="img-placeholder-label">
               <span>Spinach-Salad.webp</span>
             </div>
@@ -2975,7 +1696,7 @@
       <div class="menu-grid">
         <article class="menu-card">
           <div class="card-image-slot">
-            <img src="images/Freshly-Brewed-Sweet-Tea-Half-Gallon.webp" alt="Golden Corral Freshly Brewed Sweet Tea Half Gallon" loading="lazy" decoding="async" onerror="this.style.display='none'">
+            <img width="528" height="352" src="images/Freshly-Brewed-Sweet-Tea-Half-Gallon.webp" srcset="images/Freshly-Brewed-Sweet-Tea-Half-Gallon-264.webp 264w, images/Freshly-Brewed-Sweet-Tea-Half-Gallon-400.webp 400w, images/Freshly-Brewed-Sweet-Tea-Half-Gallon.webp 528w" sizes="(max-width: 640px) 45vw, (max-width: 1024px) 31vw, 285px" alt="Golden Corral Freshly Brewed Sweet Tea Half Gallon" loading="lazy" decoding="async" onerror="this.style.display='none'">
             <div class="img-placeholder-label">
               <span>Freshly-Brewed-Sweet-Tea-Half-Gallon.webp</span>
             </div>
@@ -2991,7 +1712,7 @@
 
         <article class="menu-card">
           <div class="card-image-slot">
-            <img src="images/Freshly-Brewed-Sweet-Tea-Gallon.webp" alt="Golden Corral Freshly Brewed Sweet Tea Gallon" loading="lazy" decoding="async" onerror="this.style.display='none'">
+            <img width="528" height="352" src="images/Freshly-Brewed-Sweet-Tea-Gallon.webp" srcset="images/Freshly-Brewed-Sweet-Tea-Gallon-264.webp 264w, images/Freshly-Brewed-Sweet-Tea-Gallon-400.webp 400w, images/Freshly-Brewed-Sweet-Tea-Gallon.webp 528w" sizes="(max-width: 640px) 45vw, (max-width: 1024px) 31vw, 285px" alt="Golden Corral Freshly Brewed Sweet Tea Gallon" loading="lazy" decoding="async" onerror="this.style.display='none'">
             <div class="img-placeholder-label">
               <span>Freshly-Brewed-Sweet-Tea-Gallon.webp</span>
             </div>
@@ -3007,7 +1728,7 @@
 
         <article class="menu-card">
           <div class="card-image-slot">
-            <img src="images/Minute-Maid-Lemonade-Half-Gallon.webp" alt="Golden Corral Minute Maid Lemonade Half Gallon" loading="lazy" decoding="async" onerror="this.style.display='none'">
+            <img width="528" height="352" src="images/Minute-Maid-Lemonade-Half-Gallon.webp" srcset="images/Minute-Maid-Lemonade-Half-Gallon-264.webp 264w, images/Minute-Maid-Lemonade-Half-Gallon-400.webp 400w, images/Minute-Maid-Lemonade-Half-Gallon.webp 528w" sizes="(max-width: 640px) 45vw, (max-width: 1024px) 31vw, 285px" alt="Golden Corral Minute Maid Lemonade Half Gallon" loading="lazy" decoding="async" onerror="this.style.display='none'">
             <div class="img-placeholder-label">
               <span>Minute-Maid-Lemonade-Half-Gallon.webp</span>
             </div>
@@ -3023,7 +1744,7 @@
 
         <article class="menu-card">
           <div class="card-image-slot">
-            <img src="images/Minute-Maid-Lemonade-Gallon.webp" alt="Golden Corral Minute Maid Lemonade Gallon" loading="lazy" decoding="async" onerror="this.style.display='none'">
+            <img width="528" height="352" src="images/Minute-Maid-Lemonade-Gallon.webp" srcset="images/Minute-Maid-Lemonade-Gallon-264.webp 264w, images/Minute-Maid-Lemonade-Gallon-400.webp 400w, images/Minute-Maid-Lemonade-Gallon.webp 528w" sizes="(max-width: 640px) 45vw, (max-width: 1024px) 31vw, 285px" alt="Golden Corral Minute Maid Lemonade Gallon" loading="lazy" decoding="async" onerror="this.style.display='none'">
             <div class="img-placeholder-label">
               <span>Minute-Maid-Lemonade-Gallon.webp</span>
             </div>
@@ -3039,7 +1760,7 @@
 
         <article class="menu-card">
           <div class="card-image-slot">
-            <img src="images/Freshly-Brewed-Unsweetened-Tea-Half-Gallon.webp" alt="Golden Corral Freshly Brewed Unsweetened Tea Half Gallon" loading="lazy" decoding="async" onerror="this.style.display='none'">
+            <img width="528" height="352" src="images/Freshly-Brewed-Unsweetened-Tea-Half-Gallon.webp" srcset="images/Freshly-Brewed-Unsweetened-Tea-Half-Gallon-264.webp 264w, images/Freshly-Brewed-Unsweetened-Tea-Half-Gallon-400.webp 400w, images/Freshly-Brewed-Unsweetened-Tea-Half-Gallon.webp 528w" sizes="(max-width: 640px) 45vw, (max-width: 1024px) 31vw, 285px" alt="Golden Corral Freshly Brewed Unsweetened Tea Half Gallon" loading="lazy" decoding="async" onerror="this.style.display='none'">
             <div class="img-placeholder-label">
               <span>Freshly-Brewed-Unsweetened-Tea-Half-Gallon.webp</span>
             </div>
@@ -3055,7 +1776,7 @@
 
         <article class="menu-card">
           <div class="card-image-slot">
-            <img src="images/Freshly-Brewed-Unsweetened-Tea-Gallon.webp" alt="Golden Corral Freshly Brewed Unsweetened Tea Gallon" loading="lazy" decoding="async" onerror="this.style.display='none'">
+            <img width="528" height="352" src="images/Freshly-Brewed-Unsweetened-Tea-Gallon.webp" srcset="images/Freshly-Brewed-Unsweetened-Tea-Gallon-264.webp 264w, images/Freshly-Brewed-Unsweetened-Tea-Gallon-400.webp 400w, images/Freshly-Brewed-Unsweetened-Tea-Gallon.webp 528w" sizes="(max-width: 640px) 45vw, (max-width: 1024px) 31vw, 285px" alt="Golden Corral Freshly Brewed Unsweetened Tea Gallon" loading="lazy" decoding="async" onerror="this.style.display='none'">
             <div class="img-placeholder-label">
               <span>Freshly-Brewed-Unsweetened-Tea-Gallon.webp</span>
             </div>
@@ -3912,127 +2633,6 @@
     </div>
   </footer>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      // Mobile Navigation Toggle
-      const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-      const mobileNavDrawer = document.getElementById('mobileNavDrawer');
-      if (mobileMenuBtn && mobileNavDrawer) {
-        mobileMenuBtn.addEventListener('click', () => {
-          const isOpen = mobileNavDrawer.classList.toggle('open');
-          mobileMenuBtn.setAttribute('aria-expanded', isOpen);
-          document.body.classList.toggle('nav-open', isOpen);
-        });
-      }
-
-      // Mobile accordion groups mirror the desktop dropdowns
-      const mobileNavGroups = document.querySelectorAll('.mobile-nav-group');
-
-      const closeMobileNav = () => {
-        if (!mobileNavDrawer) return;
-        mobileNavDrawer.classList.remove('open');
-        if (mobileMenuBtn) mobileMenuBtn.setAttribute('aria-expanded', 'false');
-        document.body.classList.remove('nav-open');
-      };
-
-      mobileNavGroups.forEach((group) => {
-        const toggle = group.querySelector('.mobile-nav-toggle');
-        if (!toggle) return;
-        toggle.addEventListener('click', () => {
-          const willOpen = !group.classList.contains('open');
-          mobileNavGroups.forEach((other) => {
-            other.classList.remove('open');
-            const otherToggle = other.querySelector('.mobile-nav-toggle');
-            if (otherToggle) otherToggle.setAttribute('aria-expanded', 'false');
-          });
-          if (willOpen) {
-            group.classList.add('open');
-            toggle.setAttribute('aria-expanded', 'true');
-          }
-        });
-      });
-
-      window.addEventListener('resize', () => {
-        if (window.innerWidth > 1024) closeMobileNav();
-      });
-
-
-      // Header Dropdown Menus
-      const navDropdowns = document.querySelectorAll('.nav-dropdown');
-
-      const closeAllDropdowns = () => {
-        navDropdowns.forEach((dropdown) => {
-          dropdown.classList.remove('open');
-          const toggle = dropdown.querySelector('.nav-dropdown-toggle');
-          if (toggle) toggle.setAttribute('aria-expanded', 'false');
-        });
-      };
-
-      navDropdowns.forEach((dropdown) => {
-        const toggle = dropdown.querySelector('.nav-dropdown-toggle');
-        if (!toggle) return;
-        toggle.addEventListener('click', (event) => {
-          event.stopPropagation();
-          const wasOpen = dropdown.classList.contains('open');
-          closeAllDropdowns();
-          if (!wasOpen) {
-            dropdown.classList.add('open');
-            toggle.setAttribute('aria-expanded', 'true');
-          }
-        });
-      });
-
-      document.addEventListener('click', closeAllDropdowns);
-      document.addEventListener('keydown', (event) => {
-        if (event.key === 'Escape') { closeAllDropdowns(); closeMobileNav(); }
-      });
-      // Category Horizontal Slider Controls
-      const categoryPillsScroll = document.getElementById('categoryPillsScroll');
-      const slideLeftBtn = document.getElementById('slideLeftBtn');
-      const slideRightBtn = document.getElementById('slideRightBtn');
-
-      if (categoryPillsScroll && slideLeftBtn && slideRightBtn) {
-        slideLeftBtn.addEventListener('click', () => {
-          categoryPillsScroll.scrollBy({ left: -220, behavior: 'smooth' });
-        });
-        slideRightBtn.addEventListener('click', () => {
-          categoryPillsScroll.scrollBy({ left: 220, behavior: 'smooth' });
-        });
-      }
-
-      // Smooth category button jumping
-      const categoryButtons = document.querySelectorAll('.cat-pill[data-target]');
-      if (categoryButtons.length > 0) {
-        categoryButtons.forEach(btn => {
-          btn.addEventListener('click', (e) => {
-            e.preventDefault();
-            const targetId = btn.getAttribute('data-target');
-            const targetEl = document.getElementById(targetId);
-            if (targetEl) {
-              targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
-              categoryButtons.forEach(b => b.classList.remove('active'));
-              btn.classList.add('active');
-            }
-          });
-        });
-      }
-
-      // Floating Scroll to Top Button functionality
-      const scrollToTopBtn = document.getElementById('scrollToTopBtn');
-      if (scrollToTopBtn) {
-        window.addEventListener('scroll', () => {
-          if (window.scrollY > 400) {
-            scrollToTopBtn.classList.add('show');
-          } else {
-            scrollToTopBtn.classList.remove('show');
-          }
-        });
-
-        scrollToTopBtn.addEventListener('click', () => {
-          window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
-      }
-    });
-  </script>
+  <script>document.addEventListener("DOMContentLoaded",()=>{const e=document.getElementById("mobileMenuBtn"),t=document.getElementById("mobileNavDrawer");e&&t&&e.addEventListener("click",()=>{const o=t.classList.toggle("open");e.setAttribute("aria-expanded",o),document.body.classList.toggle("nav-open",o)});const o=document.querySelectorAll(".mobile-nav-group"),n=()=>{t&&(t.classList.remove("open"),e&&e.setAttribute("aria-expanded","false"),document.body.classList.remove("nav-open"))};o.forEach(e=>{const t=e.querySelector(".mobile-nav-toggle");t&&t.addEventListener("click",()=>{const n=!e.classList.contains("open");o.forEach(e=>{e.classList.remove("open");const t=e.querySelector(".mobile-nav-toggle");t&&t.setAttribute("aria-expanded","false")}),n&&(e.classList.add("open"),t.setAttribute("aria-expanded","true"))})}),window.addEventListener("resize",()=>{window.innerWidth>1024&&n()});const s=document.querySelectorAll(".nav-dropdown"),a=()=>{s.forEach(e=>{e.classList.remove("open");const t=e.querySelector(".nav-dropdown-toggle");t&&t.setAttribute("aria-expanded","false")})};s.forEach(e=>{const t=e.querySelector(".nav-dropdown-toggle");t&&t.addEventListener("click",o=>{o.stopPropagation();const n=e.classList.contains("open");a(),n||(e.classList.add("open"),t.setAttribute("aria-expanded","true"))})}),document.addEventListener("click",a),document.addEventListener("keydown",e=>{"Escape"===e.key&&(a(),n())});const c=document.getElementById("categoryPillsScroll"),d=document.getElementById("slideLeftBtn"),l=document.getElementById("slideRightBtn");c&&d&&l&&(d.addEventListener("click",()=>{c.scrollBy({left:-220,behavior:"smooth"})}),l.addEventListener("click",()=>{c.scrollBy({left:220,behavior:"smooth"})}));const r=document.querySelectorAll(".cat-pill[data-target]");r.length>0&&r.forEach(e=>{e.addEventListener("click",t=>{t.preventDefault();const o=e.getAttribute("data-target"),n=document.getElementById(o);n&&(n.scrollIntoView({behavior:"smooth",block:"start"}),r.forEach(e=>e.classList.remove("active")),e.classList.add("active"))})});const i=document.getElementById("scrollToTopBtn");i&&(window.addEventListener("scroll",()=>{window.scrollY>400?i.classList.add("show"):i.classList.remove("show")}),i.addEventListener("click",()=>{window.scrollTo({top:0,behavior:"smooth"})}))});</script>
 </body>
 </html>
