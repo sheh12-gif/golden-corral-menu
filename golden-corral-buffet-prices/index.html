@@ -33,27 +33,85 @@
   "@context": "https://schema.org",
   "@graph": [
     {
+      "@type": "WebSite",
+      "@id": "https://goldencorralcost.us/#website",
+      "url": "https://goldencorralcost.us/",
+      "name": "Golden Corral Cost",
+      "inLanguage": "en-US",
+      "publisher": {
+        "@id": "https://goldencorralcost.us/#organization"
+      }
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://goldencorralcost.us/#organization",
+      "name": "Golden Corral Cost",
+      "url": "https://goldencorralcost.us/",
+      "logo": {
+        "@type": "ImageObject",
+        "@id": "https://goldencorralcost.us/#logo",
+        "url": "https://goldencorralcost.us/images/favicon-192.png",
+        "width": 192,
+        "height": 192
+      }
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://goldencorralcost.us/golden-corral-buffet-prices/#webpage",
+      "url": "https://goldencorralcost.us/golden-corral-buffet-prices/",
+      "name": "Golden Corral Buffet Price 2026: Breakfast, Lunch & Dinner",
+      "description": "Golden Corral buffet prices for 2026. See what adults, seniors, and kids pay at breakfast, lunch, and dinner, plus Sunday and Easter costs.",
+      "inLanguage": "en-US",
+      "isPartOf": {
+        "@id": "https://goldencorralcost.us/#website"
+      },
+      "breadcrumb": {
+        "@id": "https://goldencorralcost.us/golden-corral-buffet-prices/#breadcrumb"
+      },
+      "about": {
+        "@id": "https://goldencorralcost.us/golden-corral-buffet-prices/#golden-corral"
+      },
+      "datePublished": "2026-10-23T08:00:00+00:00",
+      "dateModified": "2026-11-14T10:18:00+00:00"
+    },
+    {
       "@type": "Article",
       "@id": "https://goldencorralcost.us/golden-corral-buffet-prices/#article",
       "headline": "Golden Corral Buffet Price 2026: Breakfast, Lunch & Dinner Cost Per Person",
       "description": "Golden Corral buffet prices for 2026. See what adults, seniors, and kids pay at breakfast, lunch, and dinner, plus Sunday and Easter costs.",
       "inLanguage": "en-US",
-      "mainEntityOfPage": "https://goldencorralcost.us/golden-corral-buffet-prices/",
-      "datePublished": "2026-11-23T08:00:00+00:00",
-      "dateModified": "2026-11-23T08:00:00+00:00",
+      "articleSection": "Buffet Prices",
+      "mainEntityOfPage": {
+        "@id": "https://goldencorralcost.us/golden-corral-buffet-prices/#webpage"
+      },
+      "isPartOf": {
+        "@id": "https://goldencorralcost.us/golden-corral-buffet-prices/#webpage"
+      },
+      "datePublished": "2026-10-23T08:00:00+00:00",
+      "dateModified": "2026-11-14T10:18:00+00:00",
       "author": {
         "@type": "Organization",
         "name": "Golden Corral Cost Editorial Team",
-        "url": "https://goldencorralcost.us/"
+        "url": "https://goldencorralcost.us/about-us/"
       },
       "publisher": {
-        "@type": "Organization",
-        "name": "Golden Corral Cost",
-        "url": "https://goldencorralcost.us/"
+        "@id": "https://goldencorralcost.us/#organization"
       },
-      "image": "https://goldencorralcost.us/images/crispy-fried-chicken.webp",
-      "isPartOf": {
-        "@id": "https://goldencorralcost.us/#website"
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://goldencorralcost.us/images/crispy-fried-chicken.webp",
+        "width": 528,
+        "height": 352
+      },
+      "about": {
+        "@type": "Organization",
+        "@id": "https://goldencorralcost.us/golden-corral-buffet-prices/#golden-corral",
+        "name": "Golden Corral",
+        "url": "https://www.goldencorral.com/",
+        "sameAs": [
+          "https://en.wikipedia.org/wiki/Golden_Corral",
+          "https://www.wikidata.org/wiki/Q4039560"
+        ]
       }
     },
     {
@@ -77,6 +135,10 @@
     {
       "@type": "FAQPage",
       "@id": "https://goldencorralcost.us/golden-corral-buffet-prices/#faq",
+      "isPartOf": {
+        "@id": "https://goldencorralcost.us/golden-corral-buffet-prices/#webpage"
+      },
+      "inLanguage": "en-US",
       "mainEntity": [
         {
           "@type": "Question",
